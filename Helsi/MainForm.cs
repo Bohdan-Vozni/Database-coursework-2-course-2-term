@@ -17,22 +17,38 @@ namespace Helsi
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            
 
-            newPatient_userControl1.Visible = false;
+            newMedicalCard_userControl.Visible = false;
+            newPatient_userControl.Visible = false;
 
         }
 
         private void newPatient_menuStrip_Click(object sender, EventArgs e)
         {
-            newPatient_userControl1.Visible = true;
-           
+            newMedicalCard_userControl.Visible = false;
+            newPatient_userControl.Visible = true;
 
         }
+
+
+        private void newMedicalCard_menuStrip_Click_1(object sender, EventArgs e)
+        {
+            newPatient_userControl.Visible = false;
+            newMedicalCard_userControl.Visible = true;
+        }
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void Entrance_menuStrip_Click(object sender, EventArgs e)
+        {
+            var Authorization = new Authorization();
+            Authorization.Show();
+            Hide();
+        }
+
     }
 }

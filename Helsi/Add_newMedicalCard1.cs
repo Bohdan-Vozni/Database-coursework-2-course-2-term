@@ -10,13 +10,16 @@ using System.Windows.Forms;
 
 namespace Helsi
 {
-    public partial class Add_newPatient : UserControl
+    public partial class Add_newMedicalCard : UserControl
     {
-        public Add_newPatient()
+        public Add_newMedicalCard()
         {
             InitializeComponent();
         }
 
-       
+        private void Add_newMedicalCard1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

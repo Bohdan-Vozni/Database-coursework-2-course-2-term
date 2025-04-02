@@ -34,10 +34,12 @@
             newMedicalCard_menuStrip = new ToolStripMenuItem();
             newEpisode_menuStrip = new ToolStripMenuItem();
             newAction_menuStrip = new ToolStripMenuItem();
+            newDoctor_menuStrip = new ToolStripMenuItem();
             Entrance_menuStrip = new ToolStripMenuItem();
             звітToolStripMenuItem = new ToolStripMenuItem();
             доівідникToolStripMenuItem = new ToolStripMenuItem();
-            newPatient_userControl1 = new newPatient_userControl();
+            newMedicalCard_userControl = new Add_newMedicalCard();
+            newPatient_userControl = new Add_newPatient();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             // 
             // helsiToolStripMenuItem
             // 
-            helsiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newPatient_menuStrip, newMedicalCard_menuStrip, newEpisode_menuStrip, newAction_menuStrip, Entrance_menuStrip });
+            helsiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newPatient_menuStrip, newMedicalCard_menuStrip, newEpisode_menuStrip, newAction_menuStrip, newDoctor_menuStrip, Entrance_menuStrip });
             helsiToolStripMenuItem.Name = "helsiToolStripMenuItem";
             helsiToolStripMenuItem.Size = new Size(45, 20);
             helsiToolStripMenuItem.Text = "Helsi";
@@ -69,6 +71,7 @@
             newMedicalCard_menuStrip.Name = "newMedicalCard_menuStrip";
             newMedicalCard_menuStrip.Size = new Size(192, 22);
             newMedicalCard_menuStrip.Text = "Нова медична катрка";
+            newMedicalCard_menuStrip.Click += newMedicalCard_menuStrip_Click_1;
             // 
             // newEpisode_menuStrip
             // 
@@ -82,11 +85,18 @@
             newAction_menuStrip.Size = new Size(192, 22);
             newAction_menuStrip.Text = "Нова дія";
             // 
+            // newDoctor_menuStrip
+            // 
+            newDoctor_menuStrip.Name = "newDoctor_menuStrip";
+            newDoctor_menuStrip.Size = new Size(192, 22);
+            newDoctor_menuStrip.Text = "Новий доктор";
+            // 
             // Entrance_menuStrip
             // 
             Entrance_menuStrip.Name = "Entrance_menuStrip";
             Entrance_menuStrip.Size = new Size(192, 22);
             Entrance_menuStrip.Text = "Вихід";
+            Entrance_menuStrip.Click += Entrance_menuStrip_Click;
             // 
             // звітToolStripMenuItem
             // 
@@ -100,19 +110,27 @@
             доівідникToolStripMenuItem.Size = new Size(72, 20);
             доівідникToolStripMenuItem.Text = "Доівідник";
             // 
-            // newPatient_userControl1
+            // newMedicalCard_userControl
             // 
-            newPatient_userControl1.Location = new Point(0, 27);
-            newPatient_userControl1.Name = "newPatient_userControl1";
-            newPatient_userControl1.Size = new Size(884, 466);
-            newPatient_userControl1.TabIndex = 1;
+            newMedicalCard_userControl.Location = new Point(0, 27);
+            newMedicalCard_userControl.Name = "newMedicalCard_userControl";
+            newMedicalCard_userControl.Size = new Size(884, 462);
+            newMedicalCard_userControl.TabIndex = 1;
+            // 
+            // newPatient_userControl
+            // 
+            newPatient_userControl.Location = new Point(0, 27);
+            newPatient_userControl.Name = "newPatient_userControl";
+            newPatient_userControl.Size = new Size(884, 462);
+            newPatient_userControl.TabIndex = 2;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(884, 489);
-            Controls.Add(newPatient_userControl1);
+            Controls.Add(newPatient_userControl);
+            Controls.Add(newMedicalCard_userControl);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
@@ -136,7 +154,10 @@
         private ToolStripMenuItem Entrance_menuStrip;
         private ToolStripMenuItem звітToolStripMenuItem;
         private ToolStripMenuItem доівідникToolStripMenuItem;
-        private newPatient_userControl newPatient_userControl;
-        private newPatient_userControl newPatient_userControl1;
+
+
+        private ToolStripMenuItem newDoctor_menuStrip;
+        private Add_newMedicalCard newMedicalCard_userControl;
+        private Add_newPatient newPatient_userControl;
     }
 }
