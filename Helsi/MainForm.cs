@@ -23,19 +23,11 @@ namespace Helsi
 
         }
 
-        private void newPatient_menuStrip_Click(object sender, EventArgs e)
-        {
-            newMedicalCard_userControl.Visible = false;
-            newPatient_userControl.Visible = true;
-
-        }
 
 
-        private void newMedicalCard_menuStrip_Click_1(object sender, EventArgs e)
-        {
-            newPatient_userControl.Visible = false;
-            newMedicalCard_userControl.Visible = true;
-        }
+
+
+       
 
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -50,5 +42,16 @@ namespace Helsi
             Hide();
         }
 
+        private void patient_StripMenu_Click(object sender, EventArgs e)
+        {
+            newMedicalCard_userControl.Visible = false;
+            newPatient_userControl.Visible = true;
+        }
+
+        private void medicalCard_StripMenu_Click(object sender, EventArgs e)
+        {
+            newPatient_userControl.Visible = false;
+            newMedicalCard_userControl.Visible = true;
+        }
     }
 }

@@ -30,14 +30,14 @@
         {
             menuStrip1 = new MenuStrip();
             helsiToolStripMenuItem = new ToolStripMenuItem();
-            newPatient_menuStrip = new ToolStripMenuItem();
-            newMedicalCard_menuStrip = new ToolStripMenuItem();
-            newEpisode_menuStrip = new ToolStripMenuItem();
-            newAction_menuStrip = new ToolStripMenuItem();
-            newDoctor_menuStrip = new ToolStripMenuItem();
             Entrance_menuStrip = new ToolStripMenuItem();
-            звітToolStripMenuItem = new ToolStripMenuItem();
+            patient_StripMenu = new ToolStripMenuItem();
+            medicalCard_StripMenu = new ToolStripMenuItem();
+            епізодToolStripMenuItem = new ToolStripMenuItem();
+            діяToolStripMenuItem = new ToolStripMenuItem();
+            докторToolStripMenuItem = new ToolStripMenuItem();
             доівідникToolStripMenuItem = new ToolStripMenuItem();
+            звітToolStripMenuItem = new ToolStripMenuItem();
             newMedicalCard_userControl = new Add_newMedicalCard();
             newPatient_userControl = new Add_newPatient();
             menuStrip1.SuspendLayout();
@@ -45,7 +45,8 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { helsiToolStripMenuItem, звітToolStripMenuItem, доівідникToolStripMenuItem });
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { helsiToolStripMenuItem, patient_StripMenu, medicalCard_StripMenu, епізодToolStripMenuItem, діяToolStripMenuItem, докторToolStripMenuItem, доівідникToolStripMenuItem, звітToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(884, 24);
@@ -54,49 +55,55 @@
             // 
             // helsiToolStripMenuItem
             // 
-            helsiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newPatient_menuStrip, newMedicalCard_menuStrip, newEpisode_menuStrip, newAction_menuStrip, newDoctor_menuStrip, Entrance_menuStrip });
+            helsiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { Entrance_menuStrip });
             helsiToolStripMenuItem.Name = "helsiToolStripMenuItem";
             helsiToolStripMenuItem.Size = new Size(45, 20);
             helsiToolStripMenuItem.Text = "Helsi";
             // 
-            // newPatient_menuStrip
-            // 
-            newPatient_menuStrip.Name = "newPatient_menuStrip";
-            newPatient_menuStrip.Size = new Size(192, 22);
-            newPatient_menuStrip.Text = "Новий пацієнт";
-            newPatient_menuStrip.Click += newPatient_menuStrip_Click;
-            // 
-            // newMedicalCard_menuStrip
-            // 
-            newMedicalCard_menuStrip.Name = "newMedicalCard_menuStrip";
-            newMedicalCard_menuStrip.Size = new Size(192, 22);
-            newMedicalCard_menuStrip.Text = "Нова медична катрка";
-            newMedicalCard_menuStrip.Click += newMedicalCard_menuStrip_Click_1;
-            // 
-            // newEpisode_menuStrip
-            // 
-            newEpisode_menuStrip.Name = "newEpisode_menuStrip";
-            newEpisode_menuStrip.Size = new Size(192, 22);
-            newEpisode_menuStrip.Text = "Новий епізод";
-            // 
-            // newAction_menuStrip
-            // 
-            newAction_menuStrip.Name = "newAction_menuStrip";
-            newAction_menuStrip.Size = new Size(192, 22);
-            newAction_menuStrip.Text = "Нова дія";
-            // 
-            // newDoctor_menuStrip
-            // 
-            newDoctor_menuStrip.Name = "newDoctor_menuStrip";
-            newDoctor_menuStrip.Size = new Size(192, 22);
-            newDoctor_menuStrip.Text = "Новий доктор";
-            // 
             // Entrance_menuStrip
             // 
             Entrance_menuStrip.Name = "Entrance_menuStrip";
-            Entrance_menuStrip.Size = new Size(192, 22);
+            Entrance_menuStrip.Size = new Size(103, 22);
             Entrance_menuStrip.Text = "Вихід";
             Entrance_menuStrip.Click += Entrance_menuStrip_Click;
+            // 
+            // patient_StripMenu
+            // 
+            patient_StripMenu.Name = "patient_StripMenu";
+            patient_StripMenu.Size = new Size(62, 20);
+            patient_StripMenu.Text = "Паціент";
+            patient_StripMenu.Click += patient_StripMenu_Click;
+            // 
+            // medicalCard_StripMenu
+            // 
+            medicalCard_StripMenu.Name = "medicalCard_StripMenu";
+            medicalCard_StripMenu.Size = new Size(102, 20);
+            medicalCard_StripMenu.Text = "Медична карта";
+            medicalCard_StripMenu.Click += medicalCard_StripMenu_Click;
+            // 
+            // епізодToolStripMenuItem
+            // 
+            епізодToolStripMenuItem.Name = "епізодToolStripMenuItem";
+            епізодToolStripMenuItem.Size = new Size(53, 20);
+            епізодToolStripMenuItem.Text = "Епізод";
+            // 
+            // діяToolStripMenuItem
+            // 
+            діяToolStripMenuItem.Name = "діяToolStripMenuItem";
+            діяToolStripMenuItem.Size = new Size(36, 20);
+            діяToolStripMenuItem.Text = "Дія";
+            // 
+            // докторToolStripMenuItem
+            // 
+            докторToolStripMenuItem.Name = "докторToolStripMenuItem";
+            докторToolStripMenuItem.Size = new Size(59, 20);
+            докторToolStripMenuItem.Text = "Доктор";
+            // 
+            // доівідникToolStripMenuItem
+            // 
+            доівідникToolStripMenuItem.Name = "доівідникToolStripMenuItem";
+            доівідникToolStripMenuItem.Size = new Size(69, 20);
+            доівідникToolStripMenuItem.Text = "Довідник";
             // 
             // звітToolStripMenuItem
             // 
@@ -104,15 +111,10 @@
             звітToolStripMenuItem.Size = new Size(40, 20);
             звітToolStripMenuItem.Text = "Звіт";
             // 
-            // доівідникToolStripMenuItem
-            // 
-            доівідникToolStripMenuItem.Name = "доівідникToolStripMenuItem";
-            доівідникToolStripMenuItem.Size = new Size(72, 20);
-            доівідникToolStripMenuItem.Text = "Доівідник";
-            // 
             // newMedicalCard_userControl
             // 
             newMedicalCard_userControl.Location = new Point(0, 27);
+            newMedicalCard_userControl.Margin = new Padding(3, 4, 3, 4);
             newMedicalCard_userControl.Name = "newMedicalCard_userControl";
             newMedicalCard_userControl.Size = new Size(884, 462);
             newMedicalCard_userControl.TabIndex = 1;
@@ -120,6 +122,7 @@
             // newPatient_userControl
             // 
             newPatient_userControl.Location = new Point(0, 27);
+            newPatient_userControl.Margin = new Padding(3, 4, 3, 4);
             newPatient_userControl.Name = "newPatient_userControl";
             newPatient_userControl.Size = new Size(884, 462);
             newPatient_userControl.TabIndex = 2;
@@ -147,17 +150,15 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem helsiToolStripMenuItem;
-        private ToolStripMenuItem newPatient_menuStrip;
-        private ToolStripMenuItem newMedicalCard_menuStrip;
-        private ToolStripMenuItem newEpisode_menuStrip;
-        private ToolStripMenuItem newAction_menuStrip;
         private ToolStripMenuItem Entrance_menuStrip;
         private ToolStripMenuItem звітToolStripMenuItem;
         private ToolStripMenuItem доівідникToolStripMenuItem;
-
-
-        private ToolStripMenuItem newDoctor_menuStrip;
         private Add_newMedicalCard newMedicalCard_userControl;
         private Add_newPatient newPatient_userControl;
+        private ToolStripMenuItem patient_StripMenu;
+        private ToolStripMenuItem medicalCard_StripMenu;
+        private ToolStripMenuItem епізодToolStripMenuItem;
+        private ToolStripMenuItem діяToolStripMenuItem;
+        private ToolStripMenuItem докторToolStripMenuItem;
     }
 }

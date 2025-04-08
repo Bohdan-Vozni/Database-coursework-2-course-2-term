@@ -84,7 +84,7 @@
             login_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             login_label.Location = new Point(3, 131);
             login_label.Name = "login_label";
-            login_label.Size = new Size(63, 25);
+            login_label.Size = new Size(78, 32);
             login_label.TabIndex = 2;
             login_label.Text = "Login";
             // 
@@ -96,9 +96,9 @@
             close_button.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
             close_button.FlatStyle = FlatStyle.Flat;
             close_button.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            close_button.Location = new Point(289, 0);
+            close_button.Location = new Point(283, 0);
             close_button.Name = "close_button";
-            close_button.Size = new Size(42, 42);
+            close_button.Size = new Size(47, 49);
             close_button.TabIndex = 3;
             close_button.Text = "X";
             close_button.UseVisualStyleBackColor = false;
@@ -110,24 +110,24 @@
             password_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             password_label.Location = new Point(3, 178);
             password_label.Name = "password_label";
-            password_label.Size = new Size(97, 25);
+            password_label.Size = new Size(122, 32);
             password_label.TabIndex = 5;
             password_label.Text = "Password";
             // 
             // login_textBox
             // 
             login_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            login_textBox.Location = new Point(111, 128);
+            login_textBox.Location = new Point(125, 128);
             login_textBox.Name = "login_textBox";
-            login_textBox.Size = new Size(209, 33);
+            login_textBox.Size = new Size(205, 39);
             login_textBox.TabIndex = 6;
             // 
             // password_textBox
             // 
             password_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            password_textBox.Location = new Point(111, 175);
+            password_textBox.Location = new Point(125, 175);
             password_textBox.Name = "password_textBox";
-            password_textBox.Size = new Size(209, 33);
+            password_textBox.Size = new Size(205, 39);
             password_textBox.TabIndex = 7;
             password_textBox.UseSystemPasswordChar = true;
             // 
@@ -154,12 +154,12 @@
             mainBackgroundColor_panel.Controls.Add(authorizationBackgroundColor_panel);
             mainBackgroundColor_panel.Location = new Point(-1, 0);
             mainBackgroundColor_panel.Name = "mainBackgroundColor_panel";
-            mainBackgroundColor_panel.Size = new Size(335, 304);
+            mainBackgroundColor_panel.Size = new Size(334, 302);
             mainBackgroundColor_panel.TabIndex = 1;
             // 
             // Authorization
             // 
-            ClientSize = new Size(331, 304);
+            ClientSize = new Size(332, 302);
             Controls.Add(mainBackgroundColor_panel);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Authorization";
