@@ -20,14 +20,15 @@ namespace Helsi
 
             newMedicalCard_userControl.Visible = false;
             newPatient_userControl.Visible = false;
-
+            closeUserControllForAddInfo_button.Visible = false;
+            closeUserControllForAddInfo_button.BringToFront();
         }
 
 
 
 
 
-       
+
 
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -42,16 +43,35 @@ namespace Helsi
             Hide();
         }
 
-        private void patient_StripMenu_Click(object sender, EventArgs e)
+
+
+
+
+        private void closeUserControllForAddInfo_button_Click(object sender, EventArgs e)
+        {
+            newMedicalCard_userControl.Visible = false;
+            newPatient_userControl.Visible = false;
+            closeUserControllForAddInfo_button.Visible = false;
+        }
+
+        private void patient_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             newMedicalCard_userControl.Visible = false;
             newPatient_userControl.Visible = true;
+
+            closeUserControllForAddInfo_button.Visible = true;
+            closeUserControllForAddInfo_button.BringToFront();
         }
 
-        private void medicalCard_StripMenu_Click(object sender, EventArgs e)
+        private void medicalCard_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+         
             newPatient_userControl.Visible = false;
             newMedicalCard_userControl.Visible = true;
+
+            closeUserControllForAddInfo_button.Visible = true;
+            closeUserControllForAddInfo_button.BringToFront();
+        
         }
     }
 }

@@ -84,7 +84,7 @@
             login_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             login_label.Location = new Point(3, 131);
             login_label.Name = "login_label";
-            login_label.Size = new Size(78, 32);
+            login_label.Size = new Size(63, 25);
             login_label.TabIndex = 2;
             login_label.Text = "Login";
             // 
@@ -110,7 +110,7 @@
             password_label.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             password_label.Location = new Point(3, 178);
             password_label.Name = "password_label";
-            password_label.Size = new Size(122, 32);
+            password_label.Size = new Size(97, 25);
             password_label.TabIndex = 5;
             password_label.Text = "Password";
             // 
@@ -119,7 +119,7 @@
             login_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             login_textBox.Location = new Point(125, 128);
             login_textBox.Name = "login_textBox";
-            login_textBox.Size = new Size(205, 39);
+            login_textBox.Size = new Size(205, 33);
             login_textBox.TabIndex = 6;
             // 
             // password_textBox
@@ -127,7 +127,7 @@
             password_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             password_textBox.Location = new Point(125, 175);
             password_textBox.Name = "password_textBox";
-            password_textBox.Size = new Size(205, 39);
+            password_textBox.Size = new Size(205, 33);
             password_textBox.TabIndex = 7;
             password_textBox.UseSystemPasswordChar = true;
             // 
@@ -173,10 +173,10 @@
 
         #endregion
 
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem логінToolStripMenuItem;
-        private ToolStripMenuItem увійтиToolStripMenuItem;
-        private ToolStripMenuItem вийтиToolStripMenuItem;
+
+
+
+
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Panel authorizationBackgroundColor_panel;
         private Label authorization_label;
