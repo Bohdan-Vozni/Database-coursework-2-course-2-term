@@ -36,21 +36,24 @@
             medicalCard_ToolStripMenuItem = new ToolStripMenuItem();
             епізодToolStripMenuItem1 = new ToolStripMenuItem();
             діяToolStripMenuItem1 = new ToolStripMenuItem();
+            відділенняToolStripMenuItem = new ToolStripMenuItem();
+            докторToolStripMenuItem = new ToolStripMenuItem();
             newMedicalCard_userControl = new Add_newMedicalCard();
             newPatient_userControl = new Add_newPatient();
             closeUserControllForAddInfo_button = new Button();
-            відділенняToolStripMenuItem = new ToolStripMenuItem();
-            докторToolStripMenuItem = new ToolStripMenuItem();
+            адмінToolStripMenuItem = new ToolStripMenuItem();
+            patientForAdmin_ToolStripMenuItem = new ToolStripMenuItem();
+            patientForAdminUserControl = new PatientForAdminUserControl();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { helsiToolStripMenuItem, patient_StripMenu, відділенняToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { helsiToolStripMenuItem, patient_StripMenu, відділенняToolStripMenuItem, адмінToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(884, 24);
+            menuStrip1.Size = new Size(954, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -64,7 +67,7 @@
             // Entrance_menuStrip
             // 
             Entrance_menuStrip.Name = "Entrance_menuStrip";
-            Entrance_menuStrip.Size = new Size(180, 22);
+            Entrance_menuStrip.Size = new Size(103, 22);
             Entrance_menuStrip.Text = "Вихід";
             Entrance_menuStrip.Click += Entrance_menuStrip_Click;
             // 
@@ -101,6 +104,19 @@
             діяToolStripMenuItem1.Size = new Size(157, 22);
             діяToolStripMenuItem1.Text = "Дія";
             // 
+            // відділенняToolStripMenuItem
+            // 
+            відділенняToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { докторToolStripMenuItem });
+            відділенняToolStripMenuItem.Name = "відділенняToolStripMenuItem";
+            відділенняToolStripMenuItem.Size = new Size(77, 20);
+            відділенняToolStripMenuItem.Text = "Відділення";
+            // 
+            // докторToolStripMenuItem
+            // 
+            докторToolStripMenuItem.Name = "докторToolStripMenuItem";
+            докторToolStripMenuItem.Size = new Size(180, 22);
+            докторToolStripMenuItem.Text = "Доктор";
+            // 
             // newMedicalCard_userControl
             // 
             newMedicalCard_userControl.Location = new Point(0, 27);
@@ -108,6 +124,7 @@
             newMedicalCard_userControl.Name = "newMedicalCard_userControl";
             newMedicalCard_userControl.Size = new Size(884, 462);
             newMedicalCard_userControl.TabIndex = 1;
+            newMedicalCard_userControl.Load += newMedicalCard_userControl_Load;
             // 
             // newPatient_userControl
             // 
@@ -127,24 +144,33 @@
             closeUserControllForAddInfo_button.UseVisualStyleBackColor = true;
             closeUserControllForAddInfo_button.Click += closeUserControllForAddInfo_button_Click;
             // 
-            // відділенняToolStripMenuItem
+            // адмінToolStripMenuItem
             // 
-            відділенняToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { докторToolStripMenuItem });
-            відділенняToolStripMenuItem.Name = "відділенняToolStripMenuItem";
-            відділенняToolStripMenuItem.Size = new Size(77, 20);
-            відділенняToolStripMenuItem.Text = "Відділення";
+            адмінToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { patientForAdmin_ToolStripMenuItem });
+            адмінToolStripMenuItem.Name = "адмінToolStripMenuItem";
+            адмінToolStripMenuItem.Size = new Size(52, 20);
+            адмінToolStripMenuItem.Text = "Адмін";
             // 
-            // докторToolStripMenuItem
+            // patientForAdmin_ToolStripMenuItem
             // 
-            докторToolStripMenuItem.Name = "докторToolStripMenuItem";
-            докторToolStripMenuItem.Size = new Size(180, 22);
-            докторToolStripMenuItem.Text = "Доктор";
+            patientForAdmin_ToolStripMenuItem.Name = "patientForAdmin_ToolStripMenuItem";
+            patientForAdmin_ToolStripMenuItem.Size = new Size(180, 22);
+            patientForAdmin_ToolStripMenuItem.Text = "Паціент";
+            patientForAdmin_ToolStripMenuItem.Click += patientForAdmin_ToolStripMenuItem_Click;
+            // 
+            // patientForAdminUserControl
+            // 
+            patientForAdminUserControl.Location = new Point(0, 27);
+            patientForAdminUserControl.Name = "patientForAdminUserControl";
+            patientForAdminUserControl.Size = new Size(929, 587);
+            patientForAdminUserControl.TabIndex = 4;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(884, 489);
+            ClientSize = new Size(954, 610);
+            Controls.Add(patientForAdminUserControl);
             Controls.Add(closeUserControllForAddInfo_button);
             Controls.Add(newMedicalCard_userControl);
             Controls.Add(menuStrip1);
@@ -175,5 +201,8 @@
         private Button closeUserControllForAddInfo_button;
         private ToolStripMenuItem відділенняToolStripMenuItem;
         private ToolStripMenuItem докторToolStripMenuItem;
+        private ToolStripMenuItem адмінToolStripMenuItem;
+        private ToolStripMenuItem patientForAdmin_ToolStripMenuItem;
+        private PatientForAdminUserControl patientForAdminUserControl;
     }
 }

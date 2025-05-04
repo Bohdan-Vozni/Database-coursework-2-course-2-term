@@ -159,11 +159,12 @@
             // 
             // Authorization
             // 
-            ClientSize = new Size(332, 302);
+            ClientSize = new Size(354, 314);
             Controls.Add(mainBackgroundColor_panel);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Authorization";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += Authorization_Load;
             authorizationBackgroundColor_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             mainBackgroundColor_panel.ResumeLayout(false);
