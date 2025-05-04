@@ -17,17 +17,25 @@ namespace Helsi
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
 
+            patientForAdminUserControl = new PatientForAdminUserControl();
+            this.Controls.Add(patientForAdminUserControl);
 
-            newMedicalCard_userControl.Visible = false;
-            newPatient_userControl.Visible = false;
-            closeUserControllForAddInfo_button.Visible = false;
-            patientForAdminUserControl.Visible = false;
 
-            closeUserControllForAddInfo_button.BringToFront();
+
+
         }
 
 
-
+        private void hideAllPages()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is UserControl userControl)
+                {
+                    userControl.Hide();
+                }
+            }
+        }
 
 
 
@@ -35,7 +43,10 @@ namespace Helsi
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            hideAllPages();
 
+            closeUserControllForAddInfo_button.Visible = false;
+            closeUserControllForAddInfo_button.BringToFront();
         }
 
         private void Entrance_menuStrip_Click(object sender, EventArgs e)
@@ -51,30 +62,19 @@ namespace Helsi
 
         private void closeUserControllForAddInfo_button_Click(object sender, EventArgs e)
         {
-            newMedicalCard_userControl.Visible = false;
-            newPatient_userControl.Visible = false;
             closeUserControllForAddInfo_button.Visible = false;
-            patientForAdminUserControl.Visible = false;
-
+            hideAllPages();
         }
 
         private void patient_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            newMedicalCard_userControl.Visible = false;
-            patientForAdminUserControl.Visible = false;
-
-            newPatient_userControl.Visible = true;
-
             closeUserControllForAddInfo_button.Visible = true;
             closeUserControllForAddInfo_button.BringToFront();
         }
 
         private void medicalCard_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            newPatient_userControl.Visible = false;
-            patientForAdminUserControl.Visible = false;
-            newMedicalCard_userControl.Visible = true;
+            hideAllPages();
 
             closeUserControllForAddInfo_button.Visible = true;
             closeUserControllForAddInfo_button.BringToFront();
@@ -83,11 +83,10 @@ namespace Helsi
 
         private void patientForAdmin_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            newPatient_userControl.Visible = false;
-            newMedicalCard_userControl.Visible = false;
+
+            hideAllPages();
 
             patientForAdminUserControl.Visible = true;
-            
 
             closeUserControllForAddInfo_button.Visible = true;
             closeUserControllForAddInfo_button.BringToFront();
@@ -95,8 +94,14 @@ namespace Helsi
 
         }
 
-        private void newMedicalCard_userControl_Load(object sender, EventArgs e)
+        private void medicalCartForAdmin_ToolStripMenuItemolStripMenuItem_Click(object sender, EventArgs e)
         {
+            hideAllPages();
+
+            medicalCardForAdminUserControl1.Visible = true;
+
+            closeUserControllForAddInfo_button.Visible = true;
+            closeUserControllForAddInfo_button.BringToFront();
 
         }
     }
