@@ -19,10 +19,6 @@ namespace Helsi
 
             patientForAdminUserControl = new PatientForAdminUserControl();
             this.Controls.Add(patientForAdminUserControl);
-
-
-
-
         }
 
 
@@ -36,9 +32,6 @@ namespace Helsi
                 }
             }
         }
-
-
-
 
 
         private void MainForm_Load(object sender, EventArgs e)

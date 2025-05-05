@@ -32,7 +32,7 @@
             updateMedicalCardForAdmin_button = new Button();
             deleteMedicalCardForAdmin_button = new Button();
             addMedicalCardForAdmin_button = new Button();
-            descriptionTextBox_MedicalCardForAdmin = new TextBox();
+            statusCardTextBox_MedicalCardForAdmin = new TextBox();
             declarationDoctorTextBox_MedicalCardForAdmin = new TextBox();
             idMedicalCardTextBox_MedicalCardForAdmin = new TextBox();
             label1 = new Label();
@@ -40,6 +40,9 @@
             label3 = new Label();
             label4 = new Label();
             idPatientComboBox_MedicalCardForAdmin = new ComboBox();
+            label5 = new Label();
+            dateCreatedTextBox_MedicalCardForAdmin = new TextBox();
+            updateDataInAllForm_button = new Button();
             ((System.ComponentModel.ISupportInitialize)medicalCardForAdmin_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -52,11 +55,12 @@
             medicalCardForAdmin_dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             medicalCardForAdmin_dataGridView.Size = new Size(542, 413);
             medicalCardForAdmin_dataGridView.TabIndex = 17;
+            medicalCardForAdmin_dataGridView.CellContentClick += medicalCardForAdmin_dataGridView_CellContentClick;
             // 
             // updateMedicalCardForAdmin_button
             // 
             updateMedicalCardForAdmin_button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            updateMedicalCardForAdmin_button.Location = new Point(12, 410);
+            updateMedicalCardForAdmin_button.Location = new Point(12, 447);
             updateMedicalCardForAdmin_button.Name = "updateMedicalCardForAdmin_button";
             updateMedicalCardForAdmin_button.Size = new Size(360, 36);
             updateMedicalCardForAdmin_button.TabIndex = 36;
@@ -67,7 +71,7 @@
             // deleteMedicalCardForAdmin_button
             // 
             deleteMedicalCardForAdmin_button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            deleteMedicalCardForAdmin_button.Location = new Point(12, 452);
+            deleteMedicalCardForAdmin_button.Location = new Point(12, 489);
             deleteMedicalCardForAdmin_button.Name = "deleteMedicalCardForAdmin_button";
             deleteMedicalCardForAdmin_button.Size = new Size(360, 32);
             deleteMedicalCardForAdmin_button.TabIndex = 35;
@@ -78,7 +82,7 @@
             // addMedicalCardForAdmin_button
             // 
             addMedicalCardForAdmin_button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            addMedicalCardForAdmin_button.Location = new Point(12, 370);
+            addMedicalCardForAdmin_button.Location = new Point(12, 407);
             addMedicalCardForAdmin_button.Name = "addMedicalCardForAdmin_button";
             addMedicalCardForAdmin_button.Size = new Size(360, 36);
             addMedicalCardForAdmin_button.TabIndex = 34;
@@ -86,12 +90,12 @@
             addMedicalCardForAdmin_button.UseVisualStyleBackColor = true;
             addMedicalCardForAdmin_button.Click += addMedicalCardForAdmin_button_Click;
             // 
-            // descriptionTextBox_MedicalCardForAdmin
+            // statusCardTextBox_MedicalCardForAdmin
             // 
-            descriptionTextBox_MedicalCardForAdmin.Location = new Point(12, 324);
-            descriptionTextBox_MedicalCardForAdmin.Name = "descriptionTextBox_MedicalCardForAdmin";
-            descriptionTextBox_MedicalCardForAdmin.Size = new Size(360, 23);
-            descriptionTextBox_MedicalCardForAdmin.TabIndex = 37;
+            statusCardTextBox_MedicalCardForAdmin.Location = new Point(12, 366);
+            statusCardTextBox_MedicalCardForAdmin.Name = "statusCardTextBox_MedicalCardForAdmin";
+            statusCardTextBox_MedicalCardForAdmin.Size = new Size(360, 23);
+            statusCardTextBox_MedicalCardForAdmin.TabIndex = 37;
             // 
             // declarationDoctorTextBox_MedicalCardForAdmin
             // 
@@ -112,11 +116,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(12, 300);
+            label1.Location = new Point(12, 342);
             label1.Name = "label1";
-            label1.Size = new Size(50, 21);
+            label1.Size = new Size(118, 21);
             label1.TabIndex = 41;
-            label1.Text = "Опис";
+            label1.Text = "Статус картки";
             // 
             // label2
             // 
@@ -161,10 +165,43 @@
             idPatientComboBox_MedicalCardForAdmin.Size = new Size(357, 23);
             idPatientComboBox_MedicalCardForAdmin.TabIndex = 45;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label5.Location = new Point(12, 292);
+            label5.Name = "label5";
+            label5.Size = new Size(133, 21);
+            label5.TabIndex = 47;
+            label5.Text = "Дата створення";
+            // 
+            // dateCreatedTextBox_MedicalCardForAdmin
+            // 
+            dateCreatedTextBox_MedicalCardForAdmin.Location = new Point(12, 316);
+            dateCreatedTextBox_MedicalCardForAdmin.Name = "dateCreatedTextBox_MedicalCardForAdmin";
+            dateCreatedTextBox_MedicalCardForAdmin.Size = new Size(360, 23);
+            dateCreatedTextBox_MedicalCardForAdmin.TabIndex = 46;
+            // 
+            // updateDataInAllForm_button
+            // 
+            updateDataInAllForm_button.AllowDrop = true;
+            updateDataInAllForm_button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            updateDataInAllForm_button.Location = new Point(12, 527);
+            updateDataInAllForm_button.Name = "updateDataInAllForm_button";
+            updateDataInAllForm_button.Size = new Size(360, 32);
+            updateDataInAllForm_button.TabIndex = 48;
+            updateDataInAllForm_button.TabStop = false;
+            updateDataInAllForm_button.Text = "Оновити дані";
+            updateDataInAllForm_button.UseVisualStyleBackColor = true;
+            updateDataInAllForm_button.Click += updateDataInAllForm_button_Click;
+            // 
             // medicalCardForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(updateDataInAllForm_button);
+            Controls.Add(label5);
+            Controls.Add(dateCreatedTextBox_MedicalCardForAdmin);
             Controls.Add(idPatientComboBox_MedicalCardForAdmin);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -172,7 +209,7 @@
             Controls.Add(label1);
             Controls.Add(idMedicalCardTextBox_MedicalCardForAdmin);
             Controls.Add(declarationDoctorTextBox_MedicalCardForAdmin);
-            Controls.Add(descriptionTextBox_MedicalCardForAdmin);
+            Controls.Add(statusCardTextBox_MedicalCardForAdmin);
             Controls.Add(updateMedicalCardForAdmin_button);
             Controls.Add(deleteMedicalCardForAdmin_button);
             Controls.Add(addMedicalCardForAdmin_button);
@@ -191,7 +228,7 @@
         private Button updateMedicalCardForAdmin_button;
         private Button deleteMedicalCardForAdmin_button;
         private Button addMedicalCardForAdmin_button;
-        private TextBox descriptionTextBox_MedicalCardForAdmin;
+        private TextBox statusCardTextBox_MedicalCardForAdmin;
         private TextBox declarationDoctorTextBox_MedicalCardForAdmin;
         private TextBox idMedicalCardTextBox_MedicalCardForAdmin;
         private Label label1;
@@ -199,5 +236,8 @@
         private Label label3;
         private Label label4;
         private ComboBox idPatientComboBox_MedicalCardForAdmin;
+        private Label label5;
+        private TextBox dateCreatedTextBox_MedicalCardForAdmin;
+        private Button updateDataInAllForm_button;
     }
 }

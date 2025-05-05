@@ -40,9 +40,9 @@
             докторToolStripMenuItem = new ToolStripMenuItem();
             адмінToolStripMenuItem = new ToolStripMenuItem();
             patientForAdmin_ToolStripMenuItem = new ToolStripMenuItem();
+            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
             closeUserControllForAddInfo_button = new Button();
             medicalCardForAdminUserControl1 = new medicalCardForAdminUserControl();
-            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -126,9 +126,16 @@
             // patientForAdmin_ToolStripMenuItem
             // 
             patientForAdmin_ToolStripMenuItem.Name = "patientForAdmin_ToolStripMenuItem";
-            patientForAdmin_ToolStripMenuItem.Size = new Size(180, 22);
+            patientForAdmin_ToolStripMenuItem.Size = new Size(157, 22);
             patientForAdmin_ToolStripMenuItem.Text = "Паціент";
             patientForAdmin_ToolStripMenuItem.Click += patientForAdmin_ToolStripMenuItem_Click;
+            // 
+            // medicalCartForAdmin_ToolStripMenuItemolStripMenuItem
+            // 
+            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Name = "medicalCartForAdmin_ToolStripMenuItemolStripMenuItem";
+            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
+            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Медична карта";
+            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Click += medicalCartForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // closeUserControllForAddInfo_button
             // 
@@ -144,15 +151,8 @@
             // 
             medicalCardForAdminUserControl1.Location = new Point(0, 27);
             medicalCardForAdminUserControl1.Name = "medicalCardForAdminUserControl1";
-            medicalCardForAdminUserControl1.Size = new Size(972, 470);
+            medicalCardForAdminUserControl1.Size = new Size(972, 589);
             medicalCardForAdminUserControl1.TabIndex = 4;
-            // 
-            // medicalCartForAdmin_ToolStripMenuItemolStripMenuItem
-            // 
-            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Name = "medicalCartForAdmin_ToolStripMenuItemolStripMenuItem";
-            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
-            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Медична карта";
-            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Click += medicalCartForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // MainForm
             // 

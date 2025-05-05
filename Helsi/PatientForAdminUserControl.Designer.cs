@@ -45,6 +45,7 @@
             label2 = new Label();
             updatePatientForAdmin_button = new Button();
             findTextBox_PatientForAdmin = new TextBox();
+            updateDataInAllForm_button = new Button();
             ((System.ComponentModel.ISupportInitialize)patientForAdmin_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -207,10 +208,22 @@
             findTextBox_PatientForAdmin.Size = new Size(360, 23);
             findTextBox_PatientForAdmin.TabIndex = 34;
             // 
+            // updateDataInAllForm_button
+            // 
+            updateDataInAllForm_button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            updateDataInAllForm_button.Location = new Point(15, 443);
+            updateDataInAllForm_button.Name = "updateDataInAllForm_button";
+            updateDataInAllForm_button.Size = new Size(360, 32);
+            updateDataInAllForm_button.TabIndex = 35;
+            updateDataInAllForm_button.Text = "Оовити дані";
+            updateDataInAllForm_button.UseVisualStyleBackColor = true;
+
+            // 
             // PatientForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(updateDataInAllForm_button);
             Controls.Add(findTextBox_PatientForAdmin);
             Controls.Add(updatePatientForAdmin_button);
             Controls.Add(idTextBox_PatientForAdmin);
@@ -255,5 +268,6 @@
         private Label label2;
         private Button updatePatientForAdmin_button;
         private TextBox findTextBox_PatientForAdmin;
+        private Button updateDataInAllForm_button;
     }
 }
