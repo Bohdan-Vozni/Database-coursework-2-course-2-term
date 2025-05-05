@@ -1,0 +1,18 @@
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'Helsi') 
+CREATE DATABASE Helsi; 
+GO
+
+--USE master;
+--GO
+--ALTER DATABASE Helsi SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+--GO
+
+
+--DROP DATABASE Helsi;
+--GO
+
+
+
+--ALTER DATABASE MyDatabase SET MULTI_USER;
+--GO
+
