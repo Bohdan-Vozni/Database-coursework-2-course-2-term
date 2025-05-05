@@ -34,7 +34,7 @@ namespace Helsi
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
-
+                
                 patientForAdmin_dataGridView.DataSource = dt;
             }
         }

@@ -64,6 +64,7 @@ namespace Helsi
         {
             closeUserControllForAddInfo_button.Visible = false;
             hideAllPages();
+            Application.Exit(); // припинити отладку
         }
 
         private void patient_ToolStripMenuItem_Click(object sender, EventArgs e)
