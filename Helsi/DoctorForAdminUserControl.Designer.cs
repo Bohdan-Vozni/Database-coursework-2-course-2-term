@@ -56,6 +56,7 @@
             doctor_dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             doctor_dataGridView.Size = new Size(542, 413);
             doctor_dataGridView.TabIndex = 18;
+            doctor_dataGridView.CellContentClick += doctor_dataGridView_CellContentClick;
             // 
             // updateDataInAllForm_button
             // 
