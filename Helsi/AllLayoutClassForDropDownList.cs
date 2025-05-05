@@ -12,4 +12,11 @@ namespace Helsi
         public string idPatient { get; set; }
 
     }
+
+    public class MedicalCard
+    {
+        public string fullName { get; set; }
+
+        public string idMedicaCard { get; set; }
+    }
 }

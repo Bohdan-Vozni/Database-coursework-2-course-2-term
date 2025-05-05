@@ -43,6 +43,8 @@
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
             closeUserControllForAddInfo_button = new Button();
             medicalCardForAdminUserControl1 = new medicalCardForAdminUserControl();
+            episodeForAdminUserControl1 = new EpisodeForAdminUserControl();
+            EpisodeForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -118,7 +120,7 @@
             // 
             // адмінToolStripMenuItem
             // 
-            адмінToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { patientForAdmin_ToolStripMenuItem, medicalCartForAdmin_ToolStripMenuItemolStripMenuItem });
+            адмінToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { patientForAdmin_ToolStripMenuItem, medicalCartForAdmin_ToolStripMenuItemolStripMenuItem, EpisodeForAdmin_ToolStripMenuItemolStripMenuItem });
             адмінToolStripMenuItem.Name = "адмінToolStripMenuItem";
             адмінToolStripMenuItem.Size = new Size(52, 20);
             адмінToolStripMenuItem.Text = "Адмін";
@@ -126,14 +128,14 @@
             // patientForAdmin_ToolStripMenuItem
             // 
             patientForAdmin_ToolStripMenuItem.Name = "patientForAdmin_ToolStripMenuItem";
-            patientForAdmin_ToolStripMenuItem.Size = new Size(157, 22);
+            patientForAdmin_ToolStripMenuItem.Size = new Size(180, 22);
             patientForAdmin_ToolStripMenuItem.Text = "Паціент";
             patientForAdmin_ToolStripMenuItem.Click += patientForAdmin_ToolStripMenuItem_Click;
             // 
             // medicalCartForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Name = "medicalCartForAdmin_ToolStripMenuItemolStripMenuItem";
-            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
+            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Медична карта";
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Click += medicalCartForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
@@ -154,11 +156,26 @@
             medicalCardForAdminUserControl1.Size = new Size(972, 589);
             medicalCardForAdminUserControl1.TabIndex = 4;
             // 
+            // episodeForAdminUserControl1
+            // 
+            episodeForAdminUserControl1.Location = new Point(1, 27);
+            episodeForAdminUserControl1.Name = "episodeForAdminUserControl1";
+            episodeForAdminUserControl1.Size = new Size(1043, 678);
+            episodeForAdminUserControl1.TabIndex = 5;
+            // 
+            // EpisodeForAdmin_ToolStripMenuItemolStripMenuItem
+            // 
+            EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Name = "EpisodeForAdmin_ToolStripMenuItemolStripMenuItem";
+            EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
+            EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Eпізод";
+            EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Click += EpisodeForAdmin_ToolStripMenuItemolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1043, 799);
+            Controls.Add(episodeForAdminUserControl1);
             Controls.Add(medicalCardForAdminUserControl1);
             Controls.Add(closeUserControllForAddInfo_button);
             Controls.Add(menuStrip1);
@@ -191,5 +208,7 @@
         private PatientForAdminUserControl patientForAdminUserControl;
         private medicalCardForAdminUserControl medicalCardForAdminUserControl1;
         private ToolStripMenuItem medicalCartForAdmin_ToolStripMenuItemolStripMenuItem;
+        private EpisodeForAdminUserControl episodeForAdminUserControl1;
+        private ToolStripMenuItem EpisodeForAdmin_ToolStripMenuItemolStripMenuItem;
     }
 }
