@@ -48,6 +48,8 @@
             episodeForAdminUserControl1 = new EpisodeForAdminUserControl();
             doctorForAdminUserControl1 = new DoctorForAdminUserControl();
             doctorForAdminUserControl2 = new DoctorForAdminUserControl();
+            actionForAdminUserControl1 = new ActionForAdminUserControl();
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -123,7 +125,7 @@
             // 
             // адмінToolStripMenuItem
             // 
-            адмінToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { patientForAdmin_ToolStripMenuItem, medicalCartForAdmin_ToolStripMenuItemolStripMenuItem, EpisodeForAdmin_ToolStripMenuItemolStripMenuItem, DoctorForAdmin_ToolStripMenuItemolStripMenuItem });
+            адмінToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { patientForAdmin_ToolStripMenuItem, medicalCartForAdmin_ToolStripMenuItemolStripMenuItem, EpisodeForAdmin_ToolStripMenuItemolStripMenuItem, DoctorForAdmin_ToolStripMenuItemolStripMenuItem, ActionForAdmin_ToolStripMenuItemolStripMenuItem });
             адмінToolStripMenuItem.Name = "адмінToolStripMenuItem";
             адмінToolStripMenuItem.Size = new Size(52, 20);
             адмінToolStripMenuItem.Text = "Адмін";
@@ -194,11 +196,26 @@
             doctorForAdminUserControl2.Size = new Size(1030, 614);
             doctorForAdminUserControl2.TabIndex = 7;
             // 
+            // actionForAdminUserControl1
+            // 
+            actionForAdminUserControl1.Location = new Point(0, 27);
+            actionForAdminUserControl1.Name = "actionForAdminUserControl1";
+            actionForAdminUserControl1.Size = new Size(1044, 688);
+            actionForAdminUserControl1.TabIndex = 8;
+            // 
+            // ActionForAdmin_ToolStripMenuItemolStripMenuItem
+            // 
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Name = "ActionForAdmin_ToolStripMenuItemolStripMenuItem";
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Дія";
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Click += ActionForAdmin_ToolStripMenuItemolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1043, 799);
+            Controls.Add(actionForAdminUserControl1);
             Controls.Add(doctorForAdminUserControl2);
             Controls.Add(doctorForAdminUserControl1);
             Controls.Add(episodeForAdminUserControl1);
@@ -239,5 +256,7 @@
         private DoctorForAdminUserControl doctorForAdminUserControl1;
         private DoctorForAdminUserControl doctorForAdminUserControl2;
         private ToolStripMenuItem DoctorForAdmin_ToolStripMenuItemolStripMenuItem;
+        private ToolStripMenuItem ActionForAdmin_ToolStripMenuItemolStripMenuItem;
+        private ActionForAdminUserControl actionForAdminUserControl1;
     }
 }

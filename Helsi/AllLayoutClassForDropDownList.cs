@@ -26,4 +26,34 @@ namespace Helsi
 
         public string idDepartment { get; set; }
     }
+
+    public class Doctor
+    {
+        public string fullName { get; set; }
+        public string idDoctor { get; set; }
+
+    }
+
+    public class Episode
+    {
+        public string diagnosis { get; set; }
+        public string idEpisode { get; set; }
+
+        public string idMedicalCard { get; set; }
+    }
+
+    public class Procedure
+    {
+        public string idProcedure { get; set; }
+
+        public string nameProcedure { get; set; }
+    }
+
+    public class Medication
+    {
+        public string idMedication { get; set; }
+        public string nameMedication { get; set; }
+
+
+    }
 }
