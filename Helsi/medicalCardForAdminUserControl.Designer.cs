@@ -43,6 +43,7 @@
             label5 = new Label();
             dateCreatedTextBox_MedicalCardForAdmin = new TextBox();
             updateDataInAllForm_button = new Button();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)medicalCardForAdmin_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -195,10 +196,21 @@
             updateDataInAllForm_button.UseVisualStyleBackColor = true;
             updateDataInAllForm_button.Click += updateDataInAllForm_button_Click;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label6.Location = new Point(347, 29);
+            label6.Name = "label6";
+            label6.Size = new Size(302, 30);
+            label6.TabIndex = 49;
+            label6.Text = "Робота з медичною картою";
+            // 
             // medicalCardForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label6);
             Controls.Add(updateDataInAllForm_button);
             Controls.Add(label5);
             Controls.Add(dateCreatedTextBox_MedicalCardForAdmin);
@@ -239,5 +251,6 @@
         private Label label5;
         private TextBox dateCreatedTextBox_MedicalCardForAdmin;
         private Button updateDataInAllForm_button;
+        private Label label6;
     }
 }

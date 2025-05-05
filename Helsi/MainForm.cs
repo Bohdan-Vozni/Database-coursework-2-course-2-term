@@ -108,5 +108,15 @@ namespace Helsi
             closeUserControllForAddInfo_button.Visible = true;
             closeUserControllForAddInfo_button.BringToFront();
         }
+
+        private void DoctorForAdmin_ToolStripMenuItemolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hideAllPages();
+
+            doctorForAdminUserControl2.Visible = true;
+
+            closeUserControllForAddInfo_button.Visible = true;
+            closeUserControllForAddInfo_button.BringToFront();
+        }
     }
 }

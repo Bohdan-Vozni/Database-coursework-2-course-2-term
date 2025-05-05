@@ -19,4 +19,11 @@ namespace Helsi
 
         public string idMedicaCard { get; set; }
     }
+
+    public class Department
+    {
+        public string nameDepartment { get; set; }
+
+        public string idDepartment { get; set; }
+    }
 }

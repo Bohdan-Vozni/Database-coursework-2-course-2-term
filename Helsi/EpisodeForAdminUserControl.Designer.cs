@@ -41,6 +41,7 @@
             label4 = new Label();
             idEpisode_TextBox = new TextBox();
             idMedicalCard_comboBox = new ComboBox();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)episode_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             updateDataInAllForm_button.Name = "updateDataInAllForm_button";
             updateDataInAllForm_button.Size = new Size(360, 32);
             updateDataInAllForm_button.TabIndex = 39;
-            updateDataInAllForm_button.Text = "Оовити дані";
+            updateDataInAllForm_button.Text = "Оновити дані";
             updateDataInAllForm_button.UseVisualStyleBackColor = true;
             updateDataInAllForm_button.Click += updateDataInAllForm_button_Click;
             // 
@@ -172,10 +173,21 @@
             idMedicalCard_comboBox.Size = new Size(360, 23);
             idMedicalCard_comboBox.TabIndex = 48;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label5.Location = new Point(339, 35);
+            label5.Name = "label5";
+            label5.Size = new Size(202, 30);
+            label5.TabIndex = 49;
+            label5.Text = "Робота з епізодом";
+            // 
             // EpisodeForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label5);
             Controls.Add(idMedicalCard_comboBox);
             Controls.Add(label4);
             Controls.Add(idEpisode_TextBox);
@@ -213,5 +225,6 @@
         private Label label4;
         private TextBox idEpisode_TextBox;
         private ComboBox idMedicalCard_comboBox;
+        private Label label5;
     }
 }
