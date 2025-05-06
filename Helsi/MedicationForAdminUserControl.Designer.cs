@@ -220,7 +220,7 @@
             Controls.Add(label5);
             Controls.Add(medication_dataGridView);
             Name = "MedicationForAdminUserControl";
-            Size = new Size(1000, 709);
+            Size = new Size(929, 644);
             Load += MedicationForAdminUserControl_Load;
             ((System.ComponentModel.ISupportInitialize)medication_dataGridView).EndInit();
             ResumeLayout(false);
