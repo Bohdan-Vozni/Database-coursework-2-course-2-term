@@ -52,6 +52,8 @@
             doctorForAdminUserControl2 = new DoctorForAdminUserControl();
             actionForAdminUserControl1 = new ActionForAdminUserControl();
             departmentForAdminUserControl1 = new DepartmentForAdminUserControl();
+            medicationForAdminUserControl1 = new MedicationForAdminUserControl();
+            MedicationForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { helsiToolStripMenuItem, patient_StripMenu, відділенняToolStripMenuItem, адмінToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(931, 24);
+            menuStrip1.Size = new Size(932, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -127,7 +129,7 @@
             // 
             // адмінToolStripMenuItem
             // 
-            адмінToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { patientForAdmin_ToolStripMenuItem, medicalCartForAdmin_ToolStripMenuItemolStripMenuItem, EpisodeForAdmin_ToolStripMenuItemolStripMenuItem, DoctorForAdmin_ToolStripMenuItemolStripMenuItem, ActionForAdmin_ToolStripMenuItemolStripMenuItem, DepartmentForAdmin_ToolStripMenuItemolStripMenuItem });
+            адмінToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { patientForAdmin_ToolStripMenuItem, medicalCartForAdmin_ToolStripMenuItemolStripMenuItem, EpisodeForAdmin_ToolStripMenuItemolStripMenuItem, DoctorForAdmin_ToolStripMenuItemolStripMenuItem, ActionForAdmin_ToolStripMenuItemolStripMenuItem, DepartmentForAdmin_ToolStripMenuItemolStripMenuItem, MedicationForAdmin_ToolStripMenuItemolStripMenuItem });
             адмінToolStripMenuItem.Name = "адмінToolStripMenuItem";
             адмінToolStripMenuItem.Size = new Size(52, 20);
             адмінToolStripMenuItem.Text = "Адмін";
@@ -226,11 +228,26 @@
             departmentForAdminUserControl1.Size = new Size(932, 594);
             departmentForAdminUserControl1.TabIndex = 9;
             // 
+            // medicationForAdminUserControl1
+            // 
+            medicationForAdminUserControl1.Location = new Point(0, 22);
+            medicationForAdminUserControl1.Name = "medicationForAdminUserControl1";
+            medicationForAdminUserControl1.Size = new Size(932, 594);
+            medicationForAdminUserControl1.TabIndex = 10;
+            // 
+            // MedicationForAdmin_ToolStripMenuItemolStripMenuItem
+            // 
+            MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Name = "MedicationForAdmin_ToolStripMenuItemolStripMenuItem";
+            MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
+            MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Медикаменти";
+            MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Click += MedicationForAdmin_ToolStripMenuItemolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(931, 673);
+            ClientSize = new Size(932, 676);
+            Controls.Add(medicationForAdminUserControl1);
             Controls.Add(departmentForAdminUserControl1);
             Controls.Add(actionForAdminUserControl1);
             Controls.Add(doctorForAdminUserControl2);
@@ -277,5 +294,7 @@
         private ActionForAdminUserControl actionForAdminUserControl1;
         private DepartmentForAdminUserControl departmentForAdminUserControl1;
         private ToolStripMenuItem DepartmentForAdmin_ToolStripMenuItemolStripMenuItem;
+        private MedicationForAdminUserControl medicationForAdminUserControl1;
+        private ToolStripMenuItem MedicationForAdmin_ToolStripMenuItemolStripMenuItem;
     }
 }
