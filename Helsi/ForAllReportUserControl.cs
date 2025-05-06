@@ -14,16 +14,16 @@ using Microsoft.AspNetCore.Http;
 namespace Helsi
 {
 
-    public partial class reportAllDiagnosisForPatients : UserControl
+    public partial class ForAllReportUserControl : UserControl
     {
         private string nameReport;
-        public reportAllDiagnosisForPatients()
+        public ForAllReportUserControl()
         {
             InitializeComponent();
            // ShowDataToGrit();     
                 
         }
-        public reportAllDiagnosisForPatients(string procedureName, string nameReport)
+        public ForAllReportUserControl(string procedureName, string nameReport)
         {
             InitializeComponent();
             ShowDataToGrit(procedureName);

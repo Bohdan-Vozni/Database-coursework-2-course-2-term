@@ -58,7 +58,7 @@
             departmentForAdminUserControl1 = new DepartmentForAdminUserControl();
             medicationForAdminUserControl1 = new MedicationForAdminUserControl();
             procedureClientForAdminUserControl1 = new ProcedureClientForAdminUserControl();
-            reportAllDiagnosisForPatients1 = new reportAllDiagnosisForPatients();
+            reportAllDiagnosisForPatients1 = new ForAllReportUserControl();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -342,6 +342,6 @@
         private ProcedureClientForAdminUserControl procedureClientForAdminUserControl1;
         private ToolStripMenuItem звітиToolStripMenuItem;
         private ToolStripMenuItem allDiagnosisPatients_ToolStripMenuItem;
-        private reportAllDiagnosisForPatients reportAllDiagnosisForPatients1;
+        private ForAllReportUserControl reportAllDiagnosisForPatients1;
     }
 }

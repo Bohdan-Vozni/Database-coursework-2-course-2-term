@@ -1,6 +1,6 @@
 ﻿namespace Helsi
 {
-    partial class reportAllDiagnosisForPatients
+    partial class ForAllReportUserControl
     {
         /// <summary> 
         /// Required designer variable.

@@ -169,7 +169,7 @@ namespace Helsi
             hideAllPages();
 
             // Створюємо новий екземпляр і присвоюємо його до reportAllDiagnosisForPatients1
-            reportAllDiagnosisForPatients1 = new reportAllDiagnosisForPatients(procedureName:"GetPatientDiagnosisInfo", nameReport:"Звіт всі діагнози пацієнта");
+            reportAllDiagnosisForPatients1 = new ForAllReportUserControl(procedureName:"GetPatientDiagnosisInfo", nameReport:"Звіт всі діагнози пацієнта");
 
             // Налаштування відображення
             reportAllDiagnosisForPatients1.Dock = DockStyle.Fill;
