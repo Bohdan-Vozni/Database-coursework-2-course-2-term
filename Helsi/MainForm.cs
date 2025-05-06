@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Helsi
 {
     public partial class MainForm : Form
@@ -156,6 +157,26 @@ namespace Helsi
             hideAllPages();
 
             procedureClientForAdminUserControl1.Visible = true;
+
+            closeUserControllForAddInfo_button.Visible = true;
+            closeUserControllForAddInfo_button.BringToFront();
+        }
+
+           
+
+        private void allDiagnosisPatients_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hideAllPages();
+
+            // Створюємо новий екземпляр і присвоюємо його до reportAllDiagnosisForPatients1
+            reportAllDiagnosisForPatients1 = new reportAllDiagnosisForPatients(procedureName:"GetPatientDiagnosisInfo", nameReport:"Звіт всі діагнози пацієнта");
+
+            // Налаштування відображення
+            reportAllDiagnosisForPatients1.Dock = DockStyle.Fill;
+            this.Controls.Add(reportAllDiagnosisForPatients1);
+            reportAllDiagnosisForPatients1.Visible = true;
+            reportAllDiagnosisForPatients1.BringToFront();
+
 
             closeUserControllForAddInfo_button.Visible = true;
             closeUserControllForAddInfo_button.BringToFront();
