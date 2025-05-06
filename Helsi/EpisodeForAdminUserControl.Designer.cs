@@ -38,7 +38,7 @@
             label1 = new Label();
             diagnosis_TextBox = new TextBox();
             label3 = new Label();
-            label4 = new Label();
+            v = new Label();
             idEpisode_TextBox = new TextBox();
             idMedicalCard_comboBox = new ComboBox();
             label5 = new Label();
@@ -144,16 +144,16 @@
             label3.TabIndex = 45;
             label3.Text = "Медична картка";
             // 
-            // label4
+            // v
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label4.Location = new Point(18, 73);
-            label4.Name = "label4";
-            label4.Size = new Size(32, 25);
-            label4.TabIndex = 47;
-            label4.Text = "ID";
-            label4.Visible = false;
+            v.AutoSize = true;
+            v.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            v.Location = new Point(18, 73);
+            v.Name = "v";
+            v.Size = new Size(32, 25);
+            v.TabIndex = 47;
+            v.Text = "ID";
+            v.Visible = false;
             // 
             // idEpisode_TextBox
             // 
@@ -189,7 +189,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(label5);
             Controls.Add(idMedicalCard_comboBox);
-            Controls.Add(label4);
+            Controls.Add(v);
             Controls.Add(idEpisode_TextBox);
             Controls.Add(label3);
             Controls.Add(label1);
@@ -222,7 +222,7 @@
         private TextBox diagnosis_TextBox;
         private Label label3;
         private TextBox textBox3;
-        private Label label4;
+        private Label v;
         private TextBox idEpisode_TextBox;
         private ComboBox idMedicalCard_comboBox;
         private Label label5;

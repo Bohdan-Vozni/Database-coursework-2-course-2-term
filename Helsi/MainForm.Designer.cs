@@ -43,13 +43,15 @@
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
             EpisodeForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
             DoctorForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
+            DepartmentForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
             closeUserControllForAddInfo_button = new Button();
             medicalCardForAdminUserControl1 = new medicalCardForAdminUserControl();
             episodeForAdminUserControl1 = new EpisodeForAdminUserControl();
             doctorForAdminUserControl1 = new DoctorForAdminUserControl();
             doctorForAdminUserControl2 = new DoctorForAdminUserControl();
             actionForAdminUserControl1 = new ActionForAdminUserControl();
-            ActionForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
+            departmentForAdminUserControl1 = new DepartmentForAdminUserControl();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,7 +61,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { helsiToolStripMenuItem, patient_StripMenu, відділенняToolStripMenuItem, адмінToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1043, 24);
+            menuStrip1.Size = new Size(931, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -125,7 +127,7 @@
             // 
             // адмінToolStripMenuItem
             // 
-            адмінToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { patientForAdmin_ToolStripMenuItem, medicalCartForAdmin_ToolStripMenuItemolStripMenuItem, EpisodeForAdmin_ToolStripMenuItemolStripMenuItem, DoctorForAdmin_ToolStripMenuItemolStripMenuItem, ActionForAdmin_ToolStripMenuItemolStripMenuItem });
+            адмінToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { patientForAdmin_ToolStripMenuItem, medicalCartForAdmin_ToolStripMenuItemolStripMenuItem, EpisodeForAdmin_ToolStripMenuItemolStripMenuItem, DoctorForAdmin_ToolStripMenuItemolStripMenuItem, ActionForAdmin_ToolStripMenuItemolStripMenuItem, DepartmentForAdmin_ToolStripMenuItemolStripMenuItem });
             адмінToolStripMenuItem.Name = "адмінToolStripMenuItem";
             адмінToolStripMenuItem.Size = new Size(52, 20);
             адмінToolStripMenuItem.Text = "Адмін";
@@ -158,6 +160,20 @@
             DoctorForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Доктор";
             DoctorForAdmin_ToolStripMenuItemolStripMenuItem.Click += DoctorForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
+            // ActionForAdmin_ToolStripMenuItemolStripMenuItem
+            // 
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Name = "ActionForAdmin_ToolStripMenuItemolStripMenuItem";
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Дія";
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Click += ActionForAdmin_ToolStripMenuItemolStripMenuItem_Click;
+            // 
+            // DepartmentForAdmin_ToolStripMenuItemolStripMenuItem
+            // 
+            DepartmentForAdmin_ToolStripMenuItemolStripMenuItem.Name = "DepartmentForAdmin_ToolStripMenuItemolStripMenuItem";
+            DepartmentForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
+            DepartmentForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Відділення";
+            DepartmentForAdmin_ToolStripMenuItemolStripMenuItem.Click += DepartmentForAdmin_ToolStripMenuItemolStripMenuItem_Click;
+            // 
             // closeUserControllForAddInfo_button
             // 
             closeUserControllForAddInfo_button.Location = new Point(809, 27);
@@ -179,7 +195,7 @@
             // 
             episodeForAdminUserControl1.Location = new Point(1, 27);
             episodeForAdminUserControl1.Name = "episodeForAdminUserControl1";
-            episodeForAdminUserControl1.Size = new Size(1043, 678);
+            episodeForAdminUserControl1.Size = new Size(931, 645);
             episodeForAdminUserControl1.TabIndex = 5;
             // 
             // doctorForAdminUserControl1
@@ -200,21 +216,22 @@
             // 
             actionForAdminUserControl1.Location = new Point(0, 27);
             actionForAdminUserControl1.Name = "actionForAdminUserControl1";
-            actionForAdminUserControl1.Size = new Size(1044, 688);
+            actionForAdminUserControl1.Size = new Size(932, 645);
             actionForAdminUserControl1.TabIndex = 8;
             // 
-            // ActionForAdmin_ToolStripMenuItemolStripMenuItem
+            // departmentForAdminUserControl1
             // 
-            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Name = "ActionForAdmin_ToolStripMenuItemolStripMenuItem";
-            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
-            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Дія";
-            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Click += ActionForAdmin_ToolStripMenuItemolStripMenuItem_Click;
+            departmentForAdminUserControl1.Location = new Point(0, 29);
+            departmentForAdminUserControl1.Name = "departmentForAdminUserControl1";
+            departmentForAdminUserControl1.Size = new Size(932, 594);
+            departmentForAdminUserControl1.TabIndex = 9;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1043, 799);
+            ClientSize = new Size(931, 673);
+            Controls.Add(departmentForAdminUserControl1);
             Controls.Add(actionForAdminUserControl1);
             Controls.Add(doctorForAdminUserControl2);
             Controls.Add(doctorForAdminUserControl1);
@@ -258,5 +275,7 @@
         private ToolStripMenuItem DoctorForAdmin_ToolStripMenuItemolStripMenuItem;
         private ToolStripMenuItem ActionForAdmin_ToolStripMenuItemolStripMenuItem;
         private ActionForAdminUserControl actionForAdminUserControl1;
+        private DepartmentForAdminUserControl departmentForAdminUserControl1;
+        private ToolStripMenuItem DepartmentForAdmin_ToolStripMenuItemolStripMenuItem;
     }
 }
