@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +16,8 @@ namespace Helsi
 {
     public partial class MainForm : Form
     {
+        private string UserName;
+
         public MainForm()
         {
             InitializeComponent();
@@ -20,6 +25,72 @@ namespace Helsi
 
             patientForAdminUserControl = new PatientForAdminUserControl();
             this.Controls.Add(patientForAdminUserControl);
+        }
+        public MainForm(string UserName)
+        {
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            patientForAdminUserControl = new PatientForAdminUserControl();
+            this.Controls.Add(patientForAdminUserControl);
+
+            this.UserName = UserName;
+        }
+      
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            hideAllPages();
+            closeUserControllForAddInfo_button.Visible = false;
+            closeUserControllForAddInfo_button.BringToFront();
+
+            CheckUserPermissionsAtLogin();
+            Admin_ToolStripMenuItem.Visible = false;
+
+            if (permissions.User == "sa" || permissions.Role == "admin")
+            {
+                Admin_ToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                Admin_ToolStripMenuItem.Visible = false;
+            }
+
+        }
+
+        private UserPermissions permissions;
+
+        public void CheckUserPermissionsAtLogin()
+        {
+            permissions = new UserPermissions();
+
+            try
+            {
+                using (var connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
+                {
+                    connection.Open();
+
+                    using (var command = new SqlCommand("CheckLoginPermissions", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@Username", UserName);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                permissions.User = (string)reader["Username"];
+                                permissions.Role = (string)reader["Roleuser"];
+                               
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Обробка помилок
+                MessageBox.Show($"Помилка перевірки прав: {ex.Message}");
+            }           
         }
 
 
@@ -34,25 +105,12 @@ namespace Helsi
             }
         }
 
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            hideAllPages();
-
-            closeUserControllForAddInfo_button.Visible = false;
-            closeUserControllForAddInfo_button.BringToFront();
-        }
-
         private void Entrance_menuStrip_Click(object sender, EventArgs e)
         {
             var Authorization = new Authorization();
             Authorization.Show();
             Hide();
         }
-
-
-
-
 
         private void closeUserControllForAddInfo_button_Click(object sender, EventArgs e)
         {
@@ -162,14 +220,12 @@ namespace Helsi
             closeUserControllForAddInfo_button.BringToFront();
         }
 
-           
-
-        private void allDiagnosisPatients_ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void viewReportForAll(string _procedureName, string _nameReport)
         {
             hideAllPages();
 
             // Створюємо новий екземпляр і присвоюємо його до reportAllDiagnosisForPatients1
-            reportAllDiagnosisForPatients1 = new ForAllReportUserControl(procedureName:"GetPatientDiagnosisInfo", nameReport:"Звіт всі діагнози пацієнта");
+            reportAllDiagnosisForPatients1 = new ForAllReportUserControl(procedureName: _procedureName, nameReport: _nameReport);
 
             // Налаштування відображення
             reportAllDiagnosisForPatients1.Dock = DockStyle.Fill;
@@ -180,6 +236,24 @@ namespace Helsi
 
             closeUserControllForAddInfo_button.Visible = true;
             closeUserControllForAddInfo_button.BringToFront();
+        }
+
+
+        private void allDiagnosisPatients_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewReportForAll(_procedureName: "GetPatientDiagnosisInfo", _nameReport:"Звіт всі діагнози пацієнта");           
+                 
+        }
+
+        private void loadDoctor_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewReportForAll(_procedureName: "GetDoctorActivityStats", _nameReport: " Звіт про завантаженість лікарів");
+        }
+
+        private void expirationDateDrugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewReportForAll(_procedureName: "GetExpiringMedications", _nameReport: "Звіт про термін придатності ліків");
+
         }
     }
 }

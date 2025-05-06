@@ -19,6 +19,12 @@ namespace Helsi
             password_textBox.Text = "1234";
         }
 
+
+        private void Authorization_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -62,7 +68,9 @@ namespace Helsi
                 {
                     connection.Open();
                     MessageBox.Show("Підключення успішне!");
-                    var mainForm = new MainForm();
+
+                    var mainForm = new MainForm(login);
+                    
                     mainForm.Show();
                     this.Hide();
                     connection.Close();
@@ -86,9 +94,5 @@ namespace Helsi
             this.Close();
         }
 
-        private void Authorization_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

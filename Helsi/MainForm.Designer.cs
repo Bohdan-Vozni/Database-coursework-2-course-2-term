@@ -38,7 +38,7 @@
             діяToolStripMenuItem1 = new ToolStripMenuItem();
             відділенняToolStripMenuItem = new ToolStripMenuItem();
             докторToolStripMenuItem = new ToolStripMenuItem();
-            адмінToolStripMenuItem = new ToolStripMenuItem();
+            Admin_ToolStripMenuItem = new ToolStripMenuItem();
             patientForAdmin_ToolStripMenuItem = new ToolStripMenuItem();
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
             EpisodeForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
@@ -49,6 +49,8 @@
             ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem = new ToolStripMenuItem();
             звітиToolStripMenuItem = new ToolStripMenuItem();
             allDiagnosisPatients_ToolStripMenuItem = new ToolStripMenuItem();
+            loadDoctor_ToolStripMenuItem = new ToolStripMenuItem();
+            expirationDateDrugToolStripMenuItem = new ToolStripMenuItem();
             closeUserControllForAddInfo_button = new Button();
             medicalCardForAdminUserControl1 = new medicalCardForAdminUserControl();
             episodeForAdminUserControl1 = new EpisodeForAdminUserControl();
@@ -65,7 +67,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { helsiToolStripMenuItem, patient_StripMenu, відділенняToolStripMenuItem, адмінToolStripMenuItem, звітиToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { helsiToolStripMenuItem, patient_StripMenu, відділенняToolStripMenuItem, Admin_ToolStripMenuItem, звітиToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(942, 24);
@@ -132,72 +134,72 @@
             докторToolStripMenuItem.Size = new Size(114, 22);
             докторToolStripMenuItem.Text = "Доктор";
             // 
-            // адмінToolStripMenuItem
+            // Admin_ToolStripMenuItem
             // 
-            адмінToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { patientForAdmin_ToolStripMenuItem, medicalCartForAdmin_ToolStripMenuItemolStripMenuItem, EpisodeForAdmin_ToolStripMenuItemolStripMenuItem, DoctorForAdmin_ToolStripMenuItemolStripMenuItem, ActionForAdmin_ToolStripMenuItemolStripMenuItem, DepartmentForAdmin_ToolStripMenuItemolStripMenuItem, MedicationForAdmin_ToolStripMenuItemolStripMenuItem, ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem });
-            адмінToolStripMenuItem.Name = "адмінToolStripMenuItem";
-            адмінToolStripMenuItem.Size = new Size(52, 20);
-            адмінToolStripMenuItem.Text = "Адмін";
+            Admin_ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { patientForAdmin_ToolStripMenuItem, medicalCartForAdmin_ToolStripMenuItemolStripMenuItem, EpisodeForAdmin_ToolStripMenuItemolStripMenuItem, DoctorForAdmin_ToolStripMenuItemolStripMenuItem, ActionForAdmin_ToolStripMenuItemolStripMenuItem, DepartmentForAdmin_ToolStripMenuItemolStripMenuItem, MedicationForAdmin_ToolStripMenuItemolStripMenuItem, ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem });
+            Admin_ToolStripMenuItem.Name = "Admin_ToolStripMenuItem";
+            Admin_ToolStripMenuItem.Size = new Size(52, 20);
+            Admin_ToolStripMenuItem.Text = "Адмін";
             // 
             // patientForAdmin_ToolStripMenuItem
             // 
             patientForAdmin_ToolStripMenuItem.Name = "patientForAdmin_ToolStripMenuItem";
-            patientForAdmin_ToolStripMenuItem.Size = new Size(157, 22);
+            patientForAdmin_ToolStripMenuItem.Size = new Size(180, 22);
             patientForAdmin_ToolStripMenuItem.Text = "Паціент";
             patientForAdmin_ToolStripMenuItem.Click += patientForAdmin_ToolStripMenuItem_Click;
             // 
             // medicalCartForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Name = "medicalCartForAdmin_ToolStripMenuItemolStripMenuItem";
-            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
+            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Медична карта";
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Click += medicalCartForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // EpisodeForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Name = "EpisodeForAdmin_ToolStripMenuItemolStripMenuItem";
-            EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
+            EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
             EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Eпізод";
             EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Click += EpisodeForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // DoctorForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             DoctorForAdmin_ToolStripMenuItemolStripMenuItem.Name = "DoctorForAdmin_ToolStripMenuItemolStripMenuItem";
-            DoctorForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
+            DoctorForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
             DoctorForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Доктор";
             DoctorForAdmin_ToolStripMenuItemolStripMenuItem.Click += DoctorForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // ActionForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             ActionForAdmin_ToolStripMenuItemolStripMenuItem.Name = "ActionForAdmin_ToolStripMenuItemolStripMenuItem";
-            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
             ActionForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Дія";
             ActionForAdmin_ToolStripMenuItemolStripMenuItem.Click += ActionForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // DepartmentForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             DepartmentForAdmin_ToolStripMenuItemolStripMenuItem.Name = "DepartmentForAdmin_ToolStripMenuItemolStripMenuItem";
-            DepartmentForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
+            DepartmentForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
             DepartmentForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Відділення";
             DepartmentForAdmin_ToolStripMenuItemolStripMenuItem.Click += DepartmentForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // MedicationForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Name = "MedicationForAdmin_ToolStripMenuItemolStripMenuItem";
-            MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
+            MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
             MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Медикаменти";
             MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Click += MedicationForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem.Name = "ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem";
-            ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
+            ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
             ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Процедури";
             ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem.Click += ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // звітиToolStripMenuItem
             // 
-            звітиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { allDiagnosisPatients_ToolStripMenuItem });
+            звітиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { allDiagnosisPatients_ToolStripMenuItem, loadDoctor_ToolStripMenuItem, expirationDateDrugToolStripMenuItem });
             звітиToolStripMenuItem.Name = "звітиToolStripMenuItem";
             звітиToolStripMenuItem.Size = new Size(47, 20);
             звітиToolStripMenuItem.Text = "Звіти";
@@ -205,9 +207,23 @@
             // allDiagnosisPatients_ToolStripMenuItem
             // 
             allDiagnosisPatients_ToolStripMenuItem.Name = "allDiagnosisPatients_ToolStripMenuItem";
-            allDiagnosisPatients_ToolStripMenuItem.Size = new Size(192, 22);
+            allDiagnosisPatients_ToolStripMenuItem.Size = new Size(209, 22);
             allDiagnosisPatients_ToolStripMenuItem.Text = "Всі діагнози пацієнтів";
             allDiagnosisPatients_ToolStripMenuItem.Click += allDiagnosisPatients_ToolStripMenuItem_Click;
+            // 
+            // loadDoctor_ToolStripMenuItem
+            // 
+            loadDoctor_ToolStripMenuItem.Name = "loadDoctor_ToolStripMenuItem";
+            loadDoctor_ToolStripMenuItem.Size = new Size(209, 22);
+            loadDoctor_ToolStripMenuItem.Text = "Завантаженість лікара";
+            loadDoctor_ToolStripMenuItem.Click += loadDoctor_ToolStripMenuItem_Click;
+            // 
+            // expirationDateDrugToolStripMenuItem
+            // 
+            expirationDateDrugToolStripMenuItem.Name = "expirationDateDrugToolStripMenuItem";
+            expirationDateDrugToolStripMenuItem.Size = new Size(209, 22);
+            expirationDateDrugToolStripMenuItem.Text = "Термін придатності ліків";
+            expirationDateDrugToolStripMenuItem.Click += expirationDateDrugToolStripMenuItem_Click;
             // 
             // closeUserControllForAddInfo_button
             // 
@@ -322,7 +338,7 @@
         private Button closeUserControllForAddInfo_button;
         private ToolStripMenuItem відділенняToolStripMenuItem;
         private ToolStripMenuItem докторToolStripMenuItem;
-        private ToolStripMenuItem адмінToolStripMenuItem;
+        private ToolStripMenuItem Admin_ToolStripMenuItem;
         private ToolStripMenuItem patientForAdmin_ToolStripMenuItem;
         private PatientForAdminUserControl patientForAdminUserControl;
         private medicalCardForAdminUserControl medicalCardForAdminUserControl1;
@@ -343,5 +359,7 @@
         private ToolStripMenuItem звітиToolStripMenuItem;
         private ToolStripMenuItem allDiagnosisPatients_ToolStripMenuItem;
         private ForAllReportUserControl reportAllDiagnosisForPatients1;
+        private ToolStripMenuItem loadDoctor_ToolStripMenuItem;
+        private ToolStripMenuItem expirationDateDrugToolStripMenuItem;
     }
 }
