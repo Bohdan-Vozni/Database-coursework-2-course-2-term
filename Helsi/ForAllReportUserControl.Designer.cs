@@ -52,14 +52,15 @@
             printReport.UseVisualStyleBackColor = true;
             printReport.Click += printReport_Click;
             // 
-            // reportAllDiagnosisForPatients
+            // ForAllReportUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(printReport);
             Controls.Add(report_dataGridView);
-            Name = "reportAllDiagnosisForPatients";
+            Name = "ForAllReportUserControl";
             Size = new Size(929, 644);
+            Load += ForAllReportUserControl_Load;
             ((System.ComponentModel.ISupportInitialize)report_dataGridView).EndInit();
             ResumeLayout(false);
         }

@@ -20,8 +20,8 @@ namespace Helsi
         public ForAllReportUserControl()
         {
             InitializeComponent();
-           // ShowDataToGrit();     
-                
+            // ShowDataToGrit();     
+
         }
         public ForAllReportUserControl(string procedureName, string nameReport)
         {
@@ -29,7 +29,7 @@ namespace Helsi
             ShowDataToGrit(procedureName);
             this.nameReport = nameReport;
         }
-       
+
 
         private void ShowDataToGrit(string procedureName)
         {
@@ -50,6 +50,11 @@ namespace Helsi
         {
             var dgvPrinter = new DGVPrinter();
             dgvPrinter.createReport(nameReport, report_dataGridView);
+        }
+
+        private void ForAllReportUserControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

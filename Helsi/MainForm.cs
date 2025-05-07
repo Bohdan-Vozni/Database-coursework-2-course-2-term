@@ -36,7 +36,7 @@ namespace Helsi
 
             this.UserName = UserName;
         }
-      
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             hideAllPages();
@@ -80,7 +80,7 @@ namespace Helsi
                             {
                                 permissions.User = (string)reader["Username"];
                                 permissions.Role = (string)reader["Roleuser"];
-                               
+
                             }
                         }
                     }
@@ -90,7 +90,7 @@ namespace Helsi
             {
                 // Обробка помилок
                 MessageBox.Show($"Помилка перевірки прав: {ex.Message}");
-            }           
+            }
         }
 
 
@@ -220,6 +220,17 @@ namespace Helsi
             closeUserControllForAddInfo_button.BringToFront();
         }
 
+
+        private void generateReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+             hideAllPages();
+
+            generateReportUserControl1.Visible = true;
+
+            closeUserControllForAddInfo_button.Visible = true;
+            closeUserControllForAddInfo_button.BringToFront();
+        }
+
         private void viewReportForAll(string _procedureName, string _nameReport)
         {
             hideAllPages();
@@ -241,8 +252,8 @@ namespace Helsi
 
         private void allDiagnosisPatients_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            viewReportForAll(_procedureName: "GetPatientDiagnosisInfo", _nameReport:"Звіт всі діагнози пацієнта");           
-                 
+            viewReportForAll(_procedureName: "GetPatientDiagnosisInfo", _nameReport: "Звіт всі діагнози пацієнта");
+
         }
 
         private void loadDoctor_ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -255,5 +266,6 @@ namespace Helsi
             viewReportForAll(_procedureName: "GetExpiringMedications", _nameReport: "Звіт про термін придатності ліків");
 
         }
+
     }
 }
