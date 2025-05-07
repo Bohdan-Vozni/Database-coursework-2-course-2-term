@@ -44,6 +44,8 @@
             label6 = new Label();
             phoneNumberDoctor_TextBox = new TextBox();
             idDepartmentDoctor_ComboBox = new ComboBox();
+            textBoxSearch = new TextBox();
+            clearAllField_Button = new Button();
             ((System.ComponentModel.ISupportInitialize)doctor_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -202,10 +204,30 @@
             idDepartmentDoctor_ComboBox.Size = new Size(360, 23);
             idDepartmentDoctor_ComboBox.TabIndex = 58;
             // 
+            // textBoxSearch
+            // 
+            textBoxSearch.Location = new Point(393, 139);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Size = new Size(360, 23);
+            textBoxSearch.TabIndex = 60;
+            // 
+            // clearAllField_Button
+            // 
+            clearAllField_Button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            clearAllField_Button.Location = new Point(774, 132);
+            clearAllField_Button.Name = "clearAllField_Button";
+            clearAllField_Button.Size = new Size(152, 32);
+            clearAllField_Button.TabIndex = 59;
+            clearAllField_Button.Text = "Очистити поля";
+            clearAllField_Button.UseVisualStyleBackColor = true;
+            clearAllField_Button.Click += clearAllField_Button_Click;
+            // 
             // DoctorForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(textBoxSearch);
+            Controls.Add(clearAllField_Button);
             Controls.Add(idDepartmentDoctor_ComboBox);
             Controls.Add(label6);
             Controls.Add(phoneNumberDoctor_TextBox);
@@ -248,5 +270,7 @@
         private Label label6;
         private TextBox phoneNumberDoctor_TextBox;
         private ComboBox idDepartmentDoctor_ComboBox;
+        private TextBox textBoxSearch;
+        private Button clearAllField_Button;
     }
 }

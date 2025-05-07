@@ -16,20 +16,31 @@ namespace Helsi
         public PatientForAdminUserControl()
         {
             InitializeComponent();
-            ShowDataToGrit();
-        }
+            textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
 
+        }
         private void PatientForAdminUserControl_Load(object sender, EventArgs e)
         {
-
+            ShowDataToGrit(searchStrning);
         }
 
-        private void ShowDataToGrit()
+        private string searchStrning;
+
+        private void TextBoxSearch_TextChanged(object? sender, EventArgs e)
+        {
+            searchStrning = textBoxSearch.Text.ToLower();
+            ShowDataToGrit(searchStrning);
+        }
+
+
+        private void ShowDataToGrit(string searchStrning)
         {
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
                 SqlCommand command = new SqlCommand("GetAllPatientsProc", connection);
                 command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@SearchName", searchStrning);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
@@ -39,10 +50,6 @@ namespace Helsi
             }
         }
 
-        private void findPatientForAdmin_Button_Click(object sender, EventArgs e)
-        {
-            ShowDataToGrit();
-        }
 
         private void patientForAdmin_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -121,7 +128,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void deletePatientForAdmin_button_Click(object sender, EventArgs e)
@@ -159,7 +166,7 @@ namespace Helsi
                     MessageBox.Show(ex.Message, "Неочікувана помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                ShowDataToGrit();
+                ShowDataToGrit(searchStrning);
 
             }
         }
@@ -203,11 +210,19 @@ namespace Helsi
                     MessageBox.Show(ex.Message, "Неочікувана помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                ShowDataToGrit();
+                ShowDataToGrit(searchStrning);
 
             }
         }
 
-        
+        private void updateDataInAllForm_button_Click(object sender, EventArgs e)
+        {
+            ShowDataToGrit(searchStrning);
+        }
+
+        private void clearAllField_Button_Click(object sender, EventArgs e)
+        {
+            ClearAllTextBox.ClearAllTextBoxes(this.Controls);
+        }
     }
 }

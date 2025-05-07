@@ -44,6 +44,8 @@
             dateCreatedTextBox_MedicalCardForAdmin = new TextBox();
             updateDataInAllForm_button = new Button();
             label6 = new Label();
+            textBoxSearch = new TextBox();
+            clearAllField_Button = new Button();
             ((System.ComponentModel.ISupportInitialize)medicalCardForAdmin_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -206,10 +208,30 @@
             label6.TabIndex = 49;
             label6.Text = "Робота з медичною картою";
             // 
+            // textBoxSearch
+            // 
+            textBoxSearch.Location = new Point(378, 142);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Size = new Size(360, 23);
+            textBoxSearch.TabIndex = 51;
+            // 
+            // clearAllField_Button
+            // 
+            clearAllField_Button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            clearAllField_Button.Location = new Point(759, 135);
+            clearAllField_Button.Name = "clearAllField_Button";
+            clearAllField_Button.Size = new Size(152, 32);
+            clearAllField_Button.TabIndex = 50;
+            clearAllField_Button.Text = "Очистити поля";
+            clearAllField_Button.UseVisualStyleBackColor = true;
+            clearAllField_Button.Click += clearAllField_Button_Click;
+            // 
             // medicalCardForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(textBoxSearch);
+            Controls.Add(clearAllField_Button);
             Controls.Add(label6);
             Controls.Add(updateDataInAllForm_button);
             Controls.Add(label5);
@@ -252,5 +274,7 @@
         private TextBox dateCreatedTextBox_MedicalCardForAdmin;
         private Button updateDataInAllForm_button;
         private Label label6;
+        private TextBox textBoxSearch;
+        private Button clearAllField_Button;
     }
 }

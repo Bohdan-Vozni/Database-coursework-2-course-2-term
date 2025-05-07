@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,17 @@ namespace Helsi
 
         private void DoctorForAdminUserControl_Load(object sender, EventArgs e)
         {
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
             ShowDataDropDownList();
+            textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
+        }
+
+        private string searchStrning;
+
+        private void TextBoxSearch_TextChanged(object? sender, EventArgs e)
+        {
+            searchStrning = textBoxSearch.Text.ToLower();
+            ShowDataToGrit(searchStrning);
         }
 
         private List<Department> allDepartment;
@@ -62,12 +72,14 @@ namespace Helsi
 
         }
 
-        private void ShowDataToGrit()
+        private void ShowDataToGrit(string searchStrning)
         {
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
                 SqlCommand command = new SqlCommand("GetAllDoctorProc", connection);
                 command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@DoctorName", searchStrning);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
@@ -89,7 +101,7 @@ namespace Helsi
                     .Cells["id_doctor"]
                     .FormattedValue.ToString();
 
-                
+
 
                 currentDepartment = allDepartment
                    .FirstOrDefault
@@ -173,7 +185,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void updateDoctor_Button_Click(object sender, EventArgs e)
@@ -196,7 +208,7 @@ namespace Helsi
                 command.CommandType = CommandType.StoredProcedure;
 
 
-                
+
 
                 //додати параметри
                 command.Parameters.AddWithValue("@id_doctor", idDodctor_TextBox.Text);
@@ -224,14 +236,14 @@ namespace Helsi
                         MessageBox.Show(error.Message, "Помилка оновлення доктора", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                
+
                 catch (Exception ex)
                 {
                     // Інші неочікувані помилки
                     MessageBox.Show(ex.Message, "Неочікувана помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void deleteDoctor_Button_Click(object sender, EventArgs e)
@@ -259,7 +271,7 @@ namespace Helsi
 
                 //додати параметри
                 command.Parameters.AddWithValue("@id_doctor", idDodctor_TextBox.Text);
-                
+
 
                 connection.Open();
 
@@ -281,15 +293,18 @@ namespace Helsi
                     MessageBox.Show(ex.Message, "Неочікувана помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void updateDataInAllForm_button_Click(object sender, EventArgs e)
         {
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
             ShowDataDropDownList();
         }
 
-       
+        private void clearAllField_Button_Click(object sender, EventArgs e)
+        {
+            ClearAllTextBox.ClearAllTextBoxes(this.Controls);
+        }
     }
 }

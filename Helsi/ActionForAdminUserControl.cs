@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Helsi
 
         private void ActionForAdminUserControl_Load(object sender, EventArgs e)
         {
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
             ShowMedicalCardDropDownList(); // Завантажуємо спочатку медичні карти
             ShowDoctorDropDownList();
             ShowProcedureDropDownList();
@@ -29,7 +30,17 @@ namespace Helsi
 
             // Додаємо обробник події зміни вибору в комбобоксі медичних карт
             idMedicalCard_comboBox.SelectedIndexChanged += MedicalCardComboBox_SelectedIndexChanged;
+            
         }
+
+        private string searchStrning;
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+
+            searchStrning = textBoxSearch.Text.ToLower();
+            ShowDataToGrit(searchStrning);
+        }
+
 
         private List<MedicalCard> allMedicalCard;
         private List<Doctor> allDoctor;
@@ -228,12 +239,14 @@ namespace Helsi
             }
         }
 
-        private void ShowDataToGrit()
+        private void ShowDataToGrit(string searchStrning)
         {
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
                 SqlCommand command = new SqlCommand("GetAllActionProc", connection);
                 command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@PatientName", searchStrning);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
@@ -265,7 +278,7 @@ namespace Helsi
 
                 idDoctor_comboBox.Text = currentDoctor.fullName;
 
-                if(allEpisode == null)
+                if (allEpisode == null)
                 {
                     MessageBox.Show("Натисніть кнопку оновити дані");
                     return;
@@ -299,14 +312,14 @@ namespace Helsi
 
                 descriptionAction_TextBox.Text = action_dataGridView
                        .Rows[e.RowIndex]
-                       .Cells["description_action"]
+                       .Cells["Опис дії"]
                        .FormattedValue
                        .ToString();
 
 
                 dateTimeAction_TextBox.Text = action_dataGridView
                        .Rows[e.RowIndex]
-                       .Cells["action_date"]
+                       .Cells["Дата дії"]
                        .FormattedValue
                        .ToString();
 
@@ -350,7 +363,7 @@ namespace Helsi
 
                 return;
             }
-            
+
             if (idEpisodeCard_comboBox.SelectedItem == null)
             {
                 MessageBox.Show("Будь ласка, виберіть епізод", "Попередження",
@@ -358,7 +371,7 @@ namespace Helsi
 
                 return;
             }
-            
+
             if (idMedicalCard_comboBox.SelectedItem == null)
             {
                 MessageBox.Show("Будь ласка, виберіть медичну катру", "Попередження",
@@ -366,7 +379,7 @@ namespace Helsi
 
                 return;
             }
-            
+
             if (idProcedure_comboBox.SelectedItem == null)
             {
                 MessageBox.Show("Будь ласка, виберіть процедуру", "Попередження",
@@ -374,7 +387,7 @@ namespace Helsi
 
                 return;
             }
-            
+
             if (idMedication_comboBox.SelectedItem == null)
             {
                 MessageBox.Show("Будь ласка, виберіть медикамент", "Попередження",
@@ -431,7 +444,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void updateAction_Button_Click(object sender, EventArgs e)
@@ -500,7 +513,7 @@ namespace Helsi
                 SqlCommand command = new SqlCommand("UpdateActionProc", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                
+
 
                 //додати параметри
                 command.Parameters.AddWithValue("@id_doctor", selectedDoctor.idDoctor);
@@ -534,7 +547,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void deleteAction_Button_Click(object sender, EventArgs e)
@@ -610,7 +623,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_doctor", selectedDoctor.idDoctor);
                 command.Parameters.AddWithValue("@id_episode", selectedEpisode.idEpisode);
                 command.Parameters.AddWithValue("@id_medical_card", selectedMedicalCard.idMedicaCard);
-                
+
 
                 connection.Open();
 
@@ -635,12 +648,12 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void updateDataInAllForm_button_Click(object sender, EventArgs e)
         {
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
             ShowMedicalCardDropDownList(); // Завантажуємо спочатку медичні карти
             ShowDoctorDropDownList();
             ShowProcedureDropDownList();
@@ -648,6 +661,11 @@ namespace Helsi
 
             // Додаємо обробник події зміни вибору в комбобоксі медичних карт
             idMedicalCard_comboBox.SelectedIndexChanged += MedicalCardComboBox_SelectedIndexChanged;
+        }
+
+        private void clearAllField_Button_Click(object sender, EventArgs e)
+        {
+            ClearAllTextBox.ClearAllTextBoxes(this.Controls);
         }
     }
 }

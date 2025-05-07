@@ -48,6 +48,8 @@
             label8 = new Label();
             descriptionAction_TextBox = new TextBox();
             dateTimeAction_TextBox = new TextBox();
+            textBoxSearch = new TextBox();
+            clearAllField_Button = new Button();
             ((System.ComponentModel.ISupportInitialize)action_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -168,6 +170,8 @@
             // 
             // idMedicalCard_comboBox
             // 
+            idMedicalCard_comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            idMedicalCard_comboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
             idMedicalCard_comboBox.FormattingEnabled = true;
             idMedicalCard_comboBox.Location = new Point(19, 206);
             idMedicalCard_comboBox.Name = "idMedicalCard_comboBox";
@@ -176,6 +180,8 @@
             // 
             // idEpisodeCard_comboBox
             // 
+            idEpisodeCard_comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            idEpisodeCard_comboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
             idEpisodeCard_comboBox.FormattingEnabled = true;
             idEpisodeCard_comboBox.Location = new Point(19, 144);
             idEpisodeCard_comboBox.Name = "idEpisodeCard_comboBox";
@@ -184,6 +190,8 @@
             // 
             // idDoctor_comboBox
             // 
+            idDoctor_comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            idDoctor_comboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
             idDoctor_comboBox.FormattingEnabled = true;
             idDoctor_comboBox.Location = new Point(19, 90);
             idDoctor_comboBox.Name = "idDoctor_comboBox";
@@ -192,6 +200,8 @@
             // 
             // idProcedure_comboBox
             // 
+            idProcedure_comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            idProcedure_comboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
             idProcedure_comboBox.FormattingEnabled = true;
             idProcedure_comboBox.Location = new Point(20, 385);
             idProcedure_comboBox.Name = "idProcedure_comboBox";
@@ -210,6 +220,8 @@
             // 
             // idMedication_comboBox
             // 
+            idMedication_comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            idMedication_comboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
             idMedication_comboBox.FormattingEnabled = true;
             idMedication_comboBox.Location = new Point(19, 439);
             idMedication_comboBox.Name = "idMedication_comboBox";
@@ -240,10 +252,31 @@
             dateTimeAction_TextBox.Size = new Size(360, 23);
             dateTimeAction_TextBox.TabIndex = 81;
             // 
+            // textBoxSearch
+            // 
+            textBoxSearch.Location = new Point(383, 197);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Size = new Size(360, 23);
+            textBoxSearch.TabIndex = 83;
+            textBoxSearch.TextChanged += textBoxSearch_TextChanged;
+            // 
+            // clearAllField_Button
+            // 
+            clearAllField_Button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            clearAllField_Button.Location = new Point(764, 190);
+            clearAllField_Button.Name = "clearAllField_Button";
+            clearAllField_Button.Size = new Size(152, 32);
+            clearAllField_Button.TabIndex = 82;
+            clearAllField_Button.Text = "Очистити поля";
+            clearAllField_Button.UseVisualStyleBackColor = true;
+            clearAllField_Button.Click += clearAllField_Button_Click;
+            // 
             // ActionForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(textBoxSearch);
+            Controls.Add(clearAllField_Button);
             Controls.Add(dateTimeAction_TextBox);
             Controls.Add(descriptionAction_TextBox);
             Controls.Add(idMedication_comboBox);
@@ -294,5 +327,7 @@
         private Label label8;
         private TextBox descriptionAction_TextBox;
         private TextBox dateTimeAction_TextBox;
+        private TextBox textBoxSearch;
+        private Button clearAllField_Button;
     }
 }

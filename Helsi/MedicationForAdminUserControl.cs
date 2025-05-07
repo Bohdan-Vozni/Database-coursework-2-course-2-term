@@ -20,15 +20,26 @@ namespace Helsi
 
         private void MedicationForAdminUserControl_Load(object sender, EventArgs e)
         {
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
+            textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
         }
 
-        private void ShowDataToGrit()
+        private string searchStrning;
+
+        private void TextBoxSearch_TextChanged(object? sender, EventArgs e)
+        {
+            searchStrning = textBoxSearch.Text.ToLower();
+            ShowDataToGrit(searchStrning);
+        }
+
+        private void ShowDataToGrit(string searchStrning)
         {
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
                 SqlCommand command = new SqlCommand("GetMedicationProc", connection);
                 command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@MedicationName", searchStrning);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
@@ -118,7 +129,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void updateMedication_Button_Click(object sender, EventArgs e)
@@ -132,7 +143,7 @@ namespace Helsi
                 command.CommandType = CommandType.StoredProcedure;
 
 
-               
+
 
                 //додати параметри
                 command.Parameters.AddWithValue("@id_medication", idMedication_TextBox.Text);
@@ -165,7 +176,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void deleteMedication_Button_Click(object sender, EventArgs e)
@@ -183,7 +194,7 @@ namespace Helsi
 
                 //додати параметри
                 command.Parameters.AddWithValue("@id_medication", idMedication_TextBox.Text);
-               
+
 
 
                 connection.Open();
@@ -209,14 +220,17 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void updateDataInAllForm_button_Click(object sender, EventArgs e)
         {
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
-        
+        private void clearAllField_Button_Click(object sender, EventArgs e)
+        {
+            ClearAllTextBox.ClearAllTextBoxes(this.Controls);
+        }
     }
 }

@@ -20,15 +20,26 @@ namespace Helsi
 
         private void ProcedureClientForAdminUserControl_Load(object sender, EventArgs e)
         {
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
+            textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
         }
 
-        private void ShowDataToGrit()
+        private string searchStrning;
+
+        private void TextBoxSearch_TextChanged(object? sender, EventArgs e)
+        {
+            searchStrning = textBoxSearch.Text.ToLower();
+            ShowDataToGrit(searchStrning);
+        }
+
+        private void ShowDataToGrit(string searchStrning)
         {
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
                 SqlCommand command = new SqlCommand("GetProcedureClientProc", connection);
                 command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@ProcedureName", searchStrning);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
@@ -58,7 +69,7 @@ namespace Helsi
                 descriptionProcedureClient_TextBox.Text = procedureClient_dataGridView
                     .Rows[e.RowIndex]
                     .Cells["Опис процедури"]
-                    .FormattedValue.ToString();               
+                    .FormattedValue.ToString();
             }
         }
 
@@ -78,7 +89,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_procedure", idUnic);
                 command.Parameters.AddWithValue("@name_procedure", nameProcedureClient_TextBox.Text);
                 command.Parameters.AddWithValue("@description_procedure", descriptionProcedureClient_TextBox.Text);
-               
+
 
 
                 connection.Open();
@@ -104,7 +115,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void updateProcedureClient_Button_Click(object sender, EventArgs e)
@@ -149,7 +160,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void deleteProcedureClient_Button_Click(object sender, EventArgs e)
@@ -165,7 +176,7 @@ namespace Helsi
 
                 //додати параметри
                 command.Parameters.AddWithValue("@id_procedure", idProcedureClient_TextBox.Text);
-               
+
 
 
 
@@ -192,12 +203,17 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void updateDataInAllForm_button_Click(object sender, EventArgs e)
         {
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
+        }
+
+        private void clearAllField_Button_Click(object sender, EventArgs e)
+        {
+            ClearAllTextBox.ClearAllTextBoxes(this.Controls);
         }
     }
 }

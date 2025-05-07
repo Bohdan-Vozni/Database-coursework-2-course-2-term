@@ -44,6 +44,8 @@
             label1 = new Label();
             label2 = new Label();
             label6 = new Label();
+            textBoxSearch = new TextBox();
+            clearAllField_Button = new Button();
             ((System.ComponentModel.ISupportInitialize)medication_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -199,10 +201,30 @@
             label6.TabIndex = 72;
             label6.Text = "Дата придатності";
             // 
+            // textBoxSearch
+            // 
+            textBoxSearch.Location = new Point(393, 140);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Size = new Size(360, 23);
+            textBoxSearch.TabIndex = 74;
+            // 
+            // clearAllField_Button
+            // 
+            clearAllField_Button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            clearAllField_Button.Location = new Point(774, 133);
+            clearAllField_Button.Name = "clearAllField_Button";
+            clearAllField_Button.Size = new Size(152, 32);
+            clearAllField_Button.TabIndex = 73;
+            clearAllField_Button.Text = "Очистити поля";
+            clearAllField_Button.UseVisualStyleBackColor = true;
+            clearAllField_Button.Click += clearAllField_Button_Click;
+            // 
             // MedicationForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(textBoxSearch);
+            Controls.Add(clearAllField_Button);
             Controls.Add(label6);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -245,5 +267,7 @@
         private Label label1;
         private Label label2;
         private Label label6;
+        private TextBox textBoxSearch;
+        private Button clearAllField_Button;
     }
 }

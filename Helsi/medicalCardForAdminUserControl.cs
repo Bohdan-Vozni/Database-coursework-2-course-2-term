@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,10 +19,19 @@ namespace Helsi
     {
         private List<Patient> allPatient;
         private void medicalCardForAdminUserControl_Load(object sender, EventArgs e)
-        {          
+        {
 
             ShowDataDropDownList();
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
+
+            textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
+        }
+        private string searchStrning;
+
+        private void TextBoxSearch_TextChanged(object? sender, EventArgs e)
+        {
+            searchStrning = textBoxSearch.Text.ToLower();
+            ShowDataToGrit(searchStrning);
         }
 
 
@@ -66,46 +76,14 @@ namespace Helsi
 
         }
 
-
-        private void idPatientComboBox_MedicalCardForAdmin_TextUpdate(object sender, EventArgs e)
-        {
-            string searchText = idPatientComboBox_MedicalCardForAdmin.Text.ToLower();
-
-            // Фільтруємо список, ігноруючи null-значення
-            var filtered = allPatient
-                .Where(p => p.fullName != null && p.fullName.ToLower().Contains(searchText))
-                .ToList();
-
-            // Оновлюємо DataSource
-            idPatientComboBox_MedicalCardForAdmin.DataSource = null; // Спочатку очищуємо
-            idPatientComboBox_MedicalCardForAdmin.DataSource = filtered;
-
-            // Вказуємо, яке поле відображати
-            idPatientComboBox_MedicalCardForAdmin.DisplayMember = "fullName";
-            idPatientComboBox_MedicalCardForAdmin.ValueMember = "id";
-
-            // Показуємо випадаючий список
-            idPatientComboBox_MedicalCardForAdmin.DroppedDown = true;
-
-            // Зберігаємо позицію курсора
-            idPatientComboBox_MedicalCardForAdmin.SelectionStart = searchText.Length;
-        }
-
-        private void idPatientComboBox_MedicalCardForAdmin_SelectedIndexChanged(object sender, EventArgs e)  // обробник кнопки ентер
-        {
-            if (idPatientComboBox_MedicalCardForAdmin.SelectedItem != null)
-            {
-                int id = (int)idPatientComboBox_MedicalCardForAdmin.SelectedValue;
-                idPatientComboBox_MedicalCardForAdmin.Text = $"ID: {id}";
-            }
-        }
-
-        private void ShowDataToGrit()
+        private void ShowDataToGrit(string searchStrning)
         {
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
                 SqlCommand command = new SqlCommand("GetAllMedicalCardProc", connection);
                 command.CommandType = CommandType.StoredProcedure;
+
+               command.Parameters.AddWithValue("@PatientName ", searchStrning);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
@@ -159,7 +137,7 @@ namespace Helsi
 
         private void addMedicalCardForAdmin_button_Click(object sender, EventArgs e)
         {
-            if(idPatientComboBox_MedicalCardForAdmin.SelectedItem == null)
+            if (idPatientComboBox_MedicalCardForAdmin.SelectedItem == null)
             {
                 MessageBox.Show("Будь ласка, виберіть пацієнта", "Попередження",
                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -209,7 +187,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void updateMedicalCardForAdmin_button_Click(object sender, EventArgs e)
@@ -232,7 +210,7 @@ namespace Helsi
                 command.CommandType = CommandType.StoredProcedure;
 
 
-               
+
                 //додати параметри
                 command.Parameters.AddWithValue("@id_medical_card", idMedicalCardTextBox_MedicalCardForAdmin.Text);
                 command.Parameters.AddWithValue("@id_patient", selectedPatient.idPatient);
@@ -263,7 +241,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void deleteMedicalCardForAdmin_button_Click(object sender, EventArgs e)
@@ -289,7 +267,7 @@ namespace Helsi
 
                 //додати параметри
                 command.Parameters.AddWithValue("@id_medical_card", idMedicalCardTextBox_MedicalCardForAdmin.Text);
-                
+
 
                 connection.Open();
 
@@ -314,13 +292,18 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void updateDataInAllForm_button_Click(object sender, EventArgs e)
         {
             ShowDataDropDownList();
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
+        }
+
+        private void clearAllField_Button_Click(object sender, EventArgs e)
+        {
+            ClearAllTextBox.ClearAllTextBoxes(this.Controls);
         }
     }
 }

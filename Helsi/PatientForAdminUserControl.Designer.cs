@@ -39,12 +39,12 @@
             fulnameTextBox_PatientForAdmin = new TextBox();
             label3 = new Label();
             label1 = new Label();
-            findPatientForAdmin_Button = new Button();
+            clearAllField_Button = new Button();
             patientForAdmin_dataGridView = new DataGridView();
             idTextBox_PatientForAdmin = new TextBox();
             label2 = new Label();
             updatePatientForAdmin_button = new Button();
-            findTextBox_PatientForAdmin = new TextBox();
+            textBoxSearch = new TextBox();
             updateDataInAllForm_button = new Button();
             ((System.ComponentModel.ISupportInitialize)patientForAdmin_dataGridView).BeginInit();
             SuspendLayout();
@@ -149,16 +149,16 @@
             label1.TabIndex = 15;
             label1.Text = "Робота з пацієнтом";
             // 
-            // findPatientForAdmin_Button
+            // clearAllField_Button
             // 
-            findPatientForAdmin_Button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            findPatientForAdmin_Button.Location = new Point(771, 108);
-            findPatientForAdmin_Button.Name = "findPatientForAdmin_Button";
-            findPatientForAdmin_Button.Size = new Size(152, 32);
-            findPatientForAdmin_Button.TabIndex = 30;
-            findPatientForAdmin_Button.Text = "Знайти";
-            findPatientForAdmin_Button.UseVisualStyleBackColor = true;
-            findPatientForAdmin_Button.Click += findPatientForAdmin_Button_Click;
+            clearAllField_Button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            clearAllField_Button.Location = new Point(771, 108);
+            clearAllField_Button.Name = "clearAllField_Button";
+            clearAllField_Button.Size = new Size(152, 32);
+            clearAllField_Button.TabIndex = 30;
+            clearAllField_Button.Text = "Очистити поля";
+            clearAllField_Button.UseVisualStyleBackColor = true;
+            clearAllField_Button.Click += clearAllField_Button_Click;
             // 
             // patientForAdmin_dataGridView
             // 
@@ -185,9 +185,9 @@
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label2.Location = new Point(15, 14);
             label2.Name = "label2";
-            label2.Size = new Size(45, 25);
+            label2.Size = new Size(29, 25);
             label2.TabIndex = 31;
-            label2.Text = "ПІБ";
+            label2.Text = "id";
             label2.Visible = false;
             // 
             // updatePatientForAdmin_button
@@ -201,12 +201,12 @@
             updatePatientForAdmin_button.UseVisualStyleBackColor = true;
             updatePatientForAdmin_button.Click += updatePatientForAdmin_button_Click_1;
             // 
-            // findTextBox_PatientForAdmin
+            // textBoxSearch
             // 
-            findTextBox_PatientForAdmin.Location = new Point(390, 115);
-            findTextBox_PatientForAdmin.Name = "findTextBox_PatientForAdmin";
-            findTextBox_PatientForAdmin.Size = new Size(360, 23);
-            findTextBox_PatientForAdmin.TabIndex = 34;
+            textBoxSearch.Location = new Point(390, 115);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Size = new Size(360, 23);
+            textBoxSearch.TabIndex = 34;
             // 
             // updateDataInAllForm_button
             // 
@@ -217,18 +217,18 @@
             updateDataInAllForm_button.TabIndex = 35;
             updateDataInAllForm_button.Text = "Оовити дані";
             updateDataInAllForm_button.UseVisualStyleBackColor = true;
-
+            updateDataInAllForm_button.Click += updateDataInAllForm_button_Click;
             // 
             // PatientForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(updateDataInAllForm_button);
-            Controls.Add(findTextBox_PatientForAdmin);
+            Controls.Add(textBoxSearch);
             Controls.Add(updatePatientForAdmin_button);
             Controls.Add(idTextBox_PatientForAdmin);
             Controls.Add(label2);
-            Controls.Add(findPatientForAdmin_Button);
+            Controls.Add(clearAllField_Button);
             Controls.Add(deletePatientForAdmin_button);
             Controls.Add(addPatientForAdmin_button);
             Controls.Add(addressTextBox_PatientForAdmin);
@@ -263,11 +263,11 @@
         private Label label3;
         private DataGridView patientForAdmin_dataGridView;
         private Label label1;
-        private Button findPatientForAdmin_Button;
+        private Button clearAllField_Button;
         private TextBox idTextBox_PatientForAdmin;
         private Label label2;
         private Button updatePatientForAdmin_button;
-        private TextBox findTextBox_PatientForAdmin;
+        private TextBox textBoxSearch;
         private Button updateDataInAllForm_button;
     }
 }

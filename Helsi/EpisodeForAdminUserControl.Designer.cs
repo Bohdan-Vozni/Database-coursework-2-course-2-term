@@ -42,6 +42,8 @@
             idEpisode_TextBox = new TextBox();
             idMedicalCard_comboBox = new ComboBox();
             label5 = new Label();
+            textBoxSearch = new TextBox();
+            clearAllField_Button = new Button();
             ((System.ComponentModel.ISupportInitialize)episode_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -183,10 +185,30 @@
             label5.TabIndex = 49;
             label5.Text = "Робота з епізодом";
             // 
+            // textBoxSearch
+            // 
+            textBoxSearch.Location = new Point(384, 140);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Size = new Size(360, 23);
+            textBoxSearch.TabIndex = 51;
+            // 
+            // clearAllField_Button
+            // 
+            clearAllField_Button.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            clearAllField_Button.Location = new Point(765, 133);
+            clearAllField_Button.Name = "clearAllField_Button";
+            clearAllField_Button.Size = new Size(152, 32);
+            clearAllField_Button.TabIndex = 50;
+            clearAllField_Button.Text = "Очистити поля";
+            clearAllField_Button.UseVisualStyleBackColor = true;
+            clearAllField_Button.Click += clearAllField_Button_Click;
+            // 
             // EpisodeForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(textBoxSearch);
+            Controls.Add(clearAllField_Button);
             Controls.Add(label5);
             Controls.Add(idMedicalCard_comboBox);
             Controls.Add(v);
@@ -226,5 +248,7 @@
         private TextBox idEpisode_TextBox;
         private ComboBox idMedicalCard_comboBox;
         private Label label5;
+        private TextBox textBoxSearch;
+        private Button clearAllField_Button;
     }
 }

@@ -21,8 +21,17 @@ namespace Helsi
 
         private void EpisodeForAdminUserControl_Load(object sender, EventArgs e)
         {
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
             ShowDataDropDownList();
+            textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
+        }
+
+        private string searchStrning;
+
+        private void TextBoxSearch_TextChanged(object? sender, EventArgs e)
+        {
+            searchStrning = textBoxSearch.Text.ToLower();
+            ShowDataToGrit(searchStrning);
         }
 
         private void ShowDataDropDownList()
@@ -61,12 +70,14 @@ namespace Helsi
 
         }
 
-        private void ShowDataToGrit()
+        private void ShowDataToGrit(string searchStrning)
         {
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
                 SqlCommand command = new SqlCommand("GetAllEpisodeProc", connection);
                 command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@PatientName", searchStrning);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
@@ -89,14 +100,14 @@ namespace Helsi
                     .FormattedValue.ToString();
 
 
-                 currentMedicalCard = allMedicalCard
-                    .FirstOrDefault
-                        (id => id.idMedicaCard == episode_dataGridView
-                        .Rows[e.RowIndex]
-                        .Cells["id_medical_card"]
-                        .FormattedValue
-                        .ToString()
-                        );
+                currentMedicalCard = allMedicalCard
+                   .FirstOrDefault
+                       (id => id.idMedicaCard == episode_dataGridView
+                       .Rows[e.RowIndex]
+                       .Cells["id_medical_card"]
+                       .FormattedValue
+                       .ToString()
+                       );
                 diagnosis_TextBox.Text = currentMedicalCard.fullName;
 
 
@@ -165,7 +176,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
         private void updateEpisode_Button_Click(object sender, EventArgs e)
         {
@@ -187,7 +198,7 @@ namespace Helsi
                 command.CommandType = CommandType.StoredProcedure;
 
 
-               
+
 
                 //додати параметри
                 command.Parameters.AddWithValue("@id_episode", idEpisode_TextBox.Text);
@@ -218,7 +229,7 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void deleteEpisode_Button_Click(object sender, EventArgs e)
@@ -241,12 +252,12 @@ namespace Helsi
                 command.CommandType = CommandType.StoredProcedure;
 
 
-                
+
 
                 //додати параметри
                 command.Parameters.AddWithValue("@id_episode", idEpisode_TextBox.Text);
                 command.Parameters.AddWithValue("@id_medical_card", currentMedicalCard.idMedicaCard);
-                
+
 
                 connection.Open();
 
@@ -271,15 +282,18 @@ namespace Helsi
 
 
             }
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
         }
 
         private void updateDataInAllForm_button_Click(object sender, EventArgs e)
         {
-            ShowDataToGrit();
+            ShowDataToGrit(searchStrning);
             ShowDataDropDownList();
         }
 
-        
+        private void clearAllField_Button_Click(object sender, EventArgs e)
+        {
+            ClearAllTextBox.ClearAllTextBoxes(this.Controls);
+        }
     }
 }
