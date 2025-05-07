@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DGVPrinterHelper;
+using System.Text.Json;
 
 namespace Helsi
 {
@@ -45,15 +46,18 @@ namespace Helsi
         {
             allField_dataGridView.CellDoubleClick += allField_dataGridView_CellContentClick;
             resultField_dataGridView.CellDoubleClick += resultFieald_dataGridView_CellContentClick;
+            loadToFieldForResultGrit();
+        }
 
+        private void loadToFieldForResultGrit()
+        {
+            dt = new DataTable();
             dt.Columns.Add("Назва таблиці", typeof(string));
             dt.Columns.Add("Назва поля", typeof(string));
             dt.Columns.Add("Чи обовязково повинні бути дані", typeof(bool)); // або typeof(bool)
 
             resultField_dataGridView.DataSource = dt;
         }
-
-
 
         private void addDataToResultGrit()
         {
@@ -114,6 +118,7 @@ namespace Helsi
 
         private void deleteAddFieldInResultGrit_Click(object sender, EventArgs e)
         {
+            loadToFieldForResultGrit();
             var rowsToDelete = dt.AsEnumerable().ToList();
 
             foreach (var row in rowsToDelete)
@@ -137,7 +142,12 @@ namespace Helsi
                 return;
             }
 
-            genereteRoportFromResultGrit();        
+            genereteRoportFromResultGrit();
+
+            resultField_dataGridView.DataSource = dataGridView.DataSource;
+
+            var dgvPrinter = new DGVPrinter();
+            dgvPrinter.createReport(nameRepot_textBox.Text, resultField_dataGridView);
         }
 
 
@@ -145,24 +155,42 @@ namespace Helsi
         private DataGridView dataGridView = new DataGridView();
         private void genereteRoportFromResultGrit()
         {
-            using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
+            try
             {
-                connection.Open();
+                // Convert the selected fields to JSON
+                var reportData = new List<object>();
+                foreach (DataRow row in dt.Rows)
+                {
+                    reportData.Add(new
+                    {
+                        TableName = row["Назва таблиці"].ToString(),
+                        ColumnName = row["Назва поля"].ToString(),
+                        IsNullable = (bool)row["Чи обовязково повинні бути дані"]
+                    });
+                }
 
-                using (SqlCommand command = new SqlCommand("GetInfoForGenerateReport", connection))
-                {                   
+                string jsonData = JsonSerializer.Serialize(reportData);
+
+                using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
+                {
+                    SqlCommand command = new SqlCommand("GetInfoForGenerateReport", connection);
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ReportData", jsonData);
 
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+                    dtForReport = new DataTable();
+                    adapter.Fill(dtForReport);
+
+                    // Bind the result to the DataGridView
+                    dataGridView.DataSource = dtForReport;
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка при генерації звіту: {ex.Message}");
+            }
 
-            resultField_dataGridView.DataSource = dataGridView.DataSource;
 
-            var dgvPrinter = new DGVPrinter();
-            dgvPrinter.createReport(nameRepot_textBox.Text, dataGridView);
         }
 
 
