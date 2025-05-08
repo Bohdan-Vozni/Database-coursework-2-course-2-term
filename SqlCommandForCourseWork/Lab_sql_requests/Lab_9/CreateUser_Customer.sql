@@ -1,18 +1,29 @@
+USE master;
+GO
 
+-- Створюємо логін Customer, якщо нема
+IF NOT EXISTS (SELECT name FROM sys.server_principals WHERE name = 'Customer')
+    CREATE LOGIN Customer WITH PASSWORD = '1234';
+GO
 
-if not exists (select name from sys.server_principals where name  = 'Customer')
-	create login Customer with password = '1234';
+USE Helsi;
+GO
 
+-- Видаляємо користувача Customer, якщо існує
+IF EXISTS (SELECT name FROM sys.database_principals WHERE name = 'Customer')
+    DROP USER Customer;
+GO
 
-use helsi;
+-- Створюємо користувача Customer з логіном Customer
+CREATE USER Customer FROM LOGIN Customer;
+GO
 
+-- Додаємо Customer тільки до ролі читача (тільки SELECT)
+ALTER ROLE db_datareader ADD MEMBER Customer;
+GO
 
-if exists (select name from sys.database_principals where name = 'Customer')
-   drop user Customer;
+-- Додаємо права тільки на виконання конкретної процедури
+GRANT EXECUTE ON SCHEMA::dbo TO Customer;
+GO
 
-
-create user Customer from login Customer
-
-
-alter role db_datareader add member Customer
 

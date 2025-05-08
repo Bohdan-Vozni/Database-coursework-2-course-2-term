@@ -70,7 +70,7 @@
             loginInDatabase_button.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
             loginInDatabase_button.FlatStyle = FlatStyle.Flat;
             loginInDatabase_button.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            loginInDatabase_button.Location = new Point(93, 237);
+            loginInDatabase_button.Location = new Point(93, 235);
             loginInDatabase_button.Name = "loginInDatabase_button";
             loginInDatabase_button.Size = new Size(120, 40);
             loginInDatabase_button.TabIndex = 0;
@@ -154,12 +154,12 @@
             mainBackgroundColor_panel.Controls.Add(authorizationBackgroundColor_panel);
             mainBackgroundColor_panel.Location = new Point(-1, 0);
             mainBackgroundColor_panel.Name = "mainBackgroundColor_panel";
-            mainBackgroundColor_panel.Size = new Size(334, 302);
+            mainBackgroundColor_panel.Size = new Size(334, 341);
             mainBackgroundColor_panel.TabIndex = 1;
             // 
             // Authorization
             // 
-            ClientSize = new Size(354, 314);
+            ClientSize = new Size(335, 340);
             Controls.Add(mainBackgroundColor_panel);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Authorization";

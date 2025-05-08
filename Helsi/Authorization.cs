@@ -15,7 +15,7 @@ namespace Helsi
         {
             InitializeComponent();
 
-            login_textBox.Text = "Admindatabase";
+            login_textBox.Text = "Customer";
             password_textBox.Text = "1234";
         }
 
@@ -30,39 +30,44 @@ namespace Helsi
 
         }
 
+        private string pathToConectionString;
+
         private void loginInDatabase_button_Click(object sender, EventArgs e)
         {
             string login = login_textBox.Text;
             string password = password_textBox.Text;
 
-            string pathToConectionString = Application.StartupPath.ToString();
+            pathToConectionString = Application.StartupPath.ToString();
             pathToConectionString += "/" + "ConectionString.json";
 
-
-            
-
-
-            var options = new JsonSerializerOptions
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
-                WriteIndented = true, // додає відступи для читаємості
-            };
+                MessageBox.Show("Ведіть всі дані в поля");
+                return;
+            }
+
 
             if (!File.Exists(pathToConectionString))
             {
-                using (FileStream file = new FileStream(pathToConectionString, FileMode.Create))
-                {
-                    JsonSerializer.Serialize(file, GetConectionSrtingForConectDataBase.ConectionString, options);
-                }
+                MessageBox.Show("Будьласка згенеруйте файл для підключення до бази даних і впишіть строку підключення");
+                return;
             }
-            else
-            {
-                using (FileStream file = new FileStream(pathToConectionString, FileMode.Open))
-                {
-                    GetConectionSrtingForConectDataBase.ConectionString = JsonSerializer.Deserialize<string>(file) + "User Id =" + login + ";" + "Password =" + password + ";";
-                }
-            }
+                      
 
-            using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString ))
+
+            using (FileStream file = new FileStream(pathToConectionString, FileMode.Open))
+            {
+                GetConectionSrtingForConectDataBase.ConectionString = JsonSerializer.Deserialize<string>(file);
+                if (GetConectionSrtingForConectDataBase.ConectionString == null)
+                {
+                    MessageBox.Show($"Будьласка впишіть строку підключення в файл з який знаходиться по такому шляху {pathToConectionString}");
+                    return;
+                }
+                GetConectionSrtingForConectDataBase.ConectionString += "User Id =" + login + ";" + "Password =" + password + ";";
+            }
+            
+
+            using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
                 try
                 {
@@ -70,7 +75,7 @@ namespace Helsi
                     MessageBox.Show("Підключення успішне!");
 
                     var mainForm = new MainForm(login);
-                    
+
                     mainForm.Show();
                     this.Hide();
                     connection.Close();
@@ -79,13 +84,10 @@ namespace Helsi
                 catch (SqlException ex)
                 {
                     MessageBox.Show("Не вдалося підключитися до бази даних:");
+                    MessageBox.Show(ex.Message);
                 }
 
             }
-
-
-
-
         }
 
 
@@ -94,5 +96,6 @@ namespace Helsi
             this.Close();
         }
 
+       
     }
 }
