@@ -143,6 +143,19 @@ namespace Helsi
                 return;
             }
 
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете додати доктора?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             var selectedDepartment = (Department)idDepartmentDoctor_ComboBox.SelectedItem;
 
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
@@ -195,6 +208,19 @@ namespace Helsi
                 MessageBox.Show("Будь ласка, виберіть відділення", "Попередження",
                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+                return;
+            }
+
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете оновити доктора?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
                 return;
             }
 
@@ -254,6 +280,19 @@ namespace Helsi
                 MessageBox.Show("Будь ласка, виберіть відділення", "Попередження",
                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+                return;
+            }
+
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете видалити доктора?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
                 return;
             }
 

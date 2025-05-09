@@ -96,6 +96,17 @@ namespace Helsi
 
         private void addPatientForAdmin_button_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете додати пацієнта?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
 
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
@@ -141,6 +152,19 @@ namespace Helsi
 
         private void deletePatientForAdmin_button_Click(object sender, EventArgs e)
         {
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете видалити пацієнта?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
 
@@ -181,6 +205,19 @@ namespace Helsi
 
         private void updatePatientForAdmin_button_Click_1(object sender, EventArgs e)
         {
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете оновити пацієнта?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
 

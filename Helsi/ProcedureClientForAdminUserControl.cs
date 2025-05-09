@@ -75,6 +75,19 @@ namespace Helsi
 
         private void addProcedureClient_Button_Click(object sender, EventArgs e)
         {
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете додати процедуру?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
 
@@ -121,6 +134,18 @@ namespace Helsi
         private void updateProcedureClient_Button_Click(object sender, EventArgs e)
         {
 
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете оновити процедуру?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
 
@@ -165,6 +190,19 @@ namespace Helsi
 
         private void deleteProcedureClient_Button_Click(object sender, EventArgs e)
         {
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете видалити процедуру?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
 

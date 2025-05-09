@@ -406,6 +406,19 @@ namespace Helsi
                 return;
             }
 
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете додати дію?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             var selectedDoctor = (Doctor)idDoctor_comboBox.SelectedItem;
             var selectedEpisode = (Episode)idEpisodeCard_comboBox.SelectedItem;
             var selectedMedicalCard = (MedicalCard)idMedicalCard_comboBox.SelectedItem;
@@ -500,6 +513,19 @@ namespace Helsi
                 return;
             }
 
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете оновти дію?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             var selectedDoctor = (Doctor)idDoctor_comboBox.SelectedItem;
             var selectedEpisode = (Episode)idEpisodeCard_comboBox.SelectedItem;
             var selectedMedicalCard = (MedicalCard)idMedicalCard_comboBox.SelectedItem;
@@ -588,7 +614,18 @@ namespace Helsi
                 return;
             }
 
-          
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете видалити дію?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
 
             var selectedDoctor = (Doctor)idDoctor_comboBox.SelectedItem;
             var selectedEpisode = (Episode)idEpisodeCard_comboBox.SelectedItem;

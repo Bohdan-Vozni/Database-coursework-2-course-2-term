@@ -78,6 +78,19 @@ namespace Helsi
 
         private void addDepartment_Button_Click(object sender, EventArgs e)
         {
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете додати відділення?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
 
@@ -122,6 +135,19 @@ namespace Helsi
 
         private void updateDepartment_Button_Click(object sender, EventArgs e)
         {
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете оновити відділення?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
 
@@ -166,6 +192,19 @@ namespace Helsi
 
         private void deleteDepartment_Button_Click(object sender, EventArgs e)
         {
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете видалити відділення?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
 

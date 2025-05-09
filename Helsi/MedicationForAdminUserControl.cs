@@ -88,6 +88,19 @@ namespace Helsi
 
         private void addMedication_Button_Click(object sender, EventArgs e)
         {
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете додати медикаменти?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
 
@@ -135,6 +148,18 @@ namespace Helsi
         private void updateMedication_Button_Click(object sender, EventArgs e)
         {
 
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете оновти медикамети?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
 
@@ -181,6 +206,18 @@ namespace Helsi
 
         private void deleteMedication_Button_Click(object sender, EventArgs e)
         {
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете видалити медикаменти?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
 
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {

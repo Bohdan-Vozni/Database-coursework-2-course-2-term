@@ -155,6 +155,19 @@ namespace Helsi
                 return;
             }
 
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете додати медчну картку?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             var selectedPatient = (Patient)idPatientComboBox_MedicalCardForAdmin.SelectedItem;
 
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
@@ -210,6 +223,19 @@ namespace Helsi
                 return;
             }
 
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете оновити медичну картку?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             var selectedPatient = (Patient)idPatientComboBox_MedicalCardForAdmin.SelectedItem;
 
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
@@ -261,6 +287,19 @@ namespace Helsi
                 MessageBox.Show("Будь ласка, виберіть пацієнта", "Попередження",
                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+                return;
+            }
+
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете видалити медичну картку?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
                 return;
             }
 

@@ -135,6 +135,19 @@ namespace Helsi
                 return;
             }
 
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете додати епізод?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
             var selectedMedicalCard = (MedicalCard)idMedicalCard_comboBox.SelectedItem;
 
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
@@ -185,6 +198,19 @@ namespace Helsi
                 MessageBox.Show("Будь ласка, виберіть пацієнта", "Попередження",
                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+                return;
+            }
+
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете оновити епізод?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
                 return;
             }
 
@@ -239,6 +265,19 @@ namespace Helsi
                 MessageBox.Show("Будь ласка, виберіть пацієнта", "Попередження",
                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+                return;
+            }
+
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете видалити епізод?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
                 return;
             }
 
