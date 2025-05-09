@@ -17,7 +17,7 @@ namespace Helsi
     public partial class MainForm : Form
     {
         private string UserName;
-
+        private GenerateReportUserControl generateReportUserControl1;
         public MainForm()
         {
             InitializeComponent();
@@ -25,6 +25,9 @@ namespace Helsi
 
             patientForAdminUserControl = new PatientForAdminUserControl();
             this.Controls.Add(patientForAdminUserControl);
+
+            generateReportUserControl1 = new GenerateReportUserControl();
+            this.Controls.Add(generateReportUserControl1);
         }
         public MainForm(string UserName)
         {
@@ -33,6 +36,9 @@ namespace Helsi
 
             patientForAdminUserControl = new PatientForAdminUserControl();
             this.Controls.Add(patientForAdminUserControl);
+
+            generateReportUserControl1 = new GenerateReportUserControl();
+            this.Controls.Add(generateReportUserControl1);
 
             this.UserName = UserName;
         }
