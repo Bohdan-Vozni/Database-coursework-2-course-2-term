@@ -41,11 +41,11 @@
             label4 = new Label();
             idPatientComboBox_MedicalCardForAdmin = new ComboBox();
             label5 = new Label();
-            dateCreatedTextBox_MedicalCardForAdmin = new TextBox();
             updateDataInAllForm_button = new Button();
             label6 = new Label();
             textBoxSearch = new TextBox();
             clearAllField_Button = new Button();
+            create_dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)medicalCardForAdmin_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -178,13 +178,6 @@
             label5.TabIndex = 47;
             label5.Text = "Дата створення";
             // 
-            // dateCreatedTextBox_MedicalCardForAdmin
-            // 
-            dateCreatedTextBox_MedicalCardForAdmin.Location = new Point(12, 316);
-            dateCreatedTextBox_MedicalCardForAdmin.Name = "dateCreatedTextBox_MedicalCardForAdmin";
-            dateCreatedTextBox_MedicalCardForAdmin.Size = new Size(360, 23);
-            dateCreatedTextBox_MedicalCardForAdmin.TabIndex = 46;
-            // 
             // updateDataInAllForm_button
             // 
             updateDataInAllForm_button.AllowDrop = true;
@@ -226,16 +219,23 @@
             clearAllField_Button.UseVisualStyleBackColor = true;
             clearAllField_Button.Click += clearAllField_Button_Click;
             // 
+            // create_dateTimePicker1
+            // 
+            create_dateTimePicker1.Location = new Point(12, 316);
+            create_dateTimePicker1.Name = "create_dateTimePicker1";
+            create_dateTimePicker1.Size = new Size(360, 23);
+            create_dateTimePicker1.TabIndex = 52;
+            // 
             // medicalCardForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(create_dateTimePicker1);
             Controls.Add(textBoxSearch);
             Controls.Add(clearAllField_Button);
             Controls.Add(label6);
             Controls.Add(updateDataInAllForm_button);
             Controls.Add(label5);
-            Controls.Add(dateCreatedTextBox_MedicalCardForAdmin);
             Controls.Add(idPatientComboBox_MedicalCardForAdmin);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -271,10 +271,10 @@
         private Label label4;
         private ComboBox idPatientComboBox_MedicalCardForAdmin;
         private Label label5;
-        private TextBox dateCreatedTextBox_MedicalCardForAdmin;
         private Button updateDataInAllForm_button;
         private Label label6;
         private TextBox textBoxSearch;
         private Button clearAllField_Button;
+        private DateTimePicker create_dateTimePicker1;
     }
 }

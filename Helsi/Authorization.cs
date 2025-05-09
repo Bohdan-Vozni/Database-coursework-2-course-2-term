@@ -15,7 +15,7 @@ namespace Helsi
         {
             InitializeComponent();
 
-            login_textBox.Text = "Customer";
+            login_textBox.Text = "sa";
             password_textBox.Text = "1234";
         }
 

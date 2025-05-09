@@ -67,10 +67,18 @@ namespace Helsi
                     Cells["full_name"].
                     FormattedValue.ToString();
 
-                dateBithTextBox_PatientForAdmin.Text = patientForAdmin_dataGridView
-                    .Rows[e.RowIndex]
-                    .Cells["date_of_birth"]
-                    .FormattedValue.ToString();
+                var dateValue = patientForAdmin_dataGridView.Rows[e.RowIndex].Cells["date_of_birth"].Value;
+
+                if (dateValue != null && DateTime.TryParse(dateValue.ToString(), out DateTime parsedDate))
+                {
+                    bith_dateTimePicker1.Value = parsedDate;
+                }
+                else
+                {
+                    // Встановимо сьогоднішню дату або якусь дефолтну
+                    bith_dateTimePicker1.Value = DateTime.Today;
+                }
+
 
                 phoneNumberTextBox_PatientForAdmin.Text = patientForAdmin_dataGridView
                     .Rows[e.RowIndex]
@@ -101,7 +109,7 @@ namespace Helsi
                 //додати параметри
                 command.Parameters.AddWithValue("@id_patient", idUnic);
                 command.Parameters.AddWithValue("@full_name", fulnameTextBox_PatientForAdmin.Text);
-                command.Parameters.AddWithValue("@date_of_bith", dateBithTextBox_PatientForAdmin.Text);
+                command.Parameters.AddWithValue("@date_of_bith", bith_dateTimePicker1.Value.ToString("dd.MM.yyyy"));
                 command.Parameters.AddWithValue("@phone_number", phoneNumberTextBox_PatientForAdmin.Text);
                 command.Parameters.AddWithValue("@address_patient", addressTextBox_PatientForAdmin.Text);
 
@@ -185,7 +193,7 @@ namespace Helsi
                 //додати параметри
                 command.Parameters.AddWithValue("@id_patient", idUnic);
                 command.Parameters.AddWithValue("@full_name", fulnameTextBox_PatientForAdmin.Text);
-                command.Parameters.AddWithValue("@date_of_bith", dateBithTextBox_PatientForAdmin.Text);
+                command.Parameters.AddWithValue("@date_of_bith", bith_dateTimePicker1.Value.ToString("dd.MM.yyyy"));
                 command.Parameters.AddWithValue("@phone_number", phoneNumberTextBox_PatientForAdmin.Text);
                 command.Parameters.AddWithValue("@address_patient", addressTextBox_PatientForAdmin.Text);
 

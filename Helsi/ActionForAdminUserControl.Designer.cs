@@ -47,9 +47,9 @@
             idMedication_comboBox = new ComboBox();
             label8 = new Label();
             descriptionAction_TextBox = new TextBox();
-            dateTimeAction_TextBox = new TextBox();
             textBoxSearch = new TextBox();
             clearAllField_Button = new Button();
+            create_dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)action_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -245,13 +245,6 @@
             descriptionAction_TextBox.Size = new Size(360, 23);
             descriptionAction_TextBox.TabIndex = 80;
             // 
-            // dateTimeAction_TextBox
-            // 
-            dateTimeAction_TextBox.Location = new Point(19, 331);
-            dateTimeAction_TextBox.Name = "dateTimeAction_TextBox";
-            dateTimeAction_TextBox.Size = new Size(360, 23);
-            dateTimeAction_TextBox.TabIndex = 81;
-            // 
             // textBoxSearch
             // 
             textBoxSearch.Location = new Point(383, 197);
@@ -271,13 +264,20 @@
             clearAllField_Button.UseVisualStyleBackColor = true;
             clearAllField_Button.Click += clearAllField_Button_Click;
             // 
+            // create_dateTimePicker1
+            // 
+            create_dateTimePicker1.Location = new Point(18, 331);
+            create_dateTimePicker1.Name = "create_dateTimePicker1";
+            create_dateTimePicker1.Size = new Size(360, 23);
+            create_dateTimePicker1.TabIndex = 84;
+            // 
             // ActionForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(create_dateTimePicker1);
             Controls.Add(textBoxSearch);
             Controls.Add(clearAllField_Button);
-            Controls.Add(dateTimeAction_TextBox);
             Controls.Add(descriptionAction_TextBox);
             Controls.Add(idMedication_comboBox);
             Controls.Add(label8);
@@ -326,8 +326,8 @@
         private ComboBox idMedication_comboBox;
         private Label label8;
         private TextBox descriptionAction_TextBox;
-        private TextBox dateTimeAction_TextBox;
         private TextBox textBoxSearch;
         private Button clearAllField_Button;
+        private DateTimePicker create_dateTimePicker1;
     }
 }

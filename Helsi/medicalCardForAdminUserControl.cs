@@ -122,10 +122,20 @@ namespace Helsi
                     .Cells["declaration_doctor"]
                     .FormattedValue.ToString();
 
-                dateCreatedTextBox_MedicalCardForAdmin.Text = medicalCardForAdmin_dataGridView
+                var dateValue = medicalCardForAdmin_dataGridView
                     .Rows[e.RowIndex]
                     .Cells["date_created"]
                     .FormattedValue.ToString();
+
+                if (dateValue != null && DateTime.TryParse(dateValue.ToString(), out DateTime parsedDate))
+                {
+                    create_dateTimePicker1.Value = parsedDate;
+                }
+                else
+                {
+                    // Встановимо сьогоднішню дату або якусь дефолтну
+                    create_dateTimePicker1.Value = DateTime.Today;
+                }
 
                 statusCardTextBox_MedicalCardForAdmin.Text = medicalCardForAdmin_dataGridView
                     .Rows[e.RowIndex]
@@ -161,7 +171,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_medical_card", idUnic);
                 command.Parameters.AddWithValue("@id_patient", selectedPatient.idPatient);
                 command.Parameters.AddWithValue("@declaration_doctor", declarationDoctorTextBox_MedicalCardForAdmin.Text);
-                command.Parameters.AddWithValue("@date_created", dateCreate.ToString());
+                command.Parameters.AddWithValue("@date_created", dateCreate.ToString("dd.MM.yyyy"));
                 command.Parameters.AddWithValue("@status_card", statusCardTextBox_MedicalCardForAdmin.Text);
 
                 connection.Open();
@@ -215,7 +225,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_medical_card", idMedicalCardTextBox_MedicalCardForAdmin.Text);
                 command.Parameters.AddWithValue("@id_patient", selectedPatient.idPatient);
                 command.Parameters.AddWithValue("@declaration_doctor", declarationDoctorTextBox_MedicalCardForAdmin.Text);
-                command.Parameters.AddWithValue("@date_created", dateCreatedTextBox_MedicalCardForAdmin.Text);
+                command.Parameters.AddWithValue("@date_created", create_dateTimePicker1.Value.ToString("dd.MM.yyyy"));
                 command.Parameters.AddWithValue("@status_card", statusCardTextBox_MedicalCardForAdmin.Text);
 
                 connection.Open();

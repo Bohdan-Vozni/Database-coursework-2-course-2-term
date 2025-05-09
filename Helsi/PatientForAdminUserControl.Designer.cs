@@ -34,7 +34,6 @@
             label6 = new Label();
             phoneNumberTextBox_PatientForAdmin = new TextBox();
             label5 = new Label();
-            dateBithTextBox_PatientForAdmin = new TextBox();
             label4 = new Label();
             fulnameTextBox_PatientForAdmin = new TextBox();
             label3 = new Label();
@@ -46,6 +45,7 @@
             updatePatientForAdmin_button = new Button();
             textBoxSearch = new TextBox();
             updateDataInAllForm_button = new Button();
+            bith_dateTimePicker1 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)patientForAdmin_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -104,13 +104,6 @@
             label5.Size = new Size(170, 25);
             label5.TabIndex = 23;
             label5.Text = "Номер телефону";
-            // 
-            // dateBithTextBox_PatientForAdmin
-            // 
-            dateBithTextBox_PatientForAdmin.Location = new Point(15, 165);
-            dateBithTextBox_PatientForAdmin.Name = "dateBithTextBox_PatientForAdmin";
-            dateBithTextBox_PatientForAdmin.Size = new Size(360, 23);
-            dateBithTextBox_PatientForAdmin.TabIndex = 22;
             // 
             // label4
             // 
@@ -219,10 +212,18 @@
             updateDataInAllForm_button.UseVisualStyleBackColor = true;
             updateDataInAllForm_button.Click += updateDataInAllForm_button_Click;
             // 
+            // bith_dateTimePicker1
+            // 
+            bith_dateTimePicker1.Location = new Point(15, 172);
+            bith_dateTimePicker1.Name = "bith_dateTimePicker1";
+            bith_dateTimePicker1.Size = new Size(360, 23);
+            bith_dateTimePicker1.TabIndex = 36;
+            // 
             // PatientForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(bith_dateTimePicker1);
             Controls.Add(updateDataInAllForm_button);
             Controls.Add(textBoxSearch);
             Controls.Add(updatePatientForAdmin_button);
@@ -235,7 +236,6 @@
             Controls.Add(label6);
             Controls.Add(phoneNumberTextBox_PatientForAdmin);
             Controls.Add(label5);
-            Controls.Add(dateBithTextBox_PatientForAdmin);
             Controls.Add(label4);
             Controls.Add(fulnameTextBox_PatientForAdmin);
             Controls.Add(label3);
@@ -269,5 +269,6 @@
         private Button updatePatientForAdmin_button;
         private TextBox textBoxSearch;
         private Button updateDataInAllForm_button;
+        private DateTimePicker bith_dateTimePicker1;
     }
 }

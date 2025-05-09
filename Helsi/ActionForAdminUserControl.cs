@@ -317,11 +317,21 @@ namespace Helsi
                        .ToString();
 
 
-                dateTimeAction_TextBox.Text = action_dataGridView
+                var dateValue= action_dataGridView
                        .Rows[e.RowIndex]
                        .Cells["Дата дії"]
                        .FormattedValue
                        .ToString();
+
+                if (dateValue != null && DateTime.TryParse(dateValue.ToString(), out DateTime parsedDate))
+                {
+                    create_dateTimePicker1.Value = parsedDate;
+                }
+                else
+                {
+                    // Встановимо сьогоднішню дату або якусь дефолтну
+                    create_dateTimePicker1.Value = DateTime.Today;
+                }
 
                 currentProcedure = allProcedure.FirstOrDefault
                 (
@@ -417,7 +427,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_episode", selectedEpisode.idEpisode);
                 command.Parameters.AddWithValue("@id_medical_card", selectedMedicalCard.idMedicaCard);
                 command.Parameters.AddWithValue("@description_action", descriptionAction_TextBox.Text);
-                command.Parameters.AddWithValue("@data_time", dateTime);
+                command.Parameters.AddWithValue("@data_time", dateTime.ToString("dd.MM.yyyy"));
                 command.Parameters.AddWithValue("@id_procedure", selectedProcedure.idProcedure);
                 command.Parameters.AddWithValue("@id_medication", selectedMedication.idMedication);
 
@@ -499,7 +509,7 @@ namespace Helsi
             DateTime actionDate;
 
             // Перевіряємо, чи дата введена коректно
-            if (!DateTime.TryParse(dateTimeAction_TextBox.Text, out actionDate))
+            if (!DateTime.TryParse(create_dateTimePicker1.Text, out actionDate))
             {
                 MessageBox.Show("Будь ласка, введіть коректну дату", "Попередження",
                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -520,7 +530,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_episode", selectedEpisode.idEpisode);
                 command.Parameters.AddWithValue("@id_medical_card", selectedMedicalCard.idMedicaCard);
                 command.Parameters.AddWithValue("@new_description_action", descriptionAction_TextBox.Text);
-                command.Parameters.AddWithValue("@new_data_time", actionDate);
+                command.Parameters.AddWithValue("@new_data_time", actionDate.ToString("dd.MM.yyyy"));
                 command.Parameters.AddWithValue("@new_id_procedure", selectedProcedure.idProcedure);
                 command.Parameters.AddWithValue("@new_id_medication", selectedMedication.idMedication);
 
@@ -578,37 +588,14 @@ namespace Helsi
                 return;
             }
 
-            if (idProcedure_comboBox.SelectedItem == null)
-            {
-                MessageBox.Show("Будь ласка, виберіть процедуру", "Попередження",
-                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                return;
-            }
-
-            if (idMedication_comboBox.SelectedItem == null)
-            {
-                MessageBox.Show("Будь ласка, виберіть медикамент", "Попередження",
-                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                return;
-            }
+          
 
             var selectedDoctor = (Doctor)idDoctor_comboBox.SelectedItem;
             var selectedEpisode = (Episode)idEpisodeCard_comboBox.SelectedItem;
             var selectedMedicalCard = (MedicalCard)idMedicalCard_comboBox.SelectedItem;
-            var selectedProcedure = (Procedure)idProcedure_comboBox.SelectedItem;
-            var selectedMedication = (Medication)idMedication_comboBox.SelectedItem;
+          
 
-            DateTime actionDate;
-
-            // Перевіряємо, чи дата введена коректно
-            if (!DateTime.TryParse(dateTimeAction_TextBox.Text, out actionDate))
-            {
-                MessageBox.Show("Будь ласка, введіть коректну дату", "Попередження",
-                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+           
 
             using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
             {
