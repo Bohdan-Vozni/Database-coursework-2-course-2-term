@@ -10,7 +10,7 @@ CREATE PROCEDURE InsertActionProc
     @id_episode CHAR(36),
     @id_medical_card CHAR(36),
     @description_action NVARCHAR(MAX),
-    @data_time DATE,
+    @data_time date,
     @id_procedure CHAR(36) = NULL,
     @id_medication CHAR(36) = NULL
 AS

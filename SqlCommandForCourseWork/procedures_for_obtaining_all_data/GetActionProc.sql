@@ -2,39 +2,41 @@ USE Helsi;
 GO
 
 IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'GetAllActionProc')
-DROP PROCEDURE GetAllActionProc;
+    DROP PROCEDURE GetAllActionProc;
 GO
 
 CREATE PROCEDURE GetAllActionProc
+    @PatientName NVARCHAR(100) = ''
 AS
 BEGIN
     SET NOCOUNT ON;
     
     SELECT 
+	      -- Інформація про пацієнта
+        p.full_name AS 'Імя пацієнта',
         a.id_doctor,
-		d.name_doctor AS doctor_name,
-        d.specialization AS doctor_specialization,
+        d.name_doctor AS 'Імя доктора',
+        d.specialization AS 'Спеціалізація доктора',
 
         a.id_episode,
-		e.diagnosis,
+        e.diagnosis AS 'Діагноз',
 
         a.id_medical_card,
 
-        a.description_action,
-        a.data_time AS action_date,
+        a.description_action AS 'Опис дії',
+        a.data_time AS 'Дата дії',
         a.id_procedure,
         a.id_medication,
-        -- Інформація про лікаря
-       
+
+        -- Інформація про процедуру
+        pc.name_procedure AS 'Процедура що проводилася',
+
+        -- Інформація про ліки
+        m.name_medication AS 'Назва ліків',
+
         -- Інформація про відділення
-        --dep.name_department AS department_name,
-        -- Інформація про пацієнта
-        ---p.full_name AS patient_name,
-        -- Інформація про процедуру (якщо є)
-        pc.name_procedure AS 'прроцедура що проводилася',
-        -- Інформація про ліки (якщо є)
-        m.name_medication AS medication_name
-        --m.manufacturer AS medication_manufacturer
+        dep.name_department AS 'Відділення'
+
     FROM 
         Action_ISPS a
     LEFT JOIN 
@@ -51,6 +53,8 @@ BEGIN
         Procedure_Client pc ON a.id_procedure = pc.id_procedure
     LEFT JOIN 
         Medication m ON a.id_medication = m.id_medication
+    WHERE
+        @PatientName = '' OR p.full_name LIKE '%' + @PatientName + '%'
     ORDER BY 
         a.data_time DESC;
 END;

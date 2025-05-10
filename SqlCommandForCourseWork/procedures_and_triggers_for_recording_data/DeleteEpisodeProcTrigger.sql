@@ -10,39 +10,41 @@ CREATE PROCEDURE DeleteEpisodeProc
     @id_medical_card CHAR(36)
 AS
 BEGIN
-    SET NOCOUNT ON;
-    
-    BEGIN TRY
-        BEGIN TRANSACTION;
-        
-        ---- Спочатку видаляємо всі пов'язані записи з Action_ISPS
-        --DELETE FROM Action_ISPS 
-        --WHERE id_episode = @id_episode 
-        --AND id_medical_card = @id_medical_card;
-        
-        -- Потім видаляємо сам епізод
-        DELETE FROM Episode 
-        WHERE id_episode = @id_episode 
-        AND id_medical_card = @id_medical_card;
-        
-        -- Перевіряємо, чи було щось видалено
-        IF @@ROWCOUNT = 0
-        BEGIN
-            RAISERROR('Епізод з вказаними ID не знайдено', 16, 1);
-        END
-        
-        COMMIT TRANSACTION;
-        
-        SELECT 'Success' AS Result;
-    END TRY
-    BEGIN CATCH
-        IF @@TRANCOUNT > 0
-            ROLLBACK TRANSACTION;
-            
-        SELECT 
-            'Error' AS Result,
-            ERROR_MESSAGE() AS ErrorMessage,
-            ERROR_NUMBER() AS ErrorNumber;
-    END CATCH
+     DELETE FROM Episode
+    WHERE id_medical_card = @id_medical_card and id_episode = @id_episode
 END;
+GO
+
+
+IF EXISTS (SELECT name FROM sys.triggers WHERE name = 'TRG_DeleteEpisode_ViaMedicalCard')
+    DROP TRIGGER TRG_DeleteEpisode_ViaMedicalCard;
+GO
+
+CREATE TRIGGER TRG_DeleteEpisode_ViaMedicalCard
+ON Episode
+INSTEAD OF DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Перевіряємо чи є записи в Action_ISPS, пов’язані з епізодом
+    IF EXISTS (
+        SELECT 1
+        FROM Action_ISPS A
+        INNER JOIN deleted D 
+            ON A.id_episode = D.id_episode
+           AND A.id_medical_card = D.id_medical_card
+    )
+    BEGIN
+        RAISERROR('Неможливо видалити епізод, оскільки існують пов’язані дії. Спочатку видаліть їх.', 16, 1);
+        RETURN;
+    END
+
+    -- Якщо немає пов’язаних дій — безпечно видалити епізод
+    DELETE E
+    FROM Episode E
+    INNER JOIN deleted D 
+        ON E.id_medical_card = D.id_medical_card
+       AND E.id_episode = D.id_episode
+END
 GO

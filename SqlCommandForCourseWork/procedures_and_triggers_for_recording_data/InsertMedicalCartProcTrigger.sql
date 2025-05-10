@@ -10,7 +10,7 @@ CREATE PROCEDURE InsertMedicalCardProc
     @id_medical_card CHAR(36),
     @id_patient CHAR(36),
     @declaration_doctor NVARCHAR(MAX),
-    @date_created NVARCHAR(MAX),
+    @date_created DATE,
     @status_card NVARCHAR(MAX) = NULL
 AS
 BEGIN

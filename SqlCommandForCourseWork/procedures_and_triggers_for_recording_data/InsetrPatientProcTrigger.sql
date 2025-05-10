@@ -9,7 +9,7 @@ GO
 create procedure InsertPatientProc
 @id_patient char(36) = '',
 @full_name varchar(max)  = '',
-@date_of_bith date = '',
+@date_of_bith date,
 @phone_number  varchar(max) = '',
 @address_patient varchar(max) = ''
 

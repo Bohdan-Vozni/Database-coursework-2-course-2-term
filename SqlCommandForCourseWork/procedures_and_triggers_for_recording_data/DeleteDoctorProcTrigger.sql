@@ -9,42 +9,37 @@ CREATE PROCEDURE DeleteDoctorProc
     @id_doctor CHAR(36)
 AS
 BEGIN
-    SET NOCOUNT ON;
     
-    BEGIN TRY
-        BEGIN TRANSACTION;
-        
-        -- Перевірка існування лікаря
-        IF NOT EXISTS (SELECT 1 FROM Doctor WHERE id_doctor = @id_doctor)
-        BEGIN
-            RAISERROR('Лікар з вказаним ID не знайдений', 16, 1);
-            RETURN;
-        END
-        
-        -- Видалення пов'язаних записів з Action_ISPS (якщо необхідно)
-        DELETE FROM Action_ISPS WHERE id_doctor = @id_doctor;
-        
-        -- Видалення лікаря
         DELETE FROM Doctor WHERE id_doctor = @id_doctor;
         
-        -- Перевірка, чи було видалено запис
-        IF @@ROWCOUNT = 0
-        BEGIN
-            RAISERROR('Не вдалося видалити лікаря', 16, 1);
-        END
         
-        COMMIT TRANSACTION;
-        
-        SELECT 'Success' AS Result;
-    END TRY
-    BEGIN CATCH
-        IF @@TRANCOUNT > 0
-            ROLLBACK TRANSACTION;
-            
-        SELECT 
-            'Error' AS Result,
-            ERROR_MESSAGE() AS ErrorMessage,
-            ERROR_NUMBER() AS ErrorNumber;
-    END CATCH
 END;
+GO
+
+IF EXISTS (SELECT name FROM sys.triggers WHERE name = 'TRG_Prevent_Delete_Doctor_If_Linked')
+    DROP TRIGGER TRG_Prevent_Delete_Doctor_If_Linked;
+GO
+
+CREATE TRIGGER TRG_Prevent_Delete_Doctor_If_Linked
+ON Doctor
+INSTEAD OF DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Перевіряємо чи є записи Action_ISPS, що ссилаються на доктора
+    IF EXISTS (
+        SELECT 1
+        FROM Action_ISPS A
+        INNER JOIN deleted D ON A.id_doctor = D.id_doctor
+    )
+    BEGIN
+        RAISERROR('Неможливо видалити лікаря, оскільки існують пов’язані дії. Спочатку видаліть їх.', 16, 1);
+        RETURN;
+    END
+
+    -- Якщо немає пов’язаних записів — безпечно видалити лікаря
+    DELETE FROM Doctor
+    WHERE id_doctor IN (SELECT id_doctor FROM deleted);
+END
 GO

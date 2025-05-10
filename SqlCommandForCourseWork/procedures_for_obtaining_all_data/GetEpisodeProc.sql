@@ -1,8 +1,12 @@
-if exists ( select name from sys.objects where name = 'GetAllEpisodeProc')
-	drop procedure GetAllEpisodeProc;
-go
+USE Helsi;
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'GetAllEpisodeProc')
+    DROP PROCEDURE GetAllEpisodeProc;
+GO
 
 CREATE PROCEDURE GetAllEpisodeProc
+    @PatientName NVARCHAR(100) = ''
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -13,10 +17,10 @@ BEGIN
         p.full_name AS 'Імя пацієнта',
         mc.date_created AS 'дата створення мед картки',
         e.diagnosis  AS 'Діагноз',
-        e.description_diagnosis AS 'Опис діагноза'
-        --d.name_doctor AS attending_doctor,
-        --dep.name_department AS department_name,
-        --COUNT(a.id_episode) AS action_count
+        e.description_diagnosis AS 'Опис діагноза',
+        d.name_doctor AS 'Лікар',
+        dep.name_department AS 'Відділення',
+        COUNT(a.id_episode) AS 'К-сть дій'
     FROM 
         Episode e
     INNER JOIN 
@@ -29,6 +33,8 @@ BEGIN
         Doctor d ON a.id_doctor = d.id_doctor
     LEFT JOIN 
         Department dep ON d.id_department = dep.id_department
+    WHERE
+        @PatientName = '' OR p.full_name LIKE '%' + @PatientName + '%'
     GROUP BY 
         e.id_episode,
         e.id_medical_card,
