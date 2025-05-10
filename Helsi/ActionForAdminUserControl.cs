@@ -440,7 +440,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_episode", selectedEpisode.idEpisode);
                 command.Parameters.AddWithValue("@id_medical_card", selectedMedicalCard.idMedicaCard);
                 command.Parameters.AddWithValue("@description_action", descriptionAction_TextBox.Text);
-                command.Parameters.AddWithValue("@data_time", dateTime.ToString("dd.MM.yyyy"));
+                command.Parameters.AddWithValue("@data_time", dateTime);
                 command.Parameters.AddWithValue("@id_procedure", selectedProcedure.idProcedure);
                 command.Parameters.AddWithValue("@id_medication", selectedMedication.idMedication);
 
@@ -556,7 +556,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_episode", selectedEpisode.idEpisode);
                 command.Parameters.AddWithValue("@id_medical_card", selectedMedicalCard.idMedicaCard);
                 command.Parameters.AddWithValue("@new_description_action", descriptionAction_TextBox.Text);
-                command.Parameters.AddWithValue("@new_data_time", actionDate.ToString("dd.MM.yyyy"));
+                command.Parameters.AddWithValue("@new_data_time", actionDate);
                 command.Parameters.AddWithValue("@new_id_procedure", selectedProcedure.idProcedure);
                 command.Parameters.AddWithValue("@new_id_medication", selectedMedication.idMedication);
 

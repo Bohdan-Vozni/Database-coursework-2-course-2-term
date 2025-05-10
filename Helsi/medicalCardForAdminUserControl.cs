@@ -184,7 +184,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_medical_card", idUnic);
                 command.Parameters.AddWithValue("@id_patient", selectedPatient.idPatient);
                 command.Parameters.AddWithValue("@declaration_doctor", declarationDoctorTextBox_MedicalCardForAdmin.Text);
-                command.Parameters.AddWithValue("@date_created", dateCreate.ToString("dd.MM.yyyy"));
+                command.Parameters.AddWithValue("@date_created", dateCreate);
                 command.Parameters.AddWithValue("@status_card", statusCardTextBox_MedicalCardForAdmin.Text);
 
                 connection.Open();
@@ -251,7 +251,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_medical_card", idMedicalCardTextBox_MedicalCardForAdmin.Text);
                 command.Parameters.AddWithValue("@id_patient", selectedPatient.idPatient);
                 command.Parameters.AddWithValue("@declaration_doctor", declarationDoctorTextBox_MedicalCardForAdmin.Text);
-                command.Parameters.AddWithValue("@date_created", create_dateTimePicker1.Value.ToString("dd.MM.yyyy"));
+                command.Parameters.AddWithValue("@date_created", create_dateTimePicker1.Value);
                 command.Parameters.AddWithValue("@status_card", statusCardTextBox_MedicalCardForAdmin.Text);
 
                 connection.Open();
@@ -327,11 +327,15 @@ namespace Helsi
                 }
                 catch (SqlException ex)
                 {
-                    foreach (SqlError error in ex.Errors)
-                    {
-                        MessageBox.Show(error.Message, "Помилка видалення медичної картки", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
+                   
+                        
+                    MessageBox.Show(ex.Message, "Помилка видалення медичної картки", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //foreach (SqlError error in ex.Errors)
+                    //{
+                    //    MessageBox.Show(error.Message, "Помилка оновлено даних пацієнта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
+
+                }               
                 catch (Exception ex)
                 {
                     // Інші неочікувані помилки

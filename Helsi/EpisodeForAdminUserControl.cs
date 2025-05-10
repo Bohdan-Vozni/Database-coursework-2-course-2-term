@@ -309,7 +309,7 @@ namespace Helsi
                 {
                     foreach (SqlError error in ex.Errors)
                     {
-                        MessageBox.Show(error.Message, "Помилка видаленя епізоду ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(error.Message, "Помилка видалення епізоду", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 catch (Exception ex)

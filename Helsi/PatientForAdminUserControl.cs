@@ -120,7 +120,7 @@ namespace Helsi
                 //додати параметри
                 command.Parameters.AddWithValue("@id_patient", idUnic);
                 command.Parameters.AddWithValue("@full_name", fulnameTextBox_PatientForAdmin.Text);
-                command.Parameters.AddWithValue("@date_of_bith", bith_dateTimePicker1.Value.ToString("dd.MM.yyyy"));
+                command.Parameters.AddWithValue("@date_of_bith", bith_dateTimePicker1.Value);
                 command.Parameters.AddWithValue("@phone_number", phoneNumberTextBox_PatientForAdmin.Text);
                 command.Parameters.AddWithValue("@address_patient", addressTextBox_PatientForAdmin.Text);
 
@@ -149,6 +149,65 @@ namespace Helsi
             }
             ShowDataToGrit(searchStrning);
         }
+
+
+        private void updatePatientForAdmin_button_Click_1(object sender, EventArgs e)
+        {
+
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете оновити пацієнта?",
+                "Підтвердження дії",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
+            {
+
+
+                SqlCommand command = new SqlCommand("UpdatePatientProc", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+
+                var idUnic = idTextBox_PatientForAdmin.Text;
+                //додати параметри
+                command.Parameters.AddWithValue("@id_patient", idUnic);
+                command.Parameters.AddWithValue("@full_name", fulnameTextBox_PatientForAdmin.Text);
+                command.Parameters.AddWithValue("@date_of_bith", bith_dateTimePicker1.Value);
+                command.Parameters.AddWithValue("@phone_number", phoneNumberTextBox_PatientForAdmin.Text);
+                command.Parameters.AddWithValue("@address_patient", addressTextBox_PatientForAdmin.Text);
+
+
+                connection.Open();
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Пацієнта успішно оновлено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (SqlException ex)
+                {
+                    foreach (SqlError error in ex.Errors)
+                    {
+                        MessageBox.Show(error.Message, "Помилка оновлено даних пацієнта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Інші неочікувані помилки
+                    MessageBox.Show(ex.Message, "Неочікувана помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                ShowDataToGrit(searchStrning);
+
+            }
+        }
+
 
         private void deletePatientForAdmin_button_Click(object sender, EventArgs e)
         {
@@ -189,64 +248,7 @@ namespace Helsi
                 {
                     foreach (SqlError error in ex.Errors)
                     {
-                        MessageBox.Show(error.Message, "Помилка видаленя пацієнта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Інші неочікувані помилки
-                    MessageBox.Show(ex.Message, "Неочікувана помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                ShowDataToGrit(searchStrning);
-
-            }
-        }
-
-        private void updatePatientForAdmin_button_Click_1(object sender, EventArgs e)
-        {
-
-            DialogResult result = MessageBox.Show(
-                "Ви впевнені, що хочете оновити пацієнта?",
-                "Підтвердження дії",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.No)
-            {
-                return;
-            }
-
-            using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
-            {
-
-
-                SqlCommand command = new SqlCommand("UpdatePatientProc", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-
-                var idUnic = idTextBox_PatientForAdmin.Text;
-                //додати параметри
-                command.Parameters.AddWithValue("@id_patient", idUnic);
-                command.Parameters.AddWithValue("@full_name", fulnameTextBox_PatientForAdmin.Text);
-                command.Parameters.AddWithValue("@date_of_bith", bith_dateTimePicker1.Value.ToString("dd.MM.yyyy"));
-                command.Parameters.AddWithValue("@phone_number", phoneNumberTextBox_PatientForAdmin.Text);
-                command.Parameters.AddWithValue("@address_patient", addressTextBox_PatientForAdmin.Text);
-
-
-                connection.Open();
-
-                try
-                {
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Пацієнта успішно оновлено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (SqlException ex)
-                {
-                    foreach (SqlError error in ex.Errors)
-                    {
-                        MessageBox.Show(error.Message, "Помилка оновлено даних пацієнта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(error.Message, "Помилка видалення даних пацієнта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 catch (Exception ex)
