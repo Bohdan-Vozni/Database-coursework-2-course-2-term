@@ -13,29 +13,29 @@ BEGIN
     
     SELECT 
 	      -- Інформація про пацієнта
-        p.full_name AS 'Імя пацієнта',
+        p.full_name,
         a.id_doctor,
-        d.name_doctor AS 'Імя доктора',
-        d.specialization AS 'Спеціалізація доктора',
+        d.name_doctor,
+        d.specialization ,
 
         a.id_episode,
-        e.diagnosis AS 'Діагноз',
+        e.diagnosis,
 
         a.id_medical_card,
 
-        a.description_action AS 'Опис дії',
-        a.data_time AS 'Дата дії',
+        a.description_action ,
+        a.data_time ,
         a.id_procedure,
         a.id_medication,
 
         -- Інформація про процедуру
-        pc.name_procedure AS 'Процедура що проводилася',
+        pc.name_procedure ,
 
         -- Інформація про ліки
-        m.name_medication AS 'Назва ліків',
+        m.name_medication ,
 
         -- Інформація про відділення
-        dep.name_department AS 'Відділення'
+        dep.name_department
 
     FROM 
         Action_ISPS a

@@ -14,8 +14,8 @@ BEGIN
     BEGIN TRY
         SELECT 
             id_procedure,
-            name_procedure AS 'Назва процедури',
-            description_procedure AS 'Опис процедури'
+            name_procedure ,
+            description_procedure 
         FROM 
             Procedure_Client
         WHERE

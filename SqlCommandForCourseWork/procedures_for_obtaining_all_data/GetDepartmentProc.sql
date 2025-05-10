@@ -13,8 +13,8 @@ BEGIN
     
     SELECT 
         id_department,
-        name_department AS 'Назва відділення',
-        description_department AS 'Опис відділення'
+        name_department,
+        description_department 
     FROM 
         Department
     WHERE
