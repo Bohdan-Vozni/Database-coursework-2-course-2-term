@@ -46,7 +46,7 @@ BEGIN
         WHERE d.id_department <> i.id_department  -- Exclude the current record
     )
     BEGIN
-        RAISERROR('Another department with this name already exists', 16, 1);
+        RAISERROR('Інше відділення з таким імям вже існує', 16, 1);
         RETURN;
     END
     

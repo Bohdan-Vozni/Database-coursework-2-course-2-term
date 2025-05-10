@@ -50,7 +50,7 @@ BEGIN
         WHERE m.id_medication <> i.id_medication  -- Exclude the current record
     )
     BEGIN
-        RAISERROR('Another medication with this name already exists', 16, 1);
+        RAISERROR('Інший медикамент з такою назвою вже існує', 16, 1);
         RETURN;
     END
     
@@ -61,7 +61,7 @@ BEGIN
         WHERE expiration_date <= GETDATE()
     )
     BEGIN
-        RAISERROR('Expiration date must be in the future', 16, 1);
+        RAISERROR('Дата придатності повинна бути більша да поточну дату', 16, 1);
         RETURN;
     END
     

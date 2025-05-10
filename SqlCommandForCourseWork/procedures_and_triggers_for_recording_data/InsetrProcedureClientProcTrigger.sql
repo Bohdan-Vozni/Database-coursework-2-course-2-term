@@ -41,7 +41,7 @@ BEGIN
         JOIN Procedure_Client pc ON i.name_procedure = pc.name_procedure
     )
     BEGIN
-        RAISERROR('Procedure with this name already exists', 16, 1);
+        RAISERROR('Процедура з такою назвою вже існує', 16, 1);
         RETURN;
     END
     

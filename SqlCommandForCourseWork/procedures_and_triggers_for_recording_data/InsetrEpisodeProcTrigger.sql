@@ -14,42 +14,49 @@ AS
 BEGIN
     SET NOCOUNT ON;
     
-    BEGIN TRY
-        BEGIN TRANSACTION;
-        
-        -- Перевірка існування медичної картки
-        IF NOT EXISTS (SELECT 1 FROM Medical_card WHERE id_medical_card = @id_medical_card)
-        BEGIN
-            RAISERROR('Медична картка з вказаним ID не знайдена', 16, 1);
-            RETURN;
-        END
-        
-        -- Додавання нового епізоду
-        INSERT INTO Episode (
-            id_episode,
-            id_medical_card,
-            diagnosis,
-            description_diagnosis
-        )
-        VALUES (
-            @id_episode,
-            @id_medical_card,
-            @diagnosis,
-            @description_diagnosis
-        );
-        
-        COMMIT TRANSACTION;
-        
-        SELECT 'Success' AS Result;
-    END TRY
-    BEGIN CATCH
-        IF @@TRANCOUNT > 0
-            ROLLBACK TRANSACTION;
-            
-        SELECT 
-            'Error' AS Result,
-            ERROR_MESSAGE() AS ErrorMessage,
-            ERROR_NUMBER() AS ErrorNumber;
-    END CATCH
+    INSERT INTO Episode (
+        id_episode,
+        id_medical_card,
+        diagnosis,
+        description_diagnosis
+    )
+    VALUES (
+        @id_episode,
+        @id_medical_card,
+        @diagnosis,
+        @description_diagnosis
+    );
+END;
+GO
+
+
+-- Видаляємо тригер якщо існує
+IF EXISTS (SELECT * FROM sys.triggers WHERE name = 'trg_PreventInsertEpisodeWithoutMedicalCard')
+DROP TRIGGER trg_PreventInsertEpisodeWithoutMedicalCard;
+GO
+
+CREATE TRIGGER trg_PreventInsertEpisodeWithoutMedicalCard
+ON Episode
+INSTEAD OF INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Перевірка чи всі вставлені записи мають існуючу медичну картку
+    IF EXISTS (
+        SELECT 1
+        FROM inserted i
+        LEFT JOIN Medical_card m ON i.id_medical_card = m.id_medical_card
+        WHERE m.id_medical_card IS NULL
+    )
+    BEGIN
+        RAISERROR('Не вдалося додати епізод: медична картка з таким ID не існує.', 16, 1);
+        RETURN;
+    END
+
+    -- Якщо перевірка пройдена, виконуємо вставку
+    INSERT INTO Episode (id_episode, id_medical_card, diagnosis, description_diagnosis)
+    SELECT id_episode, id_medical_card, diagnosis, description_diagnosis
+    FROM inserted;
 END;
 GO

@@ -41,7 +41,7 @@ BEGIN
         JOIN Department d ON i.name_department = d.name_department
     )
     BEGIN
-        RAISERROR('Department with this name already exists', 16, 1);
+        RAISERROR('Відділення з таким імям вже існує', 16, 1);
         RETURN;
     END
     
