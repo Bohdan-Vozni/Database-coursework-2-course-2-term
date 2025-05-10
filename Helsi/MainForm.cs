@@ -278,5 +278,11 @@ namespace Helsi
             viewReportForAll(_procedureName: "GetMedicationUsageByDepartment", _nameReport: " Звіт про використання ліків по відділеннях (за останні 3 місяці)");
 
         }
+
+        private void reportPatientTheHighestVisitLast1Year_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewReportForAll(_procedureName: "GetTopPatients", _nameReport: "Звіт про пацієнтів із найбільшою кількістю відвідувань (за рік)");
+
+        }
     }
 }

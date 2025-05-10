@@ -44,6 +44,7 @@
             allDiagnosisPatients_ToolStripMenuItem = new ToolStripMenuItem();
             loadDoctor_ToolStripMenuItem = new ToolStripMenuItem();
             expirationDateDrugToolStripMenuItem = new ToolStripMenuItem();
+            useDrugOnDepartmentFor3Manth_ToolStripMenuItem = new ToolStripMenuItem();
             generateReportToolStripMenuItem = new ToolStripMenuItem();
             closeUserControllForAddInfo_button = new Button();
             medicalCardForAdminUserControl1 = new medicalCardForAdminUserControl();
@@ -55,7 +56,7 @@
             medicationForAdminUserControl1 = new MedicationForAdminUserControl();
             procedureClientForAdminUserControl1 = new ProcedureClientForAdminUserControl();
             reportAllDiagnosisForPatients1 = new ForAllReportUserControl();
-            useDrugOnDepartmentFor3Manth_ToolStripMenuItem = new ToolStripMenuItem();
+            reportPatientTheHighestVisitLast1Year_ToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -148,7 +149,7 @@
             // 
             // звітиToolStripMenuItem
             // 
-            звітиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { allDiagnosisPatients_ToolStripMenuItem, loadDoctor_ToolStripMenuItem, expirationDateDrugToolStripMenuItem, useDrugOnDepartmentFor3Manth_ToolStripMenuItem });
+            звітиToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { allDiagnosisPatients_ToolStripMenuItem, loadDoctor_ToolStripMenuItem, expirationDateDrugToolStripMenuItem, useDrugOnDepartmentFor3Manth_ToolStripMenuItem, reportPatientTheHighestVisitLast1Year_ToolStripMenuItem });
             звітиToolStripMenuItem.Name = "звітиToolStripMenuItem";
             звітиToolStripMenuItem.Size = new Size(47, 20);
             звітиToolStripMenuItem.Text = "Звіти";
@@ -156,23 +157,30 @@
             // allDiagnosisPatients_ToolStripMenuItem
             // 
             allDiagnosisPatients_ToolStripMenuItem.Name = "allDiagnosisPatients_ToolStripMenuItem";
-            allDiagnosisPatients_ToolStripMenuItem.Size = new Size(323, 22);
+            allDiagnosisPatients_ToolStripMenuItem.Size = new Size(417, 22);
             allDiagnosisPatients_ToolStripMenuItem.Text = "Всі діагнози пацієнтів";
             allDiagnosisPatients_ToolStripMenuItem.Click += allDiagnosisPatients_ToolStripMenuItem_Click;
             // 
             // loadDoctor_ToolStripMenuItem
             // 
             loadDoctor_ToolStripMenuItem.Name = "loadDoctor_ToolStripMenuItem";
-            loadDoctor_ToolStripMenuItem.Size = new Size(323, 22);
+            loadDoctor_ToolStripMenuItem.Size = new Size(417, 22);
             loadDoctor_ToolStripMenuItem.Text = "Завантаженість лікара";
             loadDoctor_ToolStripMenuItem.Click += loadDoctor_ToolStripMenuItem_Click;
             // 
             // expirationDateDrugToolStripMenuItem
             // 
             expirationDateDrugToolStripMenuItem.Name = "expirationDateDrugToolStripMenuItem";
-            expirationDateDrugToolStripMenuItem.Size = new Size(323, 22);
+            expirationDateDrugToolStripMenuItem.Size = new Size(417, 22);
             expirationDateDrugToolStripMenuItem.Text = "Термін придатності ліків";
             expirationDateDrugToolStripMenuItem.Click += expirationDateDrugToolStripMenuItem_Click;
+            // 
+            // useDrugOnDepartmentFor3Manth_ToolStripMenuItem
+            // 
+            useDrugOnDepartmentFor3Manth_ToolStripMenuItem.Name = "useDrugOnDepartmentFor3Manth_ToolStripMenuItem";
+            useDrugOnDepartmentFor3Manth_ToolStripMenuItem.Size = new Size(417, 22);
+            useDrugOnDepartmentFor3Manth_ToolStripMenuItem.Text = "Використання ліків по відділеннях за 3 місяці";
+            useDrugOnDepartmentFor3Manth_ToolStripMenuItem.Click += useDrugOnDepartmentFor3Manth_ToolStripMenuItem_Click;
             // 
             // generateReportToolStripMenuItem
             // 
@@ -254,12 +262,12 @@
             reportAllDiagnosisForPatients1.Size = new Size(929, 644);
             reportAllDiagnosisForPatients1.TabIndex = 12;
             // 
-            // useDrugOnDepartmentFor3Manth_ToolStripMenuItem
+            // reportPatientTheHighestVisitLast1Year_ToolStripMenuItem
             // 
-            useDrugOnDepartmentFor3Manth_ToolStripMenuItem.Name = "useDrugOnDepartmentFor3Manth_ToolStripMenuItem";
-            useDrugOnDepartmentFor3Manth_ToolStripMenuItem.Size = new Size(323, 22);
-            useDrugOnDepartmentFor3Manth_ToolStripMenuItem.Text = "Використання ліків по відділеннях за 3 місяці";
-            useDrugOnDepartmentFor3Manth_ToolStripMenuItem.Click += useDrugOnDepartmentFor3Manth_ToolStripMenuItem_Click;
+            reportPatientTheHighestVisitLast1Year_ToolStripMenuItem.Name = "reportPatientTheHighestVisitLast1Year_ToolStripMenuItem";
+            reportPatientTheHighestVisitLast1Year_ToolStripMenuItem.Size = new Size(417, 22);
+            reportPatientTheHighestVisitLast1Year_ToolStripMenuItem.Text = "Звіт про пацієнтів із найбільшою кількістю відвідувань (за рік)";
+            reportPatientTheHighestVisitLast1Year_ToolStripMenuItem.Click += reportPatientTheHighestVisitLast1Year_ToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -319,5 +327,6 @@
         private ToolStripMenuItem expirationDateDrugToolStripMenuItem;
         private ToolStripMenuItem generateReportToolStripMenuItem;
         private ToolStripMenuItem useDrugOnDepartmentFor3Manth_ToolStripMenuItem;
+        private ToolStripMenuItem reportPatientTheHighestVisitLast1Year_ToolStripMenuItem;
     }
 }
