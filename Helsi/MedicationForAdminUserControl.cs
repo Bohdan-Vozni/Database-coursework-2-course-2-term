@@ -87,11 +87,19 @@ namespace Helsi
                     .Cells["description_medication"]
                     .FormattedValue.ToString();
 
-                expirationDateMedication_TextBox.Text = medication_dataGridView
-                    .Rows[e.RowIndex]
-                    .Cells["expiration_date"]
-                    .FormattedValue.ToString();
+                var dateValue = medication_dataGridView.Rows[e.RowIndex].Cells["expiration_date"].Value;
 
+                if (dateValue != null && DateTime.TryParse(dateValue.ToString(), out DateTime parsedDate))
+                {
+                    expiration_dateTimePicker.Value = parsedDate;
+                }
+                else
+                {
+                    // Встановимо сьогоднішню дату або якусь дефолтну
+                    expiration_dateTimePicker.Value = DateTime.Today;
+                }
+
+               
 
             }
         }
@@ -126,7 +134,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@name_medication", nameMedication_TextBox.Text);
                 command.Parameters.AddWithValue("@manufacturer", manufacturerMedication_TextBox.Text);
                 command.Parameters.AddWithValue("@description_medication", descriptionMedication_TextBox.Text);
-                command.Parameters.AddWithValue("@expiration_date", expirationDateMedication_TextBox.Text);
+                command.Parameters.AddWithValue("@expiration_date", expiration_dateTimePicker.Value);
 
 
                 connection.Open();
@@ -185,7 +193,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@name_medication", nameMedication_TextBox.Text);
                 command.Parameters.AddWithValue("@manufacturer", manufacturerMedication_TextBox.Text);
                 command.Parameters.AddWithValue("@description_medication", descriptionMedication_TextBox.Text);
-                command.Parameters.AddWithValue("@expiration_date", expirationDateMedication_TextBox.Text);
+                command.Parameters.AddWithValue("@expiration_date", expiration_dateTimePicker.Value);
 
 
                 connection.Open();

@@ -37,7 +37,6 @@
             idMedication_TextBox = new TextBox();
             manufacturerMedication_TextBox = new TextBox();
             descriptionMedication_TextBox = new TextBox();
-            expirationDateMedication_TextBox = new TextBox();
             nameMedication_TextBox = new TextBox();
             label4 = new Label();
             label3 = new Label();
@@ -46,6 +45,7 @@
             label6 = new Label();
             textBoxSearch = new TextBox();
             clearAllField_Button = new Button();
+            expiration_dateTimePicker = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)medication_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -136,13 +136,6 @@
             descriptionMedication_TextBox.Size = new Size(360, 23);
             descriptionMedication_TextBox.TabIndex = 65;
             // 
-            // expirationDateMedication_TextBox
-            // 
-            expirationDateMedication_TextBox.Location = new Point(18, 394);
-            expirationDateMedication_TextBox.Name = "expirationDateMedication_TextBox";
-            expirationDateMedication_TextBox.Size = new Size(360, 23);
-            expirationDateMedication_TextBox.TabIndex = 66;
-            // 
             // nameMedication_TextBox
             // 
             nameMedication_TextBox.Location = new Point(18, 195);
@@ -219,10 +212,18 @@
             clearAllField_Button.UseVisualStyleBackColor = true;
             clearAllField_Button.Click += clearAllField_Button_Click;
             // 
+            // expiration_dateTimePicker
+            // 
+            expiration_dateTimePicker.Location = new Point(18, 396);
+            expiration_dateTimePicker.Name = "expiration_dateTimePicker";
+            expiration_dateTimePicker.Size = new Size(360, 23);
+            expiration_dateTimePicker.TabIndex = 75;
+            // 
             // MedicationForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(expiration_dateTimePicker);
             Controls.Add(textBoxSearch);
             Controls.Add(clearAllField_Button);
             Controls.Add(label6);
@@ -231,7 +232,6 @@
             Controls.Add(label3);
             Controls.Add(label4);
             Controls.Add(nameMedication_TextBox);
-            Controls.Add(expirationDateMedication_TextBox);
             Controls.Add(descriptionMedication_TextBox);
             Controls.Add(manufacturerMedication_TextBox);
             Controls.Add(idMedication_TextBox);
@@ -260,7 +260,6 @@
         private TextBox idMedication_TextBox;
         private TextBox manufacturerMedication_TextBox;
         private TextBox descriptionMedication_TextBox;
-        private TextBox expirationDateMedication_TextBox;
         private TextBox nameMedication_TextBox;
         private Label label4;
         private Label label3;
@@ -269,5 +268,6 @@
         private Label label6;
         private TextBox textBoxSearch;
         private Button clearAllField_Button;
+        private DateTimePicker expiration_dateTimePicker;
     }
 }
