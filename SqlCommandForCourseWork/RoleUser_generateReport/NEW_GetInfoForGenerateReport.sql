@@ -158,5 +158,5 @@ END;
 GO
 
 -- Виклик (без параметрів — виведе всі записи)
-EXEC GetFilteredFullDataReport;
+EXEC GetFilteredFullDataReport @PatientName = 'New'  ;
 GO
