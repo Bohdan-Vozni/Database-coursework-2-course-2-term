@@ -14,13 +14,13 @@ BEGIN
     SELECT 
         e.id_episode,
         e.id_medical_card,
-        p.full_name AS 'Імя пацієнта',
-        mc.date_created AS 'дата створення мед картки',
-        e.diagnosis  AS 'Діагноз',
-        e.description_diagnosis AS 'Опис діагноза',
-        d.name_doctor AS 'Лікар',
-        dep.name_department AS 'Відділення',
-        COUNT(a.id_episode) AS 'К-сть дій'
+        p.full_name ,
+        mc.date_created ,
+        e.diagnosis  ,
+        e.description_diagnosis ,
+        d.name_doctor ,
+        dep.name_department ,
+        COUNT(a.id_episode) AS countAction
     FROM 
         Episode e
     INNER JOIN 

@@ -22,6 +22,15 @@ namespace Helsi
         {
             ShowDataToGrit(searchStrning);
             textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
+            RenameHeaderTextInGrit();
+        }
+
+        private void RenameHeaderTextInGrit()
+        {
+            procedureClient_dataGridView.Columns["id_procedure"].Visible = false;
+            procedureClient_dataGridView.Columns["name_procedure"].HeaderText = "Назва процедури";
+            procedureClient_dataGridView.Columns["description_procedure"].HeaderText = "Опис процедури";
+            
         }
 
         private string searchStrning;
@@ -63,12 +72,12 @@ namespace Helsi
 
                 nameProcedureClient_TextBox.Text = procedureClient_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Назва процедури"]
+                    .Cells["name_procedure"]
                     .FormattedValue.ToString();
 
                 descriptionProcedureClient_TextBox.Text = procedureClient_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Опис процедури"]
+                    .Cells["description_procedure"]
                     .FormattedValue.ToString();
             }
         }

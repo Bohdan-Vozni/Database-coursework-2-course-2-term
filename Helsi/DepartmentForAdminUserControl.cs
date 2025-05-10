@@ -23,6 +23,17 @@ namespace Helsi
         {
             ShowDataToGrit(searchStrning);
             textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
+            RenameHeaderTextInGrit();
+        }
+
+        private void RenameHeaderTextInGrit()
+        {
+
+            department_dataGridView.Columns["id_department"].Visible = false;
+            department_dataGridView.Columns["name_department"].HeaderText = "Назва відділення";
+            department_dataGridView.Columns["description_department"].HeaderText = "Опис відділення";
+
+
         }
 
         private string searchStrning;
@@ -64,12 +75,12 @@ namespace Helsi
 
                 nameDepartment_TextBox.Text = department_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Назва відділення"]
+                    .Cells["name_department"]
                     .FormattedValue.ToString();
 
                 descriptionDepartment_TextBox.Text = department_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Опис відділення"]
+                    .Cells["description_department"]
                     .FormattedValue.ToString();
 
 

@@ -30,7 +30,30 @@ namespace Helsi
 
             // Додаємо обробник події зміни вибору в комбобоксі медичних карт
             idMedicalCard_comboBox.SelectedIndexChanged += MedicalCardComboBox_SelectedIndexChanged;
+            RenameHeaderTextInGrit();
+        }
+
+        private void RenameHeaderTextInGrit()
+        {
             
+            
+
+
+            action_dataGridView.Columns["full_name"].HeaderText = "Імя пацієнта";
+            action_dataGridView.Columns["id_doctor"].Visible = false;
+            action_dataGridView.Columns["name_doctor"].HeaderText = "Імя доктора";
+            action_dataGridView.Columns["specialization"].HeaderText = "Спеціалізація доктора";
+            action_dataGridView.Columns["id_episode"].Visible = false;
+            action_dataGridView.Columns["diagnosis"].HeaderText = "Діагноз";
+            action_dataGridView.Columns["id_medical_card"].Visible = false;
+            action_dataGridView.Columns["description_action"].HeaderText = "Опис дії";
+            action_dataGridView.Columns["data_time"].HeaderText = "Дата дії";
+            action_dataGridView.Columns["id_procedure"].Visible = false;
+            action_dataGridView.Columns["id_medication"].Visible = false;
+            action_dataGridView.Columns["name_procedure"].HeaderText = "Процедура що проводилася";
+            action_dataGridView.Columns["name_medication"].HeaderText = "Назва ліків";
+            action_dataGridView.Columns["name_department"].HeaderText = "Відділення";
+
         }
 
         private string searchStrning;
@@ -312,14 +335,14 @@ namespace Helsi
 
                 descriptionAction_TextBox.Text = action_dataGridView
                        .Rows[e.RowIndex]
-                       .Cells["Опис дії"]
+                       .Cells["description_action"]
                        .FormattedValue
                        .ToString();
 
 
                 var dateValue= action_dataGridView
                        .Rows[e.RowIndex]
-                       .Cells["Дата дії"]
+                       .Cells["data_time"]
                        .FormattedValue
                        .ToString();
 

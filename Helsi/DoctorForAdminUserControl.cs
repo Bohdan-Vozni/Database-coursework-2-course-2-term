@@ -24,6 +24,19 @@ namespace Helsi
             ShowDataToGrit(searchStrning);
             ShowDataDropDownList();
             textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
+            RenameHeaderTextInGrit();
+        }
+
+        private void RenameHeaderTextInGrit()
+        {
+
+            doctor_dataGridView.Columns["id_doctor"].Visible = false;
+            doctor_dataGridView.Columns["id_department"].Visible = false;
+            doctor_dataGridView.Columns["name_doctor"].HeaderText = "ПІБ Доктора";
+            doctor_dataGridView.Columns["name_department"].HeaderText = "Назва відділення";
+            doctor_dataGridView.Columns["specialization"].HeaderText = "Спеціалізація доктора";
+            doctor_dataGridView.Columns["phone_number"].HeaderText = "Номер телефону";
+
         }
 
         private string searchStrning;
@@ -117,17 +130,17 @@ namespace Helsi
 
                 fullNameDoctor_TextBox.Text = doctor_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["ПІБ Доктора"]
+                    .Cells["name_doctor"]
                     .FormattedValue.ToString();
 
                 specializationDoctor_TextBox.Text = doctor_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Спеціалізація доктора"]
+                    .Cells["specialization"]
                     .FormattedValue.ToString();
 
                 phoneNumberDoctor_TextBox.Text = doctor_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Номер телефону"]
+                    .Cells["phone_number"]
                     .FormattedValue.ToString();
 
             }

@@ -14,10 +14,10 @@ BEGIN
     SELECT 
         d.id_doctor,
         d.id_department,
-		d.name_doctor AS 'ПІБ Доктора',
-        dep.name_department AS 'Назва відділення',     
-        d.specialization AS 'Спеціалізація доктора',
-        d.phone_number AS 'Номер телефону'
+		d.name_doctor ,
+        dep.name_department ,     
+        d.specialization ,
+        d.phone_number 
     FROM 
         Doctor d
     INNER JOIN 

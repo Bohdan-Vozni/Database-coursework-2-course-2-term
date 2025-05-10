@@ -22,6 +22,16 @@ namespace Helsi
         {
             ShowDataToGrit(searchStrning);
             textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
+           RenameHeaderTextInGrit();
+        }
+
+        private void RenameHeaderTextInGrit()
+        {
+            medication_dataGridView.Columns["id_medication"].Visible = false;
+            medication_dataGridView.Columns["name_medication"].HeaderText = "Назва медикаменту";
+            medication_dataGridView.Columns["manufacturer"].HeaderText = "Виробник";
+            medication_dataGridView.Columns["description_medication"].HeaderText = "Опис медикаменту";
+            medication_dataGridView.Columns["expiration_date"].HeaderText = "Дата придатності";
         }
 
         private string searchStrning;
@@ -64,22 +74,22 @@ namespace Helsi
 
                 nameMedication_TextBox.Text = medication_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Назва медикаменту"]
+                    .Cells["name_medication"]
                     .FormattedValue.ToString();
 
                 manufacturerMedication_TextBox.Text = medication_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Виробник"]
+                    .Cells["manufacturer"]
                     .FormattedValue.ToString();
 
                 descriptionMedication_TextBox.Text = medication_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Опис медикаменту"]
+                    .Cells["description_medication"]
                     .FormattedValue.ToString();
 
                 expirationDateMedication_TextBox.Text = medication_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Дата придатності"]
+                    .Cells["expiration_date"]
                     .FormattedValue.ToString();
 
 

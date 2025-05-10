@@ -14,7 +14,7 @@ BEGIN
     SELECT 
         mc.id_medical_card,
         mc.id_patient,
-        p.full_name AS 'Імя пацієнта',
+        p.full_name,
         mc.declaration_doctor,
         mc.date_created,
         mc.status_card

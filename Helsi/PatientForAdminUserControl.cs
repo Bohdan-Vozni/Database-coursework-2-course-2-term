@@ -22,6 +22,17 @@ namespace Helsi
         private void PatientForAdminUserControl_Load(object sender, EventArgs e)
         {
             ShowDataToGrit(searchStrning);
+            RenameHeaderTextInGrit();
+        }
+
+        private void RenameHeaderTextInGrit()
+        {
+            patientForAdmin_dataGridView.Columns["id_patient"].HeaderText = "Ідетифікатор пацієнта";
+            patientForAdmin_dataGridView.Columns["id_patient"].Visible = false;
+            patientForAdmin_dataGridView.Columns["full_name"].HeaderText = "ПІБ пацієнта";
+            patientForAdmin_dataGridView.Columns["date_of_birth"].HeaderText = "Дата народження пацієнта";
+            patientForAdmin_dataGridView.Columns["phone_number"].HeaderText = "Номер телефоку пацієнта";
+            patientForAdmin_dataGridView.Columns["address_patient"].HeaderText = "Адреса пацієнта";
         }
 
         private string searchStrning;

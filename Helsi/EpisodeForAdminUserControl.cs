@@ -24,6 +24,22 @@ namespace Helsi
             ShowDataToGrit(searchStrning);
             ShowDataDropDownList();
             textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
+            RenameHeaderTextInGrit();
+        }
+
+        private void RenameHeaderTextInGrit()
+        {
+            episode_dataGridView.Columns["id_episode"].Visible = false;
+            episode_dataGridView.Columns["id_medical_card"].Visible = false;
+            episode_dataGridView.Columns["full_name"].HeaderText = "Імя пацієнта";
+            episode_dataGridView.Columns["date_created"].HeaderText = "дата створення мед картки";
+            episode_dataGridView.Columns["diagnosis"].HeaderText = "Діагноз";
+            episode_dataGridView.Columns["description_diagnosis"].HeaderText = "Опис діагноза";
+            episode_dataGridView.Columns["name_doctor"].HeaderText = "Лікар";
+            episode_dataGridView.Columns["name_department"].HeaderText = "Відділення";
+            episode_dataGridView.Columns["countAction"].HeaderText = "К-сть дій";
+            
+            
         }
 
         private string searchStrning;
@@ -113,12 +129,12 @@ namespace Helsi
 
                 diagnosis_TextBox.Text = episode_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Діагноз"]
+                    .Cells["diagnosis"]
                     .FormattedValue.ToString();
 
                 description_TextBox.Text = episode_dataGridView
                     .Rows[e.RowIndex]
-                    .Cells["Опис діагноза"]
+                    .Cells["description_diagnosis"]
                     .FormattedValue.ToString();
 
 

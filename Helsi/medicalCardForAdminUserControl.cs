@@ -25,7 +25,19 @@ namespace Helsi
             ShowDataToGrit(searchStrning);
 
             textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
+            RenameHeaderTextInGrit();
         }
+
+        private void RenameHeaderTextInGrit()
+        {
+            medicalCardForAdmin_dataGridView.Columns["id_medical_card"].Visible = false;
+            medicalCardForAdmin_dataGridView.Columns["id_patient"].Visible = false;
+            medicalCardForAdmin_dataGridView.Columns["full_name"].HeaderText = "ПІБ пацієнта";
+            medicalCardForAdmin_dataGridView.Columns["declaration_doctor"].HeaderText = "Декларація з доктором";
+            medicalCardForAdmin_dataGridView.Columns["date_created"].HeaderText = "Номер телефоку пацієнта";
+            medicalCardForAdmin_dataGridView.Columns["status_card"].HeaderText = "Статус картки";
+        }
+
         private string searchStrning;
 
         private void TextBoxSearch_TextChanged(object? sender, EventArgs e)

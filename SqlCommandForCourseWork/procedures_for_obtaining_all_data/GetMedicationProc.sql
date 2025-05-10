@@ -15,10 +15,10 @@ BEGIN
     
     SELECT 
         id_medication,
-        name_medication AS 'Назва медикаменту',
-        manufacturer AS 'Виробник',
-        description_medication AS 'Опис медикаменту',
-        expiration_date AS 'Дата придатності'
+        name_medication ,
+        manufacturer ,
+        description_medication ,
+        expiration_date
     FROM 
         Medication
     WHERE
