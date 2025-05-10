@@ -229,7 +229,7 @@ namespace Helsi
 
         private void generateReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             hideAllPages();
+            hideAllPages();
 
             generateReportUserControl1.Visible = true;
 
@@ -273,5 +273,10 @@ namespace Helsi
 
         }
 
+        private void useDrugOnDepartmentFor3Manth_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewReportForAll(_procedureName: "GetMedicationUsageByDepartment", _nameReport: " Звіт про використання ліків по відділеннях (за останні 3 місяці)");
+
+        }
     }
 }
