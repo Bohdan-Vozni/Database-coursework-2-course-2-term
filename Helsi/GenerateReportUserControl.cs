@@ -23,38 +23,54 @@ namespace Helsi
 
         private void ShowDataToGrit()
         {
-            using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
-            {
-                SqlCommand command = new SqlCommand("GetAllTableColumnsProc", connection);
-                command.CommandType = CommandType.StoredProcedure;
+                           
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("NameParametrnInProcedure", typeof(string));
+            dt.Columns.Add("Назва параметра для звіту", typeof(string));
+            dt.Columns.Add("Дані параметра", typeof(string));
+
+            dt.Rows.Add("@PatientName", "Ім’я пацієнта", "");
+            dt.Rows.Add("@BirthDateStart", "Дата народження (від)", "");
+            dt.Rows.Add("@BirthDateEnd", "Дата народження (до)", "");
+            dt.Rows.Add("@Diagnosis", "Діагноз", "");
+            dt.Rows.Add("@DoctorName", "Ім’я лікаря", "");
+            dt.Rows.Add("@MedicationName", "Назва медикаменту", "");
+            dt.Rows.Add("@Manufacturer", "Виробник медикаменту", "");
+            dt.Rows.Add("@MedicationExpirationStart", "Термін придатності медикаменту (від)", "");
+            dt.Rows.Add("@MedicationExpirationEnd", "Термін придатності медикаменту (до)", "");
+            dt.Rows.Add("@ProcedureName", "Назва процедури", "");
+            dt.Rows.Add("@DepartmentName", "Назва відділення", "");
+            dt.Rows.Add("@ActionDateStart", "Дата дії (від)", "");
+            dt.Rows.Add("@ActionDateEnd", "Дата дії (до)", "");
 
 
+            allField_dataGridView.DataSource = dt;
 
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
 
-                allField_dataGridView.DataSource = dt;
-            }
         }
 
         private DataTable dt = new DataTable();
-        private string nameTabel;
-        private string nameField;
-        private bool nameIsNulble;
+        private string NameParametrnInProcedure;
+        private string nameParametr;
+        private string dataParametr;
+
         private void GenerateReportUserControl_Load(object sender, EventArgs e)
         {
             allField_dataGridView.CellDoubleClick += allField_dataGridView_CellContentClick;
             resultField_dataGridView.CellDoubleClick += resultFieald_dataGridView_CellContentClick;
             loadToFieldForResultGrit();
+
+            deleteAddFieldInResultGrit.Click += deleteAddFieldInResultGrit_Click;
         }
 
         private void loadToFieldForResultGrit()
         {
             dt = new DataTable();
-            dt.Columns.Add("Назва таблиці", typeof(string));
-            dt.Columns.Add("Назва поля", typeof(string));
-            dt.Columns.Add("Чи обовязково повинні бути дані", typeof(bool)); // або typeof(bool)
+            dt.Columns.Add("NameParametrnInProcedure", typeof(string));
+            dt.Columns.Add("Назва параметра для звіту", typeof(string));
+            dt.Columns.Add("Дані параметра", typeof(string));
+
 
             resultField_dataGridView.DataSource = dt;
         }
@@ -63,20 +79,19 @@ namespace Helsi
         {
             // Перевіряємо — щоб одна й та сама комбінація не додавалась двічі
             bool exists = dt.AsEnumerable().Any(row =>
-                row.Field<string>("Назва таблиці") == nameTabel &&
-                row.Field<string>("Назва поля") == nameField);
+                row.Field<string>("NameParametrnInProcedure") == NameParametrnInProcedure);
+               
 
             if (!exists)
             {
-                dt.Rows.Add(nameTabel, nameField, nameIsNulble);
+                dt.Rows.Add(NameParametrnInProcedure, nameParametr, dataParametr);
             }
         }
 
         private void deleteDataToResultGrit()
         {
             var rowToDelete = dt.AsEnumerable().FirstOrDefault(row =>
-                row.Field<string>("Назва таблиці") == nameTabel &&
-                row.Field<string>("Назва поля") == nameField
+                row.Field<string>("NameParametrnInProcedure") == NameParametrnInProcedure 
             );
 
             if (rowToDelete != null)
@@ -93,9 +108,10 @@ namespace Helsi
             {
                 DataGridViewRow selectedRow = allField_dataGridView.Rows[e.RowIndex];
 
-                nameTabel = selectedRow.Cells["Назва таблиці"].FormattedValue.ToString();
-                nameField = selectedRow.Cells["Назва поля"].FormattedValue.ToString();
-                nameIsNulble = (bool)selectedRow.Cells["Чи обовязково повинні бути дані"].FormattedValue;
+                NameParametrnInProcedure = selectedRow.Cells["NameParametrnInProcedure"].FormattedValue.ToString();
+                nameParametr = selectedRow.Cells["Назва параметра для звіту"].FormattedValue.ToString();
+                dataParametr = selectedRow.Cells["Дані параметра"].FormattedValue.ToString();
+
 
                 addDataToResultGrit();
             }
@@ -108,9 +124,10 @@ namespace Helsi
             {
                 DataGridViewRow selectedRow = resultField_dataGridView.Rows[e.RowIndex];
 
-                nameTabel = selectedRow.Cells["Назва таблиці"].FormattedValue.ToString();
-                nameField = selectedRow.Cells["Назва поля"].FormattedValue.ToString();
-                nameIsNulble = (bool)selectedRow.Cells["Чи обовязково повинні бути дані"].FormattedValue;
+                NameParametrnInProcedure = selectedRow.Cells["NameParametrnInProcedure"].FormattedValue.ToString();
+                nameParametr = selectedRow.Cells["Назва параметра для звіту"].FormattedValue.ToString();
+                dataParametr = selectedRow.Cells["Дані параметра"].FormattedValue.ToString();
+
 
                 deleteDataToResultGrit();
             }
@@ -129,7 +146,7 @@ namespace Helsi
 
         private void generetaReport_button_Click(object sender, EventArgs e)
         {
-            if(nameRepot_textBox.Text == "")
+            if (nameRepot_textBox.Text == "")
             {
                 MessageBox.Show("Введіть назву звіту");
                 return;
@@ -158,31 +175,41 @@ namespace Helsi
             try
             {
                 // Convert the selected fields to JSON
-                var reportData = new List<object>();
+                var reportData = new List<string>();
                 foreach (DataRow row in dt.Rows)
                 {
-                    reportData.Add(new
-                    {
-                        TableName = row["Назва таблиці"].ToString(),
-                        ColumnName = row["Назва поля"].ToString(),
-                        IsNullable = (bool)row["Чи обовязково повинні бути дані"]
-                    });
+                    reportData.Add(row["NameParametrnInProcedure"].ToString());
+                    reportData.Add(row["Дані параметра"].ToString());                    
+                 
                 }
-
-                string jsonData = JsonSerializer.Serialize(reportData);
+               
+                if (reportData.Count % 2 != 0)
+                {
+                    MessageBox.Show("У вас наявні пусті записи параметрів");
+                    return;
+                }
 
                 using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
                 {
-                    SqlCommand command = new SqlCommand("GetInfoForGenerateReport", connection);
+                    SqlCommand command = new SqlCommand("GetFilteredFullDataReport", connection);
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@ReportData", jsonData);
+
+                    int i = 0;
+
+                    while (i < reportData.Count)
+                    {
+                        string paramName = reportData[i].ToString();
+                        string paramValue = reportData[i+1].ToString();
+
+                        command.Parameters.AddWithValue(paramName, paramValue);
+                        i += 2;
+                    }
 
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    dtForReport = new DataTable();
-                    adapter.Fill(dtForReport);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
 
-                    // Bind the result to the DataGridView
-                    dataGridView.DataSource = dtForReport;
+                    dataGridView.DataSource = dt;
                 }
             }
             catch (Exception ex)

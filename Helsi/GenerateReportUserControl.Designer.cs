@@ -107,7 +107,7 @@
             deleteAddFieldInResultGrit.TabIndex = 12;
             deleteAddFieldInResultGrit.Text = "Видалити всі дані звіту";
             deleteAddFieldInResultGrit.UseVisualStyleBackColor = true;
-            deleteAddFieldInResultGrit.Click += deleteAddFieldInResultGrit_Click;
+
             // 
             // label4
             // 
