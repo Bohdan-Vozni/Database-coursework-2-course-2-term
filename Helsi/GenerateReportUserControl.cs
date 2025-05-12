@@ -30,6 +30,7 @@ namespace Helsi
             dt.Columns.Add("Назва параметра для звіту", typeof(string));
             dt.Columns.Add("Дані параметра", typeof(string));
 
+
             dt.Rows.Add("@PatientName", "Ім’я пацієнта", "");
             dt.Rows.Add("@BirthDateStart", "Дата народження (від)", "");
             dt.Rows.Add("@BirthDateEnd", "Дата народження (до)", "");
@@ -46,7 +47,7 @@ namespace Helsi
 
 
             allField_dataGridView.DataSource = dt;
-
+            allField_dataGridView.Columns["NameParametrnInProcedure"].Visible = false;
 
         }
 
@@ -73,6 +74,7 @@ namespace Helsi
 
 
             resultField_dataGridView.DataSource = dt;
+            resultField_dataGridView.Columns["NameParametrnInProcedure"].Visible = false;
         }
 
         private void addDataToResultGrit()
