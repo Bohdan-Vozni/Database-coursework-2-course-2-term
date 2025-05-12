@@ -161,7 +161,10 @@ namespace Helsi
                 return;
             }
 
-            genereteRoportFromResultGrit();
+            if (genereteRoportFromResultGrit() == false)
+            {
+                return;
+            }
 
             resultField_dataGridView.DataSource = dataGridView.DataSource;
 
@@ -172,7 +175,7 @@ namespace Helsi
 
         private DataTable dtForReport = new DataTable();
         private DataGridView dataGridView = new DataGridView();
-        private void genereteRoportFromResultGrit()
+        private bool genereteRoportFromResultGrit()
         {
             try
             {
@@ -188,7 +191,7 @@ namespace Helsi
                 if (reportData.Count % 2 != 0)
                 {
                     MessageBox.Show("У вас наявні пусті записи параметрів");
-                    return;
+                    return false;
                 }
 
                 using (SqlConnection connection = new SqlConnection(GetConectionSrtingForConectDataBase.ConectionString))
@@ -211,6 +214,164 @@ namespace Helsi
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
+                    if (dt.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Запит не повернув жодного рядка. Спробуйте інші параметри.");
+                        return false;
+                    }
+
+                    #region  Перейменування полів в DataGrit для кастомних звітів
+
+                    // Перевірка і перейменування стовпців у DataTable
+                    if (dt.Columns.Contains("id_patient"))
+                    {
+                        dt.Columns["id_patient"].ColumnName = "Індетифікатор пацієнта";
+                    }
+
+                    if (dt.Columns.Contains("full_name_patient"))
+                    {
+                        dt.Columns["full_name_patient"].ColumnName = "Повне ім’я пацієнта";
+                    }
+
+                    if (dt.Columns.Contains("date_of_birth"))
+                    {
+                        dt.Columns["date_of_birth"].ColumnName = "Дата народження";
+                    }
+
+                    if (dt.Columns.Contains("patient_phone"))
+                    {
+                        dt.Columns["patient_phone"].ColumnName = "Телефон пацієнта";
+                    }
+
+                    if (dt.Columns.Contains("address_patient"))
+                    {
+                        dt.Columns["address_patient"].ColumnName = "Адреса пацієнта";
+                    }
+
+                    if (dt.Columns.Contains("id_medical_card"))
+                    {
+                        dt.Columns["id_medical_card"].ColumnName = "Ідентифікатор медичної картки";
+                    }
+
+                    if (dt.Columns.Contains("declaration_doctor"))
+                    {
+                        dt.Columns["declaration_doctor"].ColumnName = "Лікар, що видав декларацію";
+                    }
+
+                    if (dt.Columns.Contains("date_created"))
+                    {
+                        dt.Columns["date_created"].ColumnName = "Дата створення медичної картки";
+                    }
+
+                    if (dt.Columns.Contains("status_card"))
+                    {
+                        dt.Columns["status_card"].ColumnName = "Статус картки";
+                    }
+
+                    if (dt.Columns.Contains("id_episode"))
+                    {
+                        dt.Columns["id_episode"].ColumnName = "Ідентифікатор епізоду";
+                    }
+
+                    if (dt.Columns.Contains("diagnosis"))
+                    {
+                        dt.Columns["diagnosis"].ColumnName = "Діагноз";
+                    }
+
+                    if (dt.Columns.Contains("description_diagnosis"))
+                    {
+                        dt.Columns["description_diagnosis"].ColumnName = "Опис діагнозу";
+                    }
+
+                    if (dt.Columns.Contains("description_action"))
+                    {
+                        dt.Columns["description_action"].ColumnName = "Опис дії";
+                    }
+
+                    if (dt.Columns.Contains("action_date"))
+                    {
+                        dt.Columns["action_date"].ColumnName = "Дата дії";
+                    }
+
+                    if (dt.Columns.Contains("id_doctor"))
+                    {
+                        dt.Columns["id_doctor"].ColumnName = "Ідентифікатор лікаря";
+                    }
+
+                    if (dt.Columns.Contains("name_doctor"))
+                    {
+                        dt.Columns["name_doctor"].ColumnName = "Ім’я лікаря";
+                    }
+
+                    if (dt.Columns.Contains("specialization"))
+                    {
+                        dt.Columns["specialization"].ColumnName = "Спеціалізація лікаря";
+                    }
+
+                    if (dt.Columns.Contains("doctor_phone"))
+                    {
+                        dt.Columns["doctor_phone"].ColumnName = "Телефон лікаря";
+                    }
+
+                    if (dt.Columns.Contains("id_department"))
+                    {
+                        dt.Columns["id_department"].ColumnName = "Ідентифікатор відділення";
+                    }
+
+                    if (dt.Columns.Contains("name_department"))
+                    {
+                        dt.Columns["name_department"].ColumnName = "Назва відділення";
+                    }
+
+                    if (dt.Columns.Contains("description_department"))
+                    {
+                        dt.Columns["description_department"].ColumnName = "Опис відділення";
+                    }
+
+                    if (dt.Columns.Contains("id_medication"))
+                    {
+                        dt.Columns["id_medication"].ColumnName = "Ідентифікатор медикаменту";
+                    }
+
+                    if (dt.Columns.Contains("name_medication"))
+                    {
+                        dt.Columns["name_medication"].ColumnName = "Назва медикаменту";
+                    }
+
+                    if (dt.Columns.Contains("manufacturer"))
+                    {
+                        dt.Columns["manufacturer"].ColumnName = "Виробник медикаменту";
+                    }
+
+                    if (dt.Columns.Contains("description_medication"))
+                    {
+                        dt.Columns["description_medication"].ColumnName = "Опис медикаменту";
+                    }
+
+                    if (dt.Columns.Contains("expiration_date"))
+                    {
+                        dt.Columns["expiration_date"].ColumnName = "Термін придатності медикаменту";
+                    }
+
+                    if (dt.Columns.Contains("id_procedure"))
+                    {
+                        dt.Columns["id_procedure"].ColumnName = "Ідентифікатор процедури";
+                    }
+
+                    if (dt.Columns.Contains("name_procedure"))
+                    {
+                        dt.Columns["name_procedure"].ColumnName = "Назва процедури";
+                    }
+
+                    if (dt.Columns.Contains("description_procedure"))
+                    {
+                        dt.Columns["description_procedure"].ColumnName = "Опис процедури";
+                    }
+
+
+                    #endregion
+                    
+                    
                     dataGridView.DataSource = dt;
                 }
             }
@@ -219,7 +380,7 @@ namespace Helsi
                 MessageBox.Show($"Помилка при генерації звіту: {ex.Message}");
             }
 
-
+            return true;
         }
 
 

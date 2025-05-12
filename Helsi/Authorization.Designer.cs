@@ -159,7 +159,7 @@
             // 
             // Authorization
             // 
-            ClientSize = new Size(335, 340);
+            ClientSize = new Size(331, 341);
             Controls.Add(mainBackgroundColor_panel);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Authorization";
