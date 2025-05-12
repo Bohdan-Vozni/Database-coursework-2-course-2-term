@@ -26,6 +26,13 @@ namespace Helsi
 
             textBoxSearch.TextChanged += TextBoxSearch_TextChanged;
             RenameHeaderTextInGrit();
+
+            statusCard_comboBox.Items.Clear();
+
+            statusCard_comboBox.Items.Add("Активна");
+            statusCard_comboBox.Items.Add("Архівована");
+            statusCard_comboBox.Items.Add("Неактивна");
+            statusCard_comboBox.SelectedIndex = 0;
         }
 
         private void RenameHeaderTextInGrit()
@@ -149,10 +156,20 @@ namespace Helsi
                     create_dateTimePicker1.Value = DateTime.Today;
                 }
 
-                statusCardTextBox_MedicalCardForAdmin.Text = medicalCardForAdmin_dataGridView
+                string statusValue = medicalCardForAdmin_dataGridView
                     .Rows[e.RowIndex]
                     .Cells["status_card"]
                     .FormattedValue.ToString();
+
+                // Встановлюємо вибране значення в ComboBox
+                if (statusCard_comboBox.Items.Contains(statusValue))
+                {
+                    statusCard_comboBox.SelectedItem = statusValue;
+                }
+                else
+                {
+                    statusCard_comboBox.SelectedIndex = -1; // якщо такого значення нема
+                }
 
             }
         }
@@ -197,7 +214,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_patient", selectedPatient.idPatient);
                 command.Parameters.AddWithValue("@declaration_doctor", declarationDoctorTextBox_MedicalCardForAdmin.Text);
                 command.Parameters.AddWithValue("@date_created", dateCreate);
-                command.Parameters.AddWithValue("@status_card", statusCardTextBox_MedicalCardForAdmin.Text);
+                command.Parameters.AddWithValue("@status_card", statusCard_comboBox.SelectedItem);
 
                 connection.Open();
 
@@ -264,7 +281,7 @@ namespace Helsi
                 command.Parameters.AddWithValue("@id_patient", selectedPatient.idPatient);
                 command.Parameters.AddWithValue("@declaration_doctor", declarationDoctorTextBox_MedicalCardForAdmin.Text);
                 command.Parameters.AddWithValue("@date_created", create_dateTimePicker1.Value);
-                command.Parameters.AddWithValue("@status_card", statusCardTextBox_MedicalCardForAdmin.Text);
+                command.Parameters.AddWithValue("@status_card", statusCard_comboBox.SelectedItem);
 
                 connection.Open();
 
@@ -297,6 +314,14 @@ namespace Helsi
             if (idPatientComboBox_MedicalCardForAdmin.SelectedItem == null)
             {
                 MessageBox.Show("Будь ласка, виберіть пацієнта", "Попередження",
+                      MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            if (statusCard_comboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Будь ласка, виберіть статус картки", "Попередження",
                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return;
@@ -369,6 +394,7 @@ namespace Helsi
         private void clearAllField_Button_Click(object sender, EventArgs e)
         {
             ClearAllTextBox.ClearAllTextBoxes(this.Controls);
+            statusCard_comboBox.SelectedIndex = 0;
         }
     }
 }

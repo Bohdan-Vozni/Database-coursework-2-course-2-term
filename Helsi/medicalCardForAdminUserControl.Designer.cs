@@ -32,7 +32,6 @@
             updateMedicalCardForAdmin_button = new Button();
             deleteMedicalCardForAdmin_button = new Button();
             addMedicalCardForAdmin_button = new Button();
-            statusCardTextBox_MedicalCardForAdmin = new TextBox();
             declarationDoctorTextBox_MedicalCardForAdmin = new TextBox();
             idMedicalCardTextBox_MedicalCardForAdmin = new TextBox();
             label1 = new Label();
@@ -46,6 +45,7 @@
             textBoxSearch = new TextBox();
             clearAllField_Button = new Button();
             create_dateTimePicker1 = new DateTimePicker();
+            statusCard_comboBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)medicalCardForAdmin_dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -92,13 +92,6 @@
             addMedicalCardForAdmin_button.Text = "Додати";
             addMedicalCardForAdmin_button.UseVisualStyleBackColor = true;
             addMedicalCardForAdmin_button.Click += addMedicalCardForAdmin_button_Click;
-            // 
-            // statusCardTextBox_MedicalCardForAdmin
-            // 
-            statusCardTextBox_MedicalCardForAdmin.Location = new Point(12, 366);
-            statusCardTextBox_MedicalCardForAdmin.Name = "statusCardTextBox_MedicalCardForAdmin";
-            statusCardTextBox_MedicalCardForAdmin.Size = new Size(360, 23);
-            statusCardTextBox_MedicalCardForAdmin.TabIndex = 37;
             // 
             // declarationDoctorTextBox_MedicalCardForAdmin
             // 
@@ -226,10 +219,19 @@
             create_dateTimePicker1.Size = new Size(360, 23);
             create_dateTimePicker1.TabIndex = 52;
             // 
+            // statusCard_comboBox
+            // 
+            statusCard_comboBox.FormattingEnabled = true;
+            statusCard_comboBox.Location = new Point(12, 366);
+            statusCard_comboBox.Name = "statusCard_comboBox";
+            statusCard_comboBox.Size = new Size(360, 23);
+            statusCard_comboBox.TabIndex = 53;
+            // 
             // medicalCardForAdminUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(statusCard_comboBox);
             Controls.Add(create_dateTimePicker1);
             Controls.Add(textBoxSearch);
             Controls.Add(clearAllField_Button);
@@ -243,7 +245,6 @@
             Controls.Add(label1);
             Controls.Add(idMedicalCardTextBox_MedicalCardForAdmin);
             Controls.Add(declarationDoctorTextBox_MedicalCardForAdmin);
-            Controls.Add(statusCardTextBox_MedicalCardForAdmin);
             Controls.Add(updateMedicalCardForAdmin_button);
             Controls.Add(deleteMedicalCardForAdmin_button);
             Controls.Add(addMedicalCardForAdmin_button);
@@ -262,7 +263,6 @@
         private Button updateMedicalCardForAdmin_button;
         private Button deleteMedicalCardForAdmin_button;
         private Button addMedicalCardForAdmin_button;
-        private TextBox statusCardTextBox_MedicalCardForAdmin;
         private TextBox declarationDoctorTextBox_MedicalCardForAdmin;
         private TextBox idMedicalCardTextBox_MedicalCardForAdmin;
         private Label label1;
@@ -276,5 +276,6 @@
         private TextBox textBoxSearch;
         private Button clearAllField_Button;
         private DateTimePicker create_dateTimePicker1;
+        private ComboBox statusCard_comboBox;
     }
 }
