@@ -43,8 +43,9 @@ go
 
 insert into Users(Id,Username,Roleuser)
 values 
-('1','sa','admin'),
-('2','AdminDatabase','admin'),
-('3','Customer','user')
+('1','sa','MainDoctor'),
+('2','MainDoctor','MainDoctor'),
+('3','Doctor','Doctor'),
+('4','Nurse','Nurse')
 
 go

@@ -50,17 +50,29 @@ namespace Helsi
             closeUserControllForAddInfo_button.BringToFront();
 
             CheckUserPermissionsAtLogin();
-            Admin_ToolStripMenuItem.Visible = false;
+            medicalRecord_ToolStripMenuItem.Visible = false;
 
-            if (permissions.User == "sa" || permissions.Role == "admin")
+            if (permissions.User == "sa" || permissions.Role == "MainDoctor")
             {
-                Admin_ToolStripMenuItem.Visible = true;
+                medicalRecord_ToolStripMenuItem.Visible = true;
+                doctor_ToolStripMenuItem.Visible = true;
+                department_ToolStripMenuItem.Visible = true;
             }
-            else
+            else if (permissions.Role == "Doctor")
             {
-                Admin_ToolStripMenuItem.Visible = false;
+                medicalRecord_ToolStripMenuItem.Visible = true;
+                doctor_ToolStripMenuItem.Visible = false;
+                department_ToolStripMenuItem.Visible = false;
+            }
+            else if(permissions.Role == "Nurse")
+            {
+                medicalRecord_ToolStripMenuItem.Visible = false;
+                doctor_ToolStripMenuItem.Visible = false;
+                department_ToolStripMenuItem.Visible = false;
             }
 
+
+            layout_pictureBox.Visible = true;
         }
 
         private UserPermissions permissions;
@@ -109,6 +121,7 @@ namespace Helsi
                     userControl.Hide();
                 }
             }
+            layout_pictureBox.Visible = false;
         }
 
         private void Entrance_menuStrip_Click(object sender, EventArgs e)
@@ -122,7 +135,8 @@ namespace Helsi
         {
             closeUserControllForAddInfo_button.Visible = false;
             hideAllPages();
-            Application.Exit(); // припинити отладку
+            layout_pictureBox.Visible = true;
+            // Application.Exit(); // припинити отладку
         }
 
         private void patient_ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -174,17 +188,7 @@ namespace Helsi
             closeUserControllForAddInfo_button.BringToFront();
         }
 
-        private void DoctorForAdmin_ToolStripMenuItemolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            hideAllPages();
-
-            doctorForAdminUserControl2.Visible = true;
-
-            closeUserControllForAddInfo_button.Visible = true;
-            closeUserControllForAddInfo_button.BringToFront();
-
-
-        }
+       
 
         private void ActionForAdmin_ToolStripMenuItemolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -196,15 +200,7 @@ namespace Helsi
             closeUserControllForAddInfo_button.BringToFront();
         }
 
-        private void DepartmentForAdmin_ToolStripMenuItemolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            hideAllPages();
-
-            departmentForAdminUserControl1.Visible = true;
-
-            closeUserControllForAddInfo_button.Visible = true;
-            closeUserControllForAddInfo_button.BringToFront();
-        }
+        
 
         private void MedicationForAdmin_ToolStripMenuItemolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -283,6 +279,33 @@ namespace Helsi
         {
             viewReportForAll(_procedureName: "GetTopPatients", _nameReport: "Звіт про пацієнтів із найбільшою кількістю відвідувань (за рік)");
 
+        }
+
+        private void MainPage_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hideAllPages();
+            layout_pictureBox.Visible = true;
+            closeUserControllForAddInfo_button.Visible = false;
+        }
+
+        private void doctor_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hideAllPages();
+
+            doctorForAdminUserControl2.Visible = true;
+
+            closeUserControllForAddInfo_button.Visible = true;
+            closeUserControllForAddInfo_button.BringToFront();
+        }
+
+        private void department_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hideAllPages();
+
+            departmentForAdminUserControl1.Visible = true;
+
+            closeUserControllForAddInfo_button.Visible = true;
+            closeUserControllForAddInfo_button.BringToFront();
         }
     }
 }
