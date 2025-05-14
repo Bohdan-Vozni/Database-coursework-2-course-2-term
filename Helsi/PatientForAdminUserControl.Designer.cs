@@ -138,9 +138,9 @@
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label1.Location = new Point(329, 42);
             label1.Name = "label1";
-            label1.Size = new Size(213, 30);
+            label1.Size = new Size(254, 30);
             label1.TabIndex = 15;
-            label1.Text = "Робота з пацієнтом";
+            label1.Text = "Управління пацієнтами";
             // 
             // clearAllField_Button
             // 

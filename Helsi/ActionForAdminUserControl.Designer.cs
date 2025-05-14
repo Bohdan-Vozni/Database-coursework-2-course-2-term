@@ -120,9 +120,9 @@
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label1.Location = new Point(328, 28);
             label1.Name = "label1";
-            label1.Size = new Size(171, 30);
+            label1.Size = new Size(162, 30);
             label1.TabIndex = 63;
-            label1.Text = "Робота з дійою";
+            label1.Text = "Управління дії";
             // 
             // updateDataInAllForm_button
             // 

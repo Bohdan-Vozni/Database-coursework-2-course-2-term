@@ -190,9 +190,9 @@
             label6.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label6.Location = new Point(347, 29);
             label6.Name = "label6";
-            label6.Size = new Size(302, 30);
+            label6.Size = new Size(350, 30);
             label6.TabIndex = 49;
-            label6.Text = "Робота з медичною картою";
+            label6.Text = "Управління медичними картами";
             // 
             // textBoxSearch
             // 

@@ -58,18 +58,13 @@ namespace Helsi
                 doctor_ToolStripMenuItem.Visible = true;
                 department_ToolStripMenuItem.Visible = true;
             }
-            else if (permissions.Role == "Doctor")
+            else if (permissions.Role == "Nurse" || permissions.Role == "Doctor")
             {
                 medicalRecord_ToolStripMenuItem.Visible = true;
                 doctor_ToolStripMenuItem.Visible = false;
                 department_ToolStripMenuItem.Visible = false;
             }
-            else if(permissions.Role == "Nurse")
-            {
-                medicalRecord_ToolStripMenuItem.Visible = false;
-                doctor_ToolStripMenuItem.Visible = false;
-                department_ToolStripMenuItem.Visible = false;
-            }
+            
 
 
             layout_pictureBox.Visible = true;

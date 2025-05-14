@@ -181,9 +181,9 @@
             label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label5.Location = new Point(339, 35);
             label5.Name = "label5";
-            label5.Size = new Size(202, 30);
+            label5.Size = new Size(243, 30);
             label5.TabIndex = 49;
-            label5.Text = "Робота з епізодом";
+            label5.Text = "Управління епізодами";
             // 
             // textBoxSearch
             // 

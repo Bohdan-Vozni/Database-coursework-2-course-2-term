@@ -66,9 +66,9 @@
             label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label5.Location = new Point(291, 28);
             label5.Name = "label5";
-            label5.Size = new Size(273, 30);
+            label5.Size = new Size(303, 30);
             label5.TabIndex = 52;
-            label5.Text = "Робота з медикаментами";
+            label5.Text = "Управління медикаментами";
             // 
             // updateDataInAllForm_button
             // 

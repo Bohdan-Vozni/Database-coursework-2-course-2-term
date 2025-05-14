@@ -51,9 +51,9 @@
             label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label5.Location = new Point(293, 31);
             label5.Name = "label5";
-            label5.Size = new Size(248, 30);
+            label5.Size = new Size(278, 30);
             label5.TabIndex = 53;
-            label5.Text = "Робота з процедурами";
+            label5.Text = "Управління процедурами";
             // 
             // procedureClient_dataGridView
             // 

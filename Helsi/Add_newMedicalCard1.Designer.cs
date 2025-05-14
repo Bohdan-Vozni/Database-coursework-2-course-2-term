@@ -37,6 +37,7 @@
             dateOfBirth_label = new Label();
             fullName_textBox = new TextBox();
             fullName_label = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // button1
@@ -121,10 +122,21 @@
             fullName_label.TabIndex = 9;
             fullName_label.Text = "Пацієнт";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label1.Location = new Point(313, 32);
+            label1.Name = "label1";
+            label1.Size = new Size(312, 30);
+            label1.TabIndex = 64;
+            label1.Text = "Управління медичної картки";
+            // 
             // Add_newMedicalCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(addressPatient_textBox);
             Controls.Add(addressPatient_label);
@@ -152,5 +164,6 @@
         private Label dateOfBirth_label;
         private TextBox fullName_textBox;
         private Label fullName_label;
+        private Label label1;
     }
 }

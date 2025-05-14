@@ -105,42 +105,42 @@
             // patientForAdmin_ToolStripMenuItem
             // 
             patientForAdmin_ToolStripMenuItem.Name = "patientForAdmin_ToolStripMenuItem";
-            patientForAdmin_ToolStripMenuItem.Size = new Size(180, 22);
+            patientForAdmin_ToolStripMenuItem.Size = new Size(157, 22);
             patientForAdmin_ToolStripMenuItem.Text = "Паціент";
             patientForAdmin_ToolStripMenuItem.Click += patientForAdmin_ToolStripMenuItem_Click;
             // 
             // medicalCartForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Name = "medicalCartForAdmin_ToolStripMenuItemolStripMenuItem";
-            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
+            medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Медична карта";
             medicalCartForAdmin_ToolStripMenuItemolStripMenuItem.Click += medicalCartForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // EpisodeForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Name = "EpisodeForAdmin_ToolStripMenuItemolStripMenuItem";
-            EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
+            EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
             EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Eпізод";
             EpisodeForAdmin_ToolStripMenuItemolStripMenuItem.Click += EpisodeForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // ActionForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             ActionForAdmin_ToolStripMenuItemolStripMenuItem.Name = "ActionForAdmin_ToolStripMenuItemolStripMenuItem";
-            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
+            ActionForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
             ActionForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Дія";
             ActionForAdmin_ToolStripMenuItemolStripMenuItem.Click += ActionForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // MedicationForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Name = "MedicationForAdmin_ToolStripMenuItemolStripMenuItem";
-            MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
+            MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
             MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Медикаменти";
             MedicationForAdmin_ToolStripMenuItemolStripMenuItem.Click += MedicationForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 
             // ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem
             // 
             ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem.Name = "ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem";
-            ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(180, 22);
+            ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem.Size = new Size(157, 22);
             ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem.Text = "Процедури";
             ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem.Click += ProcedureClientForAdmin_ToolStripMenuItemolStripMenuItem_Click;
             // 

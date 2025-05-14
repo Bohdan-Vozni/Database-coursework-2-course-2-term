@@ -110,9 +110,9 @@
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label1.Location = new Point(327, 27);
             label1.Name = "label1";
-            label1.Size = new Size(210, 30);
+            label1.Size = new Size(233, 30);
             label1.TabIndex = 44;
-            label1.Text = "Робота з доктором";
+            label1.Text = "Управління лікарями";
             // 
             // label4
             // 

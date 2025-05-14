@@ -62,9 +62,9 @@
             label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label5.Location = new Point(311, 16);
             label5.Name = "label5";
-            label5.Size = new Size(235, 30);
+            label5.Size = new Size(278, 30);
             label5.TabIndex = 51;
-            label5.Text = "Робота з відділенням";
+            label5.Text = "Управління відділеннями";
             // 
             // descriptionDepartment_TextBox
             // 
