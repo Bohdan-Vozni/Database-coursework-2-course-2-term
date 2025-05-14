@@ -1,35 +1,25 @@
-USE Helsi;
+-- Drop the procedure if it exists
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'Report_GetMedicationUsageByDepartment')
+    DROP PROCEDURE Report_GetMedicationUsageByDepartment;
 GO
 
-IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'GetMedicationUsageByDepartment')
-DROP PROCEDURE GetMedicationUsageByDepartment;
-GO
-
-CREATE PROCEDURE GetMedicationUsageByDepartment
+-- Create the procedure
+CREATE PROCEDURE Report_GetMedicationUsageByDepartment
 AS
 BEGIN
     SET NOCOUNT ON;
-    
+
     SELECT 
-        dep.name_department AS "Відділення",
-        m.name_medication AS "Назва ліків",
-        COUNT(a.id_medication) AS "Кількість призначень"
+        "Відділення",
+        "Назва ліків",
+        COUNT(id_medication) AS "Кількість призначень"
     FROM 
-        Action_ISPS a
-    JOIN 
-        Doctor d ON a.id_doctor = d.id_doctor
-    JOIN 
-        Department dep ON d.id_department = dep.id_department
-    JOIN 
-        Medication m ON a.id_medication = m.id_medication
+        View_GetMedicationUsageByDepartment
     WHERE 
-        a.data_time BETWEEN DATEADD(month, -3, GETDATE()) AND GETDATE()
+        data_time BETWEEN DATEADD(month, -3, GETDATE()) AND GETDATE()
     GROUP BY 
-        dep.name_department, m.name_medication
+        "Відділення", "Назва ліків"
     ORDER BY 
-        dep.name_department, COUNT(a.id_medication) DESC;
+        "Відділення", COUNT(id_medication) DESC;
 END;
 GO
-
--- Виклик
-EXEC GetMedicationUsageByDepartment;

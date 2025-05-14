@@ -1,28 +1,29 @@
 USE Helsi;
 GO
 
--- Drop the procedure if it already exists
-IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'GetExpiringMedications')
-DROP PROCEDURE GetExpiringMedications;
+
+
+-- Drop the procedure if it exists
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'GetExpiringMedicationsFromView')
+    DROP PROCEDURE GetExpiringMedicationsFromView;
 GO
 
--- Create the stored procedure
-CREATE PROCEDURE GetExpiringMedications
+-- Create the procedure
+CREATE PROCEDURE GetExpiringMedicationsFromView
 AS
 BEGIN
     SET NOCOUNT ON;
-    
+
     SELECT 
-        name_medication AS "Назва ліків",
-        manufacturer AS "Виробник",
-        expiration_date AS "Термін придатності",
-        DATEDIFF(day, GETDATE(), expiration_date) AS "Залишилось днів"
+        "Назва ліків",
+        "Виробник",
+        "Термін придатності",
+        DATEDIFF(day, GETDATE(), "Термін придатності") AS "Залишилось днів"
     FROM 
-        Medication
+        vw_ExpiringMedications
     WHERE 
-        expiration_date BETWEEN GETDATE() AND DATEADD(month, 3, GETDATE())
+        "Термін придатності" BETWEEN GETDATE() AND DATEADD(month, 3, GETDATE())
     ORDER BY 
-        expiration_date;
+        "Термін придатності";
 END;
 GO
-
